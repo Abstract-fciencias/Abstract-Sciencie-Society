@@ -1,6 +1,6 @@
---
--- PostgreSQL database dump
---
+/*
+    Abstract Science Society
+*/
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -14,7 +14,8 @@ CREATE TYPE tiposUsuarios AS ENUM ('normal', 'administrador');
 CREATE TYPE carreras AS ENUM ('matemáticas', 'ciencias de la computación',
     'física', 'actuaría', 'biología', 'ciencias de la tierra',
     'ciencias ambientales', 'física biomédica',
-    'manejo sustentable de zonas costeras', 'matemáticas aplicadas', 'neurociencias'
+    'manejo sustentable de zonas costeras', 'matemáticas aplicadas',
+    'neurociencias', 'trabajador'
 );
 
 CREATE TABLE Usuario (
@@ -24,7 +25,6 @@ CREATE TABLE Usuario (
     tipo tiposUsuarios NOT NULL,
     carrera carreras NOT NULL,
     añoIngreso INTEGER NOT NULL,
-    contraseña VARCHAR
 );
 
 -- Para agregar un cometario, se necesita el usuario que lo agrega, el 
