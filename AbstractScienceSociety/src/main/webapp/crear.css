@@ -132,3 +132,25 @@ ul.footer{
     text-decoration: none;
     color: white;
 }
+
+
+
+/*Cambios*/
+.Creacion{
+	height: 100%;
+	display: block;
+	
+	
+
+}
+
+.Tema{
+  width: 100%;
+  display: block;	
+}
+
+.categoria{
+	display: inline-block;
+}
+
+
