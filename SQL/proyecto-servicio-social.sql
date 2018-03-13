@@ -43,3 +43,11 @@ create table Tema (
   disponibilidad disponible NOT NULL,
   tema VARCHAR(50) NOT NULL,
  );
+
+
+-- Falta indicar que categorías exiten o como se generan
+CREATE TABLE Categoria(
+	idCategoria SERIAL PRIMARY KEY,		
+	nombre VARCHAR(100) NOT NULL, 
+	descripcion VARCHAR(255) NOT NULL 
+);
