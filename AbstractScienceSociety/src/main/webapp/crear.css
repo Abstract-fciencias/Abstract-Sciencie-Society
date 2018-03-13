@@ -139,18 +139,20 @@ ul.footer{
 .Creacion{
 	height: 100%;
 	display: block;
-	
+
 	
 
 }
 
 .Tema{
   width: 100%;
-  display: block;	
+  display: inline-block;	
 }
 
 .categoria{
 	display: inline-block;
+	height: 100%;
+	width:auto;
 }
 
 
