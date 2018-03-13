@@ -1,0 +1,134 @@
+/* Presentacion en el centro de la pantalla */
+.presentacion{
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+/* Encabezado generico*/
+.encabezado{ 
+    border-collapse: separate;    
+    width: 100%;
+}
+
+/*Menu desplegable*/
+ul.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+}
+
+.menu li {
+    float: left;
+}
+
+.menu li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.menu li a:hover, .dropdown:hover .dropbtn {
+    background-color: #0B3861;
+}
+
+.menu li.dropdown {
+    display: inline-block;
+}
+
+.menu .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.menu .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.menu .dropdown-content a:hover {background-color: cadetblue}
+
+.menu .dropdown:hover .dropdown-content {
+    display: block;
+}
+/*Hasta aquí el menu desplagable*/
+
+/* Información del tema tanto en Ver como en Agregar*/
+.infoTema li{
+    display: inline;     
+    margin-right: 20px;
+}
+
+/* Agregar Comentario*/
+.listaComentarios hr {     
+    width:50%;     
+    margin-right: 50%;
+    height:1px; 
+    background: #fff 
+}
+
+ul.listaComentarios{
+    list-style-type: none;
+}
+
+.listaComentarios th ,tr {
+    border-right: 1px solid black;
+}
+textarea{
+    background-color: whitesmoke;
+    width: 100%;
+}
+.enviarComentario{
+    background-color: #0B3861;
+    color: white;
+    padding: 5px 5px;    
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    text-align: right;
+}
+
+/* Ver Tema Pregunta*/
+.verTemas a{
+    color: black;
+    text-decoration: none;
+}
+
+.verTemas hr{
+    width: 50%;     
+    margin-right: 50%;
+    height:1px; 
+    background: #fff 
+}
+
+.verTemas div{
+    padding: 10px;
+}
+
+/*Pie de página generico*/
+footer {   
+    width: 100%;
+    background-color: #0B3861;
+    color: white;
+    padding: 20px;
+    text-align: left;
+}        
+ul.footer{
+    list-style-type: none;
+}    
+
+.footer li a{
+    text-decoration: none;
+    color: white;
+}
