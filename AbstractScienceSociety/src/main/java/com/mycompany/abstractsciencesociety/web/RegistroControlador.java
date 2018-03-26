@@ -35,7 +35,6 @@ public class RegistroControlador {
     }
 
     public String agregarUsuario() {
-        System.out.println("Pero que cosas");
         if (!user.getContraseña().equals(user.getConfirmacionContraseña())) {
             FacesContext.getCurrentInstance().addMessage(null
                                                          , new FacesMessage(FacesMessage.SEVERITY_ERROR, "Fallo de registro: Las contraseñas deben coincidir", ""));
