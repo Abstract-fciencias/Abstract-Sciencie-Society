@@ -102,6 +102,7 @@ ul.listaComentarios{
     padding: 10px;
 }
 
+
 /*Pie de página generico*/
 footer {   
     width: 100%;
@@ -109,12 +110,31 @@ footer {
     color: white;
     padding: 20px;
     text-align: left;
+    position: fixed;
+    bottom: 0;
 }        
 ul.footer{
     list-style-type: none;
 }    
 
+.footer {
+    display: block;
+    margin: 0 auto;
+    width: 600px;
+}
+
 .footer li a{
     text-decoration: none;
     color: white;
+}
+
+.tema {
+    border-top: 1px solid black;
+     margin: 0 auto;
+     width: 600px;
+}
+
+.tema:first-child {
+    border-top-width: 0px;
+    margin-top: 30px;
 }

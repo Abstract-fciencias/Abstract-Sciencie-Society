@@ -7,7 +7,8 @@
 
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <link rel="stylesheet" type="text/css" href="css/agregar-comentario.css"></link>
+    <link rel="stylesheet" type="text/css" href="css/ver-comentario.css"></link>
     <title>Mi primer aplicación </title>
 
     <h:outputStylesheet library="webjars" name="bootstrap/4.0.0-2/css/bootstrap.min-jsf.css" />
@@ -16,14 +17,42 @@
 <h:body>
 
     <ui:include src="./header.xhtml" />
-    <div class="container">
-        <!--<ui:include src="./content.xhtml" />
-        <ui:include src="./footer.xhtml" />-->
-    </div>
+       <div class="verTemas">
+           <div class="tema">
+            <h3><a href="#tema1">Tema 1</a></h3>
+            <ul class="infoTema">
+                <li>Comentarios</li>
+                <li>Personas</li>
+                <li>Disponiblidad</li>
+                <li>Fecha</li>
+                <li>Categoría</li>
+              </ul>
+          </div>
+          <div class="tema">
+            <h3><a href="#tema2">Tema 2</a></h3>
+            <ul class="infoTema">
+                <li>Comentarios</li>
+                <li>Personas</li>
+                <li>Disponiblidad</li>
+                <li>Fecha</li>
+                <li>Categoría</li>
+              </ul>
+          </div>
+          <div class="tema">
+            <h3><a href="#tema3">Tema 3</a></h3>
+            <ul class="infoTema">
+                <li>Comentarios</li>
+                <li>Personas</li>
+                <li>Disponiblidad</li>
+                <li>Fecha</li>
+                <li>Categoría</li>
+              </ul>
+          </div>
+      </div>
 
     <!-- Los dejamos hasta abajo para que cargue la página más rápido-->
     <h:outputScript library="webjars" name="jquery/3.3.1-1/jquery.min.js"/>
     <h:outputScript library="webjars" name="bootstrap/4.0.0-2/js/bootstrap.min.js" />
-
+    <ui:include src="./footer.xhtml" />
 </h:body>
 </html>
