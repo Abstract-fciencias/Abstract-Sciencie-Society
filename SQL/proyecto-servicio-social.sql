@@ -22,6 +22,7 @@ CREATE TABLE Usuario (
     idUsuario SERIAL PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
     email VARCHAR(80) UNIQUE NOT NULL,
+    contraseña VARCHAR(80) NOT NULL,
     tipo tiposUsuarios NOT NULL,
     carrera carreras NOT NULL,
     añoIngreso INTEGER NOT NULL,
