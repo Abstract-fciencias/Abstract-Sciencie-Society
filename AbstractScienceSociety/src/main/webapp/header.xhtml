@@ -5,39 +5,17 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
     
-    <link rel="stylesheet" type="text/css" href="css/crear.css"></link>
+    <link rel="stylesheet" type="text/css" href="css/header.css"></link>
 
-  <div class="presentacion">
-      <table class="encabezado">
-        <th>
-            <ul class="menu">
-                <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropbtn">
-                        <img src="img/menuIcon.png" alt="Menu" width="40px" height="40px"></img></a>
-                    <div class="dropdown-content">
-                      <a href="#">Link 1</a>
-                      <a href="#">Link 2</a>
-                      <a href="#">Link 3</a>
-                      <a href="#">Link 4</a>
-                      <a href="#">Link 5</a>
-                    </div>
-                  </li>            
-            </ul>
-        </th>
-          
-          <th>    
-            <h1>Abstract Science Society</h1>                
-          </th>
-          <th class="menu">
-            <div class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn">
-                    <img src="img/searchIcon.png" alt="Menu" width="40px" height="40px"></img></a>                
-                <div class="dropdown-content">
-                    <form id="buscar">
-                        <input type="text" name="buscador" placeholder="Search"></input></form>
-                </div>
-              </div>
-          </th>
-        </table>
-    </div>
+    <header>
+            <div id="header-contenedor">
+                <span id="menu-icono" class="header">
+                    <img src="img/menuIcon.png"></img>
+                </span>
+                <h2 id="titulo" class="header">Abstract Science Society</h2>
+                <span id="busqueda" class="header">
+                    <img src="img/searchIcon.png"></img>
+                </span>
+            </div>
+    </header>
 </ui:composition>
