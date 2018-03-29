@@ -4,10 +4,10 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.miguel.proyecto.model.Login</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/abstractScienceSociety"/>
-      <property name="javax.persistence.jdbc.user" value="abstract"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="abstract"/>
       <property name="javax.persistence.jdbc.password" value="password"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/abstractsciencesociety"/>
       <property name="javax.persistence.schema-generation.database.action" value=""/>
     </properties>
   </persistence-unit>

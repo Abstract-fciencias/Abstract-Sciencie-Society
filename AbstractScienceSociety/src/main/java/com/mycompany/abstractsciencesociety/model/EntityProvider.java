@@ -16,7 +16,7 @@ public class EntityProvider {
 
     private static EntityManagerFactory _emf;
 
-    private EntityProvider() {
+    public EntityProvider() {
     }
 
     public static EntityManagerFactory provider() {

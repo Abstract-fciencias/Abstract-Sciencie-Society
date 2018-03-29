@@ -5,12 +5,15 @@
  */
 package com.mycompany.abstractsciencesociety.web;
 
+import com.mycompany.abstractsciencesociety.model.EntityProvider;
+import com.mycompany.abstractsciencesociety.model.UsuarioJpaController;
 import java.util.Locale;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.persistence.EntityManagerFactory;
 
 /**
  *
@@ -35,13 +38,18 @@ public class RegistroControlador {
     }
 
     public String agregarUsuario() {
-        System.out.println("Entrando");
+        
+        com.mycompany.abstractsciencesociety.model.Usuario nuevoUsuario;
         if (!user.getContraseña().equals(user.getConfirmacionContraseña())) {
             FacesContext.getCurrentInstance().addMessage(null
                                                          , new FacesMessage(FacesMessage.SEVERITY_ERROR, "Fallo de registro: Las contraseñas deben coincidir", ""));
         } else {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Felicidades, el registro se ha realizado correctamente", ""));
+            nuevoUsuario = new com.mycompany.abstractsciencesociety.model.Usuario(user.getNombre(), user.getContraseña(), user.getCarrera(), user.getAñoIngreso());
+            EntityManagerFactory emf = (new EntityProvider()).provider();
+            UsuarioJpaController usuarioJpaC = new UsuarioJpaController(emf);
+            usuarioJpaC.create(nuevoUsuario);
             user = null;
         }
         return null;

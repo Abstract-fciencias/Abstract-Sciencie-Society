@@ -22,11 +22,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author miguel
+ * @author abstract
  */
 @Entity
 @Table(schema = "usuario", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"nombre"})})
+    @UniqueConstraint(columnNames = {"nombre", "correo"})})
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Login.findAll", query = "SELECT l FROM Usuario l")
@@ -52,12 +52,26 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     private Integer id;
+    
     @Basic(optional = false)
-    @Column(nullable = false, length = 2147483647)
+    @Column(nullable = false, length = 50)
     private String nombre;
+    
     @Basic(optional = false)
-    @Column(nullable = false, length = 2147483647)
+    @Column(nullable = false, length = 80)
     private String contraseña;
+    
+    @Basic(optional = false)
+    @Column(nullable = false, length = 80)
+    private String correo;
+    
+    @Basic(optional = false)
+    @Column(nullable = false, length = 80)
+    private String carrera;
+    
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private int añoIngreso;
 
     public Usuario() {
     }
@@ -70,6 +84,14 @@ public class Usuario implements Serializable {
         this.id = id;
         this.nombre = usuario;
         this.contraseña = pass;
+    }
+    
+    public Usuario(String nombre, String pass, String carrera, int añoIngreso) {
+        this.nombre = nombre;
+        this.contraseña = pass;
+        this.carrera = carrera;
+        this.añoIngreso = añoIngreso;
+        this.id = 1;
     }
 
     public Integer getId() {
@@ -84,16 +106,40 @@ public class Usuario implements Serializable {
         return nombre;
     }
 
-    public void setNombre(String usuario) {
-        this.nombre = usuario;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getContraseña() {
         return contraseña;
     }
 
-    public void setContraseña(String password) {
-        this.contraseña = password;
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+    
+    public String getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(String carrera) {
+        this.carrera = carrera;
+    }
+    
+    public int getAñoIngreso() {
+        return añoIngreso;
+    }
+
+    public void setAñoIngreso(int añoIngreso) {
+        this.añoIngreso = añoIngreso;
     }
 
     @Override
@@ -118,7 +164,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "Usuario[ id=" + id + " ]";
+        return "Usuario[ id=" + id + " nombre= " + nombre + "]";
     }
 
 }

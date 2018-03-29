@@ -49,6 +49,22 @@ public class Usuario {
     public void setConfirmacionContraseña(String confirmacionContraseña) {
         this.confirmacionContraseña = confirmacionContraseña;
     }
+    
+    public String getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(String carrera) {
+        this.carrera = carrera;
+    }
+    
+    public int getAñoIngreso() {
+        return añoIngreso;
+    }
+
+    public void setAñoIngreso(int añoIngreso) {
+        this.añoIngreso = añoIngreso;
+    }
 
 }
 
