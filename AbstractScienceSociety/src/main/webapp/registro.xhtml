@@ -5,45 +5,47 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     
-  <head>
+  <h:head>
     <title>Registro | Abstract Science Society</title>
     <link rel="stylesheet" type="text/css" href="css/index.css"></link>
-  </head>
+    <link rel="stylesheet" type="text/css" href="css/registro.css"></link>
+  </h:head>
   <h:body>
       
     <ui:include src="./header.xhtml" />
     <ui:include src="./menu.xhtml"/>
-    <h1>Formulario de registro</h1> <br/>
+    <h1 id="registro-title">Registro</h1>
     
-
-    <h:form id="myForm">
-      <table>
-        <tr>
-          <td><p:messages id="messages" autoUpdate="true" closable="true" /></td>
-        </tr>
-      </table>
-      <table>
-        <tr>
-          <td>Nombre de usuario</td>
-          <td><p:inputText value="#{registroControlador.user.usuario}" required="true" id="Username" size="10"/></td>
-        </tr>
-        <tr>
-          <td>Contraseña</td>
-          <td><p:password value="#{registroControlador.user.contraseña}" required="true" feedback="true" id="Password"/></td>
-        </tr>
-        <tr>
-          <td>Confirmar Contraseña</td>
-          <td><p:password value="#{registroControlador.user.confirmacionContraseña}" required="true" feedback="true" id="ConfirmPassword"/></td>
-        </tr>
-        <tr>
-          <td colspan="2" align="center">
-            <p:commandButton action="#{registroControlador.agregarUsuario}" value="Registrar"/>
-            <p:commandButton value="Reset" update="myForm" process="@this"  >
-              <p:resetInput target="myForm" />
-            </p:commandButton>
-          </td>
-        </tr>
-      </table>
+    <h:form id="registro-form">
+        <div id="registro">
+            <picture id="imagen-usuario-picture"></picture>
+            <div id="formulario-usuario">
+                <input class="input-text input" type="text" placeholder="Nombre de Usuario" value="#{registroControlador.user.nombre}" required="true"/>
+                <input class="input-text input" type="text" placeholder="Correo Electronico" value="#{registroControlador.user.correo}" required="true"/>
+                <input type="password" class="input-text input" value="#{registroControlador.user.contraseña}" placeholder="Contraseña" required="true" id="Password"/>
+                <input type="password" class="input-text input" value="#{registroControlador.user.confirmacionContraseña}" placeholder="Repetir Contraseña" required="true" id="ConfirmPassword"/>
+                <select class="input input-select" name="carrera" required="true">
+                    <option value="carrera">Carrera</option>
+                    <option value="matemáticas">Matemáticas</option>
+                    <option value="ciencias de la computacion">Ciencias de la Computación</option>
+                    <option value="fisica">Física</option>
+                    <option value="actuaria">Actuaría</option>
+                    <option value="biologia">Biología</option>
+                    <option value="ciencias de la tierra">Ciencias de la Tierra</option>
+                    <option value="ciencias ambientales">Ciencias Ambientales</option>
+                    <option value="fisica biomedica">Física Biomédica</option>
+                    <option value="manejo sustentable de zonas costeras">Manejo Sustentable de Zonas Costeras</option>
+                    <option value="matematicas aplicadas">Matemáticas Aplicadas</option>
+                    <option value="neurociencias">Neurociencias</option>
+                    <option value="trabajador">Trabajador</option>
+                </select>
+                <input class="input input-text" id="year" type="number" min="1950" max="2018" placeholder="Año de ingreso" required="true"/>
+            </div>
+        </div>
+        <div class="div-submit">
+            <input type="submit" class="submit" action="" value="Registrarse"/>
+        </div>
+        <p:messages id="messages" autoUpdate="true" closable="true" />
     </h:form>
     <ui:include src="./footer.xhtml" />
   </h:body>

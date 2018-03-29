@@ -23,7 +23,6 @@
    <servlet>
       <servlet-name>Faces Servlet</servlet-name>
       <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-      <load-on-startup>1</load-on-startup>
    </servlet>
 	
    <servlet-mapping>
@@ -49,12 +48,16 @@
 
 
     <servlet>
-        <servlet-name>servlet</servlet-name>
+        <servlet-name>servletFoo</servlet-name>
         <servlet-class>com.mycompany.abstractsciencesociety.Servlet</servlet-class>
-      </servlet>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
       <servlet-mapping>
-        <servlet-name>servlet</servlet-name>
+        <servlet-name>servletFoo</servlet-name>
         <url-pattern>/foo</url-pattern>
       </servlet-mapping>
-	
+      
+    <welcome-file-list>
+        <welcome-file>index.xhtml</welcome-file>
+    </welcome-file-list>
 </web-app>

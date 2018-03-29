@@ -19,6 +19,7 @@ header {
 }
 
 #busqueda {
+    cursor: pointer;
     position: absolute;
     right: 0;
     top: 7px;
@@ -35,7 +36,27 @@ header {
     width: 600px;
 }
 
+#header-contenedor a:link {
+    color: black;
+    text-decoration: none;
+}
+
+#header-contenedor a:visited {
+    color: black;
+    text-decoration: none;
+}
+#header-contenedor a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+#header-contenedor a:active {
+    color: black;
+    text-decoration: none;
+}
+
 #menu-icono {
+    cursor: pointer;
     position: absolute;
     top: 7px;
 }
