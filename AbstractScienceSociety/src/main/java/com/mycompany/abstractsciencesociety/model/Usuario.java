@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author abstract
  */
 @Entity
-@Table(schema = "usuario", uniqueConstraints = {
+@Table(name="usuario", schema="usuario", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"nombre", "correo"})})
 @XmlRootElement
 @NamedQueries({
@@ -70,7 +70,7 @@ public class Usuario implements Serializable {
     private String carrera;
     
     @Basic(optional = false)
-    @Column(nullable = false)
+    @Column(nullable = false, name="añoIngreso")
     private int añoIngreso;
 
     public Usuario() {
