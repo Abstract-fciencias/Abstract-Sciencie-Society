@@ -2,7 +2,7 @@
 <html>
   <head>      
     <meta charset ="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/ver-comentario.css">
+    <link rel="stylesheet" type="text/css" href="agregar-comentario.css">
     <title>Abstract Sience Society</title>
   </head>
     
@@ -10,14 +10,14 @@
     
     <hr>
       
-      <div class="presentacion">
         <!--Encabezado de la página-->
+          <div class="presentacion">
       <table class="encabezado">
         <th>
             <ul class="menu">
                 <li class="dropdown">
                     <a href="javascript:void(0)" class="dropbtn">
-                        <img src="menuIcon.png" alt="Menu" width="40px" height="40px"></a>
+                        <img src="menuIcon.png" alt="ImagenMenu" width="40px" height="40px"></a>
                     <div class="dropdown-content">
                       <a href="#">Link 1</a>
                       <a href="#">Link 2</a>
@@ -36,7 +36,7 @@
           <th class="menu">
             <div class="dropdown">
                 <a href="javascript:void(0)" class="dropbtn">
-                    <img src="searchIcon.png" alt="Menu" width="40px" height="40px"></a>                
+                    <img src="searchIcon.png" alt="ImagenDeBUscador" width="40px" height="40px"></a>                
                 <div class="dropdown-content">
                     <form id="buscar">
                         <input type="text" name="buscador" placeholder="Search"></form>
@@ -44,10 +44,12 @@
               </div>
           </th>
       </table>
+          </div>
 
       <hr>
       <!-- Presentación del tema -->
-      <div id="tema">      
+          
+      <div class="presentacion">      
         <div class="temaSeleccionado">
             <h2 id="nombreTema">Tema 1</h2>
             <ul class="infoTema">
@@ -81,12 +83,17 @@
                 </table>
               </li><hr>
           </ul>             
+            
+          <textarea rows="10" placeholder="Escribe tu comentario."></textarea><br>                     
+          <button class="enviarComentario" value="Sumit">Enviar Comentario</button>
+            
         </div>
       </div>
 
           
     <!-- Pie de página -->
       <hr>
+          <div class="presentacion">
       <footer> 
         <ul class="footer">
             <li><a href="#quienesSommos">¿Quienes somos?</a></li>
@@ -95,8 +102,8 @@
             <li>Todos los derechos reservados &#169;</li>
         </ul>
       </footer>
+          </div>
           
-      </div>
 
     </body>
       

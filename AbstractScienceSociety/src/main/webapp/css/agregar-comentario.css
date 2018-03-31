@@ -84,6 +84,20 @@ ul.listaComentarios{
 .listaComentarios th ,tr {
     border-right: 1px solid black;
 }
+textarea{
+    background-color: whitesmoke;
+    width: 100%;
+}
+.enviarComentario{
+    background-color: #0B3861;
+    color: white;
+    padding: 5px 5px;    
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    text-align: right;
+}
 
 /* Ver Tema Pregunta*/
 .verTemas a{
