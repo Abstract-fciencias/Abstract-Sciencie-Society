@@ -1,5 +1,5 @@
 
-package com.miguel.proyecto;
+package com.mycompany.abstractsciencesociety;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,5 +33,10 @@ public class Servlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
     IOException {
         foo(request, response);
+    }
+    
+    @Override
+    public void init() throws ServletException {
+            System.out.println("Servlet " + this.getServletName() + " has started");
     }
 }

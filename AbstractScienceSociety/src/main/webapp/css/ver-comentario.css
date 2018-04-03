@@ -1,11 +1,19 @@
-body {
-    display: block;
-    margin: 0px;
+/* Presentacion en el centro de la pantalla */
+.presentacion{
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+/* Encabezado generico*/
+.encabezado{ 
+    border-collapse: separate;    
+    width: 100%;
 }
 
 /* Información del tema tanto en Ver como en Agregar*/
 .infoTema li{
-    display: inline;   
+    display: inline;     
+    margin-right: 20px;
 }
 
 /* Agregar Comentario*/
@@ -13,7 +21,7 @@ body {
     width:50%;     
     margin-right: 50%;
     height:1px; 
-    background: white; 
+    background: #fff 
 }
 
 ul.listaComentarios{
@@ -24,22 +32,6 @@ ul.listaComentarios{
     border-right: 1px solid black;
 }
 
-textarea{
-    background-color: whitesmoke;
-    width: auto;
-    padding: 0px;
-    
-}
-h2 {
-    display: block;
-    font-size: 1.5em;
-    -webkit-margin-before: 0.83em;
-    -webkit-margin-after: 0.83em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    font-weight: bold;
-    padding: 20px;
-}
 /* Ver Tema Pregunta*/
 .verTemas a{
     color: black;
@@ -55,6 +47,12 @@ h2 {
 
 .verTemas div{
     padding: 10px;
+}
+
+.tema {
+    border-top: 1px solid black;
+     margin: 0 auto;
+     width: 600px;
 }
 
 .tema:first-child {

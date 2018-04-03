@@ -3,20 +3,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
 <h:head>
 
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="css/index.css"></link>
     <link rel="stylesheet" type="text/css" href="css/agregar-comentario.css"></link>
     <link rel="stylesheet" type="text/css" href="css/ver-comentario.css"></link>
     <title>Mi primer aplicación </title>
 
-    <h:outputStylesheet library="webjars" name="bootstrap/4.0.0-2/css/bootstrap.min-jsf.css" />
 
 </h:head>
 <h:body>
 
     <ui:include src="./header.xhtml" />
+    <ui:include src="./menu.xhtml"/>
        <div class="verTemas">
            <div class="tema">
             <h3><a href="#tema1">Tema 1</a></h3>

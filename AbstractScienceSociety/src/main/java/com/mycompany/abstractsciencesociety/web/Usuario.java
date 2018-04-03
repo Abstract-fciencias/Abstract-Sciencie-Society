@@ -11,16 +11,27 @@ package com.mycompany.abstractsciencesociety.web;
  */
 public class Usuario {
 
-    private String usuario;
+    private String nombre;
+    private String correo;
     private String contraseña;
     private String confirmacionContraseña;
+    private String carrera;
+    private int añoIngreso;
 
-    public String getUsuario() {
-        return usuario;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getContraseña() {
@@ -37,6 +48,22 @@ public class Usuario {
 
     public void setConfirmacionContraseña(String confirmacionContraseña) {
         this.confirmacionContraseña = confirmacionContraseña;
+    }
+    
+    public String getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(String carrera) {
+        this.carrera = carrera;
+    }
+    
+    public int getAñoIngreso() {
+        return añoIngreso;
+    }
+
+    public void setAñoIngreso(int añoIngreso) {
+        this.añoIngreso = añoIngreso;
     }
 
 }
