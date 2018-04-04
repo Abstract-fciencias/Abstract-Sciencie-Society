@@ -45,8 +45,9 @@ public class RegistroControlador {
         } else {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Felicidades, el registro se ha realizado correctamente", ""));
-            nuevoUsuario = new com.mycompany.abstractsciencesociety.model.Usuario(user.getNombre(), user.getContraseña(), user.getCarrera(), user.getAñoIngreso());
-            EntityManagerFactory emf = (new EntityProvider()).provider();
+            nuevoUsuario = new com.mycompany.abstractsciencesociety.model.Usuario(user.getNombre(), user.getCorreo(), user.getContraseña(), "normal", user.getCarrera(), user.getAñoIngreso());
+            FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale("es-Mx"));
+            EntityManagerFactory emf = EntityProvider.provider();
             UsuarioJpaController usuarioJpaC = new UsuarioJpaController(emf);
             usuarioJpaC.create(nuevoUsuario);
             user = null;

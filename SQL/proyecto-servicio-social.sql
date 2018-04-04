@@ -25,30 +25,30 @@ CREATE TABLE Usuario (
     contraseña VARCHAR(80) NOT NULL,
     tipo tiposUsuarios NOT NULL,
     carrera carreras NOT NULL,
-    añoIngreso INTEGER NOT NULL,
+    añoIngreso INTEGER NOT NULL
 );
 
 -- Para agregar un cometario, se necesita el usuario que lo agrega, el 
 -- Tema/Pregunta al que responde de donde se deriva: su categoria.
 CREATE TABLE Comentario (	
-	idComentario SERIAL PRIMARY KEY,
-	comentario VARCHAR(255) NOT NULL,
-	usuario VARCHAR(50) NOT NULL,
-	fechaPublicacion DATE NOT NULL
+    idComentario SERIAL PRIMARY KEY,
+    comentario VARCHAR(255) NOT NULL,
+    usuario VARCHAR(50) NOT NULL,
+    fechaPublicacion DATE NOT NULL
 );
 
 --creacion de tablas para temas y pregutas 
 create table Tema (
-  idTema SERIAL PRIMARY KEY NOT NULL,
-  fechaPublicacion VARCHAR(50) NOT NULL.
-  disponibilidad disponible NOT NULL,
-  tema VARCHAR(50) NOT NULL,
+    idTema SERIAL PRIMARY KEY NOT NULL,
+    fechaPublicacion VARCHAR(50) NOT NULL.
+    disponibilidad disponible NOT NULL,
+    tema VARCHAR(50) NOT NULL,
  );
 
 
 -- Falta indicar que categorías exiten o como se generan
 CREATE TABLE Categoria(
-	idCategoria SERIAL PRIMARY KEY,		
-	nombre VARCHAR(100) NOT NULL, 
-	descripcion VARCHAR(255) NOT NULL 
+    idCategoria SERIAL PRIMARY KEY,		
+    nombre VARCHAR(100) NOT NULL, 
+    descripcion VARCHAR(255) NOT NULL 
 );

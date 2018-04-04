@@ -12,94 +12,87 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedNativeQueries;
-import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author abstract
+ * @author edervs
  */
 @Entity
-@Table(name="usuario", schema="usuario", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"nombre", "correo"})})
+@Table(catalog="abstractsciencesociety", schema="public")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Login.findAll", query = "SELECT l FROM Usuario l")
-    , @NamedQuery(name = "Login.findById", query = "SELECT l FROM Usuario l WHERE l.id = :id")
-    , @NamedQuery(name = "Login.findByUsuario", query = "SELECT l FROM Usuario l WHERE l.nombre = :nombre")
-    , @NamedQuery(name = "Login.findByContraseña", query = "SELECT l FROM Usuario l WHERE l.contraseña = :password")})
-@NamedNativeQueries(value = {
-    @NamedNativeQuery(
-            name = "Login.canLogin",
-            query = "select Usuario.login(?, ?)"
-    )
-    , @NamedNativeQuery(
-            name = "Usuario.findByNombreAndContraseña",
-            query = "select id, nombre from Usuario.login where nombre = ?1 and contraseña = crypt(?2, password)",
-            resultClass = Usuario.class
-    )
-})
+    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
+    , @NamedQuery(name = "Usuario.findByIdusuario", query = "SELECT u FROM Usuario u WHERE u.idusuario = :idusuario")
+    , @NamedQuery(name = "Usuario.findByNombre", query = "SELECT u FROM Usuario u WHERE u.nombre = :nombre")
+    , @NamedQuery(name = "Usuario.findByCorreo", query = "SELECT u FROM Usuario u WHERE u.correo = :correo")
+    , @NamedQuery(name = "Usuario.findByContrase\u00f1a", query = "SELECT u FROM Usuario u WHERE u.contrase\u00f1a = :contrase\u00f1a")
+    , @NamedQuery(name = "Usuario.findByTipo", query = "SELECT u FROM Usuario u WHERE u.tipo = :tipo")
+    , @NamedQuery(name = "Usuario.findByCarrera", query = "SELECT u FROM Usuario u WHERE u.carrera = :carrera")
+    , @NamedQuery(name = "Usuario.findByA\u00f1oingreso", query = "SELECT u FROM Usuario u WHERE u.a\u00f1oingreso = :a\u00f1oingreso")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(nullable = false)
-    private Integer id;
-    
+    @Column(name = "idusuario")
+    private Integer idusuario;
     @Basic(optional = false)
-    @Column(nullable = false, length = 50)
+    @Column(name = "nombre")
     private String nombre;
-    
     @Basic(optional = false)
-    @Column(nullable = false, length = 80)
-    private String contraseña;
-    
-    @Basic(optional = false)
-    @Column(nullable = false, length = 80)
+    @Column(name = "correo")
     private String correo;
-    
     @Basic(optional = false)
-    @Column(nullable = false, length = 80)
+    @Column(name = "contrase\u00f1a")
+    private String contraseña;
+    @Basic(optional = false)
+    @Column(name = "tipo")
+    private String tipo;
+    @Basic(optional = false)
+    @Column(name = "carrera")
     private String carrera;
-    
     @Basic(optional = false)
-    @Column(nullable = false, name="añoIngreso")
-    private int añoIngreso;
+    @Column(name = "a\u00f1oingreso")
+    private int añoingreso;
 
     public Usuario() {
     }
 
-    public Usuario(Integer id) {
-        this.id = id;
+    public Usuario(Integer idusuario) {
+        this.idusuario = idusuario;
     }
 
-    public Usuario(Integer id, String usuario, String pass) {
-        this.id = id;
-        this.nombre = usuario;
-        this.contraseña = pass;
+    public Usuario(Integer idusuario, String nombre, String correo, String contraseña, String tipo, String carrera, int añoingreso) {
+        this.idusuario = idusuario;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.contraseña = contraseña;
+        this.tipo = tipo;
+        this.carrera = carrera;
+        this.añoingreso = añoingreso;
     }
     
-    public Usuario(String nombre, String pass, String carrera, int añoIngreso) {
+    public Usuario(String nombre, String correo, String contraseña, String tipo, String carrera, int añoingreso) {
+        this.idusuario = 1;
         this.nombre = nombre;
-        this.contraseña = pass;
+        this.correo = correo;
+        this.contraseña = contraseña;
+        this.tipo = tipo;
         this.carrera = carrera;
-        this.añoIngreso = añoIngreso;
-        this.id = 1;
+        this.añoingreso = añoingreso;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdusuario() {
+        return idusuario;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdusuario(Integer idusuario) {
+        this.idusuario = idusuario;
     }
 
     public String getNombre() {
@@ -109,7 +102,7 @@ public class Usuario implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
     public String getCorreo() {
         return correo;
     }
@@ -125,7 +118,15 @@ public class Usuario implements Serializable {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-    
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
     public String getCarrera() {
         return carrera;
     }
@@ -133,19 +134,19 @@ public class Usuario implements Serializable {
     public void setCarrera(String carrera) {
         this.carrera = carrera;
     }
-    
-    public int getAñoIngreso() {
-        return añoIngreso;
+
+    public int getAñoingreso() {
+        return añoingreso;
     }
 
-    public void setAñoIngreso(int añoIngreso) {
-        this.añoIngreso = añoIngreso;
+    public void setAñoingreso(int añoingreso) {
+        this.añoingreso = añoingreso;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (idusuario != null ? idusuario.hashCode() : 0);
         return hash;
     }
 
@@ -156,7 +157,7 @@ public class Usuario implements Serializable {
             return false;
         }
         Usuario other = (Usuario) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.idusuario == null && other.idusuario != null) || (this.idusuario != null && !this.idusuario.equals(other.idusuario))) {
             return false;
         }
         return true;
@@ -164,7 +165,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "Usuario[ id=" + id + " nombre= " + nombre + "]";
+        return "com.mycompany.abstractsciencesociety.model.Usuario[ idusuario=" + idusuario + " ]";
     }
-
+    
 }
