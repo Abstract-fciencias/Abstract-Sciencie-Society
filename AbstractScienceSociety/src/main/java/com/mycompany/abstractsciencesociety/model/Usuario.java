@@ -6,6 +6,7 @@
 package com.mycompany.abstractsciencesociety.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,15 +15,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author edervs
  */
 @Entity
-@Table(name = "usuario", schema="abstract")
+@Table(name = "usuario", schema="public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
@@ -34,6 +37,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Usuario.findByCarrera", query = "SELECT u FROM Usuario u WHERE u.carrera = :carrera")
     , @NamedQuery(name = "Usuario.findByA\u00f1oingreso", query = "SELECT u FROM Usuario u WHERE u.a\u00f1oingreso = :a\u00f1oingreso")})
 public class Usuario implements Serializable {
+
+    @OneToMany(mappedBy = "idusuario")
+    private Collection<Tema> temaCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -78,7 +84,6 @@ public class Usuario implements Serializable {
     }
     
     public Usuario(String nombre, String correo, String contraseña, String tipo, String carrera, int añoingreso) {
-        this.idusuario = 1;
         this.nombre = nombre;
         this.correo = correo;
         this.contraseña = contraseña;
@@ -166,6 +171,15 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "com.mycompany.abstractsciencesociety.model.Usuario[ idusuario=" + idusuario + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Tema> getTemaCollection() {
+        return temaCollection;
+    }
+
+    public void setTemaCollection(Collection<Tema> temaCollection) {
+        this.temaCollection = temaCollection;
     }
     
 }

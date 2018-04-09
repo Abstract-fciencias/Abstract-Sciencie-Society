@@ -23,8 +23,8 @@ CREATE TABLE Usuario (
     nombre VARCHAR(50) NOT NULL,
     correo VARCHAR(80) UNIQUE NOT NULL,
     contraseña VARCHAR(80) NOT NULL,
-    tipo tiposUsuarios NOT NULL,
-    carrera carreras NOT NULL,
+    tipo VARCHAR(30) NOT NULL,
+    carrera VARCHAR(100) NOT NULL,
     añoIngreso INTEGER NOT NULL
 );
 
@@ -33,18 +33,27 @@ CREATE TABLE Usuario (
 CREATE TABLE Comentario (	
     idComentario SERIAL PRIMARY KEY,
     comentario VARCHAR(255) NOT NULL,
-    usuario VARCHAR(50) NOT NULL,
-    fechaPublicacion DATE NOT NULL
+    idUsuario INTEGER,
+    fechaPublicacion TIMESTAMP NOT NULL
 );
+
+ALTER TABLE Comentario ADD CONSTRAINT FKCOMENTARIO
+FOREIGN KEY (idUsuario)
+REFERENCES Usuario (idUsuario);
 
 --creacion de tablas para temas y pregutas 
 create table Tema (
     idTema SERIAL PRIMARY KEY NOT NULL,
-    fechaPublicacion VARCHAR(50) NOT NULL.
+    Contenido VARCHAR(240),
+    idUsuario INTEGER ,
+    fechaPublicacion TIMESTAMP NOT NULL,
     disponibilidad disponible NOT NULL,
-    tema VARCHAR(50) NOT NULL,
- );
+    idCategoria INTEGER NOT NULL
+);
 
+ALTER TABLE Tema ADD CONSTRAINT FKUSUARIO
+FOREIGN KEY (idUsuario)
+REFERENCES  Usuario (idUsuario);
 
 -- Falta indicar que categorías exiten o como se generan
 CREATE TABLE Categoria(
@@ -52,3 +61,7 @@ CREATE TABLE Categoria(
     nombre VARCHAR(100) NOT NULL, 
     descripcion VARCHAR(255) NOT NULL 
 );
+
+ALTER TABLE Tema ADD CONSTRAINT FKCATEGORIA
+FOREIGN KEY (idCategoria)
+REFERENCES Categoria (idCategoria);
