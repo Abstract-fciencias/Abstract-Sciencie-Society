@@ -1,0 +1,50 @@
+/*Cuadro del contenido deregar comentario */
+.agregar-comentario{
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 600px;
+    padding-top: 10px;
+    width: 600px;
+}
+
+/* Información del tema tanto en Ver como en Agregar*/
+.infoTema li{
+    display: inline;     
+    margin-right: 20px;
+}
+
+/* Agregar Comentario*/
+ul.listaComentarios{
+    padding-left: 10px;
+    list-style-type: none;
+}
+
+.texto-comentario{
+    width: 70%;
+    float: left;
+}
+
+.infoUsuario{
+    width: 30%;    
+    float: right;
+}
+
+textarea{
+    background-color: whitesmoke;
+    width: 95%;
+}
+.txt-nvo-comentario{
+    width: 70%;
+    float: left;
+}
+
+.enviarComentario{
+    background-color: #0B3861;
+    color: white;
+    padding: 5px 5px;    
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    float: right;
+}
