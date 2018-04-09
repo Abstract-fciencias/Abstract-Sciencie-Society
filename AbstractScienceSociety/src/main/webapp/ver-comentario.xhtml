@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+  <h:head>
+      <link rel="stylesheet" type="text/css" href="css/ver-comentario.css"></link>
+    <title>Abstract Science Society</title>
+  </h:head>
+  <h:body>
+      
+    <ui:include src="./header.xhtml" />
+    <h:form id="myForm">
+        <div id="tema">      
+        <div class="temaSeleccionado">
+            <h2 id="nombreTema">Tema 1</h2>
+            <ul class="infoTema">
+                <li>Comentarios</li>  
+                <li>Personas</li>
+                <li>Disponiblidad</li>
+                <li>Fecha</li>
+                <li>Categoría</li>
+            </ul>
+        </div>
+
+        <!-- Comentarios -->
+        <div>
+          <ul class="listaComentarios">
+              <li>
+                <table>
+                  <tr><th><p>Comentario que es muy largo porque la persona escribe mucho porque es muy habladora y aburre a todos sus amigos porque habla mucho como una persona habladora</p></th><th>Información del Usuario</th></tr>
+                </table>
+              </li>
+
+              <li>
+                <table>
+                  <tr><th><p>Comentario que es muy largo porque la persona escribe mucho porque es muy habladora y aburre a todos sus amigos porque habla mucho como una persona habladora</p></th><th>Información del Usuario</th></tr>
+                </table>
+              </li>
+
+              <li>
+                <table>
+                  <tr><th><p>Comentario que es muy largo porque la persona escribe mucho porque es muy habladora y aburre a todos sus amigos porque habla mucho como una persona habladora</p></th><th>Información del Usuario</th></tr>
+                </table>
+              </li>
+             <li>
+                <table>
+                  <tr><h:inputTextarea cols="60" value="#{comentarioControlador.comentario}" required="true" id="EscribeComentario" rows="4" styleClass="cajaTexto"/></tr>
+                </table>
+              </li>
+             <li>
+                <table>
+                  <tr><p:commandButton action="#{comentarioControlador.agregarComentario}" value="Enviar" styleClass="cajaTexto"/></tr>
+                </table>
+              </li>              
+          </ul>
+        </div>
+      </div>
+    </h:form>
+            <ui:include src="./footer.xhtml" />
+  </h:body>
+</html>

@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <link rel="stylesheet" type="text/css" href="css/menu.css"></link>
+    
+    <div id="menu">
+        <div id="imagen-usuario-div">
+            <div id="imagen-usuario-contenedor">
+                <picture>imagen usuario fake</picture>
+                <a id="iniciar-sesion" href="/AbstractScienceSociety/inicio_de_sesion.xhtml"><h3>Iniciar sesion</h3></a>
+                <a id="registrarse" href="/AbstractScienceSociety/registro.xhtml"><h3>Registrarse</h3></a>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <h2>Categorias<span>v</span></h2>
+                </li>
+                <li>
+                    <h2>Temas Recientes</h2>
+                </li>
+                <li>
+                    <h2>Temas Populares</h2>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="js/menu.js"></script>
+    
+</ui:composition>
