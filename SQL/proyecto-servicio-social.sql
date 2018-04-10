@@ -47,7 +47,7 @@ create table Tema (
     Contenido VARCHAR(240),
     idUsuario INTEGER ,
     fechaPublicacion TIMESTAMP NOT NULL,
-    disponibilidad disponible NOT NULL,
+    disponibilidad VARCHAR(30) NOT NULL,
     idCategoria INTEGER NOT NULL
 );
 
