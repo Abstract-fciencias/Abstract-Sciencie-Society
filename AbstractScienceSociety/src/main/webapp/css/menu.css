@@ -28,6 +28,12 @@ nav ul {
     width: 600px ;
 }
 
+#bienvenida {
+    margin-left: 240px;
+    top: 135px;
+    position: absolute;
+}
+
 #imagen-usuario-contenedor {
     display: block;
     margin: 0 auto;

@@ -21,12 +21,12 @@
         <div id="inicio-sesion">
             <picture id="imagen-usuario-picture"></picture>
             <div id="formulario-inicio-sesion">
-                <p:inputText class="input-text input" placeholder="Correo" value="#{registroControlador.user.correo}" required="true" requiredMessage="Correo requerido"/>
-                <p:password class="input-text input" value="#{registroControlador.user.contraseña}" placeholder="Contraseña" required="true" id="Password" requiredMessage="Contraseña requerida"/>
+                <p:inputText class="input-text input" placeholder="Correo" value="#{loginControlador.usuario.correo}" required="true" requiredMessage="Correo requerido"/>
+                <p:password class="input-text input" value="#{loginControlador.usuario.contraseña}" placeholder="Contraseña" required="true" id="Password" requiredMessage="Contraseña requerida"/>
             </div>
         </div>
         <div class="div-submit">
-            <p:commandButton class="inicio-sesion-button" style="padding: 7px 12px;" action="#{registroControlador.agregarUsuario}" value="Iniciar Sesión"/>
+            <p:commandButton class="inicio-sesion-button" style="padding: 7px 12px;" action="#{loginControlador.canLogin}" value="Iniciar Sesión"/>
         </div>
         <p:messages id="messages" autoUpdate="true" closable="true" />
     </h:form>

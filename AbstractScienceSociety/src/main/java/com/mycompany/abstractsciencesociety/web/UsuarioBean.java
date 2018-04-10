@@ -28,13 +28,13 @@ public class UsuarioBean {
 
     public boolean isLogged() {
         FacesContext context = getCurrentInstance();
-        Usuario l = (Usuario) context.getExternalContext().getSessionMap().get("nombre");
+        Usuario l = (Usuario) context.getExternalContext().getSessionMap().get("usuario");
         return l != null;
     }
 
     public Usuario getUsuario() {
         FacesContext context = getCurrentInstance();
-        return (Usuario) context.getExternalContext().getSessionMap().get("nombre");
+        return (Usuario) context.getExternalContext().getSessionMap().get("usuario");
     }
 
 }

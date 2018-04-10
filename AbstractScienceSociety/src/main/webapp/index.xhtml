@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 
@@ -19,7 +20,9 @@
 
     <ui:include src="./header.xhtml" />
     <ui:include src="./menu.xhtml"/>
-       <div class="verTemas">
+        
+        <p:messages id="messages" autoUpdate="true" closable="true" />
+        <div class="verTemas">
            <div class="tema">
             <h3><a href="#tema1">Tema 1</a></h3>
             <ul class="infoTema">

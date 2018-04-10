@@ -10,8 +10,13 @@
         <div id="imagen-usuario-div">
             <div id="imagen-usuario-contenedor">
                 <picture>imagen usuario fake</picture>
+                <c:if test="#{!usuarioBean.isLogged()}">
                 <a id="iniciar-sesion" href="/AbstractScienceSociety/inicio_de_sesion.xhtml"><h3>Iniciar sesion</h3></a>
                 <a id="registrarse" href="/AbstractScienceSociety/registro.xhtml"><h3>Registrarse</h3></a>
+                </c:if>
+                <c:if test="#{usuarioBean.isLogged()}">
+                <h3 id="bienvenida">Bienvenido, #{usuarioBean.getUsuario().nombre}</h3>
+                </c:if>
             </div>
         </div>
         <nav>

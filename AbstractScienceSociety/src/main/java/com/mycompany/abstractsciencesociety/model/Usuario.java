@@ -15,6 +15,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -36,6 +38,17 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuario.findByTipo", query = "SELECT u FROM Usuario u WHERE u.tipo = :tipo")
     , @NamedQuery(name = "Usuario.findByCarrera", query = "SELECT u FROM Usuario u WHERE u.carrera = :carrera")
     , @NamedQuery(name = "Usuario.findByA\u00f1oingreso", query = "SELECT u FROM Usuario u WHERE u.a\u00f1oingreso = :a\u00f1oingreso")})
+@NamedNativeQueries(value = {
+    @NamedNativeQuery(
+            name = "canLogin",
+            query = "select login(?, ?)"
+    )
+    , @NamedNativeQuery(
+            name = "Usuario.findByCorreoAndContraseña",
+            query = "select idusuario, nombre from usuario where correo = ?1 and contraseña = crypt(?2, contraseña)",
+            resultClass = Usuario.class
+    )
+})
 public class Usuario implements Serializable {
 
     @OneToMany(mappedBy = "idusuario")
