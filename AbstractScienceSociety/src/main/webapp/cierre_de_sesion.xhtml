@@ -18,12 +18,15 @@
             <a><h4>Eder VS</h4></a>
             <a><h5>Ciencias de la Computacion</h5></a>
             </div>
-        <nav>
+        <nav color = "white">
             <ul>
                 <li>
                     <h:form>
                     <h2><h:commandLink class="subAnchor" styleClass="borderRemover" value="Cerrar Sesion" action="#{cierreControlador.logout}"/></h2>
                     </h:form>
+                </li>
+                 <li>
+                    <h2 color="white"><a color="white" href = "/AbstractScienceSociety/crear-tema.xhtml">+ Crear Tema</a></h2>
                 </li>
                 <li> 
                     <h2>Categorias</h2>              
@@ -37,6 +40,7 @@
                 <li>
                     <h2>Temas Populares</h2>
                 </li>
+               
             </ul>
         </nav>
     <h:outputScript library="webjars" name="jquery/3.3.1-1/jquery.min.js"/>

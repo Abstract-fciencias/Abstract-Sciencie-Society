@@ -206,3 +206,32 @@ ul.menu {
 }
 /*Hasta aquí el menu desplagable*/
 
+/*Aide jugando en el css de dani XD*/
+h2 a{
+    color:fff;
+    text-decoration: none;
+}
+
+a:visited {
+    color: white;
+}
+
+ /* unvisited link */
+a:link {
+    color: white;
+}
+
+/* visited link */
+a:visited {
+    color: white;
+}
+
+/* mouse over link */
+a:hover {
+    color: white;
+}
+
+/* selected link */
+a:active {
+    color: white;
+} 

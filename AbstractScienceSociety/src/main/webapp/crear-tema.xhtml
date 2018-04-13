@@ -19,21 +19,24 @@ and open the template in the editor.
   </h:head>
     <h:body>
         <ui:include src="./header.xhtml" />
-        <h:form class="Creacion-form">
+        <ui:include src="./menu.xhtml"/>
+         <h:form class="Creacion-form">
+        
                <div class = "Creacion">
        	<div class = "Tema">
-            <p:inputText class="input-text input" type="text" placeholder="Tema Nuevo" value="#{registroControlador.user.nombre}" required="true" requiredMessage="El tema es un campo requerido para la creación"/>
+            <p:inputText class="input-text input" type="text" placeholder="Tema Nuevo" value="#{creacionTemaBean.tema.contenido}" required="true" requiredMessage="El tema es un campo requerido para la creación"/>
             
        	</div>
        	<p>Categoria</p>
-         <h:selectOneMenu class="input input-select" value="#{registroControlador.user.carrera}" required="true" requiredMessage="Categoria requerida">
-             <f:selectItem itemValue="1" itemLabel="Titulación"/>
-             <f:selectItem itemValue="2" itemLabel="Servicio Social"/>
-             <f:selectItem itemValue="3" itemLabel="Servicios Escolares"/>
+         <h:selectOneMenu class="input input-select" value="Categorias" required="true" requiredMessage="Categoria requerida">
+            
+             <f:selectItems value="#{creacionTemaBean.getCategorias()}" var="entry"
+                    itemValue="#{creacionTemaBean.asignaCategoria(entry)}"  />
+           
          </h:selectOneMenu> 
         </div>
         <div class="div-submit">
-            <h:commandButton class="submit" style="padding: 7px 12px;" action="#{registroControlador.agregarUsuario}" value="Crear"/>
+            <h:commandButton class="submit" style="padding: 7px 12px;" action="#{creacionTemaBean.creaTema()}" value="Crear"/>
         </div>
             
             
