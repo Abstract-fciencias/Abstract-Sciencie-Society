@@ -16,13 +16,16 @@
                 </c:if>
                 <c:if test="#{usuarioBean.isLogged()}">
                 <h3 id="bienvenida">Bienvenido, #{usuarioBean.getUsuario().nombre}</h3>
+                <h:form>
+                    <h3 id="cerrar-sesion"><h:commandLink class="subAnchor" styleClass="borderRemover" value="Cerrar Sesion" action="#{cierreControlador.logout}"/></h3>
+                </h:form>
                 </c:if>
             </div>
         </div>
         <nav>
             <ul>
                 <li>
-                    <h2>Categorias<span>v</span></h2>
+                    <h2>Categorias<span></span></h2>
                 </li>
                 <li>
                     <h2>Temas Recientes</h2>
@@ -30,6 +33,13 @@
                 <li>
                     <h2>Temas Populares</h2>
                 </li>
+                <c:if test="#{usuarioBean.isLogged()}">
+                <li>
+                    <a class="link-menu" href="/AbstractScienceSociety/crear-tema.xhtml">
+                        <h2>Crear Tema</h2>
+                    </a>
+                </li>
+                </c:if>
             </ul>
         </nav>
     </div>

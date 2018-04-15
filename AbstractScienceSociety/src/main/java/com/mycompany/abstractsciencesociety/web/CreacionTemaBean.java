@@ -31,8 +31,10 @@ public class CreacionTemaBean {
     
     private EntityManagerFactory emf;
     private CategoriaJpaController controladorCategoria;
-    private Tema tema ;
+    private TemaJpaController controladorTema;
+    private Tema tema;
     private List<String> categorias;
+    private List<Tema> temas;
     private TemaJpaController temacontrolador;
     /**
      * Creates a new instance of CreacionTemaBean
@@ -41,11 +43,13 @@ public class CreacionTemaBean {
           FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale("es-Mx"));
           emf = EntityProvider.provider();
           controladorCategoria = new CategoriaJpaController(emf);
+          controladorTema = new TemaJpaController(emf);
           tema = new Tema();
           categorias = new LinkedList();
+          temas = new LinkedList();
           temacontrolador  = new TemaJpaController(emf);
           llenaCategorias();
-        
+          allTemas();
     }
     
     public String creaTema(){
@@ -61,11 +65,13 @@ public class CreacionTemaBean {
         tema.setDisponibilidad("abierto");
         tema.setIdusuario(usuario_l);
         temacontrolador.create(tema);
+        temas.add(tema);
 
         // Mandando notificación
         String nombre = tema.getContenido();
-        String requ = String.format("ver-tema?faces-redirect=true&amp;idTema = %s", nombre);
-         return  requ;
+        return "index.xhtml";
+        //String requ = String.format("ver-tema?faces-redirect=true&amp;idTema = %s", nombre);
+        //return  requ;
          
          
     }
@@ -108,18 +114,26 @@ public class CreacionTemaBean {
         return categorias;
     }
 
+    public List<Tema> getTemas() {
+        return temas;
+    }
+
     public void setCategorias(List<String> categorias) {
         this.categorias = categorias;
     }
-
    
-    
-    
     private void llenaCategorias(){
         List<Categoria> l = controladorCategoria.findCategoriaEntities(); 
         for(Categoria c : l){
            categorias.add(c.getNombre());
         }
     
+    }
+
+    private void allTemas(){
+        List<Tema> t = controladorTema.findTemaEntities(); 
+        for(Tema tema : t){
+           temas.add(tema);
+        }
     }
 }

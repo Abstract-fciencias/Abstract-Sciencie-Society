@@ -9,6 +9,7 @@ import com.mycompany.abstractsciencesociety.model.Usuario;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import java.io.IOException;
 
 import static javax.faces.context.FacesContext.getCurrentInstance;
 
@@ -19,6 +20,9 @@ import static javax.faces.context.FacesContext.getCurrentInstance;
 @ManagedBean
 @SessionScoped
 public class UsuarioBean {
+
+    public static final String HOME_PAGE_REDIRECT = "index.xhtml?faces-redirect=true";
+    public static final String LOGIN_PAGE_REDIRECT = "inicio_de_sesion.xhtml?faces-redirect=true";
 
     /**
      * Creates a new instance of UsuarioBean
@@ -35,6 +39,24 @@ public class UsuarioBean {
     public Usuario getUsuario() {
         FacesContext context = getCurrentInstance();
         return (Usuario) context.getExternalContext().getSessionMap().get("usuario");
+    }
+
+    public String loggeado() {
+        FacesContext context = getCurrentInstance();
+        Usuario l = (Usuario) context.getExternalContext().getSessionMap().get("usuario");
+        if (l == null){
+            return LOGIN_PAGE_REDIRECT;
+        }
+        return null;
+    }
+
+    public String noLoggeado() {
+        FacesContext context = getCurrentInstance();
+        Usuario l = (Usuario) context.getExternalContext().getSessionMap().get("usuario");
+        if (l != null){
+            return HOME_PAGE_REDIRECT;
+        }
+        return null;
     }
 
 }

@@ -11,12 +11,15 @@ and open the template in the editor.
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
+        <f:metadata>
+            <f:viewAction action="#{usuarioBean.loggeado()}" />
+        </f:metadata>
      
-    <title>Crear | Abstract Science Society</title>
-    <link rel="stylesheet" type="text/css" href="css/index.css"></link>
-    
-    <h:outputStylesheet name="css/styles.css" />
-  </h:head>
+        <title>Crear | Abstract Science Society</title>
+        <link rel="stylesheet" type="text/css" href="css/index.css"></link>
+        
+        <h:outputStylesheet name="css/styles.css" />
+    </h:head>
     <h:body>
         <ui:include src="./header.xhtml" />
         <ui:include src="./menu.xhtml"/>

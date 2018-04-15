@@ -23,36 +23,18 @@
         
         <p:messages id="messages" autoUpdate="true" closable="true" />
         <div class="verTemas">
-           <div class="tema">
-            <h3><a href="#tema1">Tema 1</a></h3>
-            <ul class="infoTema">
-                <li>Comentarios</li>
-                <li>Personas</li>
-                <li>Disponiblidad</li>
-                <li>Fecha</li>
-                <li>Categoría</li>
-              </ul>
-          </div>
-          <div class="tema">
-            <h3><a href="#tema2">Tema 2</a></h3>
-            <ul class="infoTema">
-                <li>Comentarios</li>
-                <li>Personas</li>
-                <li>Disponiblidad</li>
-                <li>Fecha</li>
-                <li>Categoría</li>
-              </ul>
-          </div>
-          <div class="tema">
-            <h3><a href="#tema3">Tema 3</a></h3>
-            <ul class="infoTema">
-                <li>Comentarios</li>
-                <li>Personas</li>
-                <li>Disponiblidad</li>
-                <li>Fecha</li>
-                <li>Categoría</li>
-              </ul>
-          </div>
+            <ui:repeat value="#{creacionTemaBean.temas}" var="tema">
+                <div class="tema">
+                    <h3><a href="#tema1">#{tema.contenido}</a></h3>
+                    <ul class="infoTema">
+                        <li>Comentarios</li>
+                        <li>Personas</li>
+                        <li>Disponiblidad</li>
+                        <li>Fecha</li>
+                        <li>Categoría</li>
+                    </ul>
+                </div>
+            </ui:repeat>
       </div>
 
     <!-- Los dejamos hasta abajo para que cargue la página más rápido-->
