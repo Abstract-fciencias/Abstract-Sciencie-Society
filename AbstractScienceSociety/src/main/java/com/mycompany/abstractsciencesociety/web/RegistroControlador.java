@@ -48,6 +48,7 @@ public class RegistroControlador {
         if (partesCorreo.length != 2) {
             return false;
         }
+
         
         // Validando que pertenezca a un correo de @ciencias.unam.mx
         usuarioCorreo = partesCorreo[0];
@@ -71,7 +72,8 @@ public class RegistroControlador {
             context.addMessage(null
                                                          , new FacesMessage(FacesMessage.SEVERITY_ERROR, "Fallo de registro: Sólo se puede registrar con un correo de @ciencias.unam.mx", ""));
         } else {
-            nuevoUsuario = new com.mycompany.abstractsciencesociety.model.Usuario(user.getNombre(), user.getCorreo(), user.getContraseña(), "normal", "matemáticas", user.getAñoIngreso());
+            System.out.println(user.getAñoingreso());
+            nuevoUsuario = new com.mycompany.abstractsciencesociety.model.Usuario(user.getNombre(), user.getCorreo(), user.getContraseña(), "normal", user.getCarrera(), user.getAñoingreso());
             EntityManagerFactory emf = EntityProvider.provider();
             UsuarioJpaController usuarioJpaC = new UsuarioJpaController(emf);
             usuarioJpaC.create(nuevoUsuario);

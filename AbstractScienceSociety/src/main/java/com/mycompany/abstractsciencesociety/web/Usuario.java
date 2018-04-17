@@ -16,7 +16,7 @@ public class Usuario {
     private String contraseña;
     private String confirmacionContraseña;
     private String carrera;
-    private int añoIngreso;
+    private int añoingreso;
 
     public String getNombre() {
         return nombre;
@@ -58,12 +58,12 @@ public class Usuario {
         this.carrera = carrera;
     }
     
-    public int getAñoIngreso() {
-        return añoIngreso;
+    public int getAñoingreso() {
+        return añoingreso;
     }
 
-    public void setAñoIngreso(int añoIngreso) {
-        this.añoIngreso = añoIngreso;
+    public void setAñoingreso(int añoIngreso) {
+        this.añoingreso = añoingreso;
     }
 
 }
