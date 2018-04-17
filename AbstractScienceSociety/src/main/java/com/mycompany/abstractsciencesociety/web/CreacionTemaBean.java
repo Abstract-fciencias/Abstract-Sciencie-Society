@@ -33,7 +33,8 @@ public class CreacionTemaBean {
     private CategoriaJpaController controladorCategoria;
     private TemaJpaController controladorTema;
     private Tema tema;
-    private List<String> categorias;
+    private List<Categoria> categorias;
+    private int idcategoria;
     private List<Tema> temas;
     private TemaJpaController temacontrolador;
     /**
@@ -64,22 +65,22 @@ public class CreacionTemaBean {
         tema.setFechapublicacion(d);
         tema.setDisponibilidad("abierto");
         tema.setIdusuario(usuario_l);
+        asignaCategoria();
         temacontrolador.create(tema);
         temas.add(tema);
 
         // Mandando notificación
         String nombre = tema.getContenido();
-        return "index.xhtml";
+        return "index.xhtml?faces-redirect=true";
         //String requ = String.format("ver-tema?faces-redirect=true&amp;idTema = %s", nombre);
         //return  requ;
          
          
     }
     
-    public void asignaCategoria(java.lang.String categoria){
-        List<Categoria> l = controladorCategoria.findCategoriaEntities();
-        for(Categoria c : l){
-             if(c.getNombre().equals(categoria) ){
+    public void asignaCategoria(){
+        for(Categoria c : categorias){
+             if(c.getIdcategoria() == idcategoria){
                 tema.setIdcategoria(c);
                 return;
              }
@@ -110,7 +111,15 @@ public class CreacionTemaBean {
         this.tema = tema;
     }
 
-    public List<String> getCategorias() {
+    public int getIdcategoria() {
+        return idcategoria;
+    }
+
+    public void setIdcategoria(int idcategoria) {
+        this.idcategoria = idcategoria;
+    }
+
+    public List<Categoria> getCategorias() {
         return categorias;
     }
 
@@ -118,14 +127,14 @@ public class CreacionTemaBean {
         return temas;
     }
 
-    public void setCategorias(List<String> categorias) {
+    public void setCategorias(List<Categoria> categorias) {
         this.categorias = categorias;
     }
    
     private void llenaCategorias(){
         List<Categoria> l = controladorCategoria.findCategoriaEntities(); 
         for(Categoria c : l){
-           categorias.add(c.getNombre());
+           categorias.add(c);
         }
     
     }

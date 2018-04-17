@@ -31,10 +31,11 @@ and open the template in the editor.
             
        	</div>
        	<p>Categoria</p>
-         <h:selectOneMenu class="input input-select" value="Categorias" required="true" requiredMessage="Categoria requerida">
+         <h:selectOneMenu class="input input-select" value="#{creacionTemaBean.idcategoria}" required="true" requiredMessage="Categoria requerida">
             
              <f:selectItems value="#{creacionTemaBean.getCategorias()}" var="entry"
-                    itemValue="#{creacionTemaBean.asignaCategoria(entry)}"  />
+                    itemValue="#{entry.idcategoria}"
+                    itemLabel="#{entry.nombre}"/>
            
          </h:selectOneMenu> 
         </div>

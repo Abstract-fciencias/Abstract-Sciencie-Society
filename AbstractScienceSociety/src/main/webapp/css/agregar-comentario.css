@@ -42,6 +42,10 @@ textarea{
 }
 
 /* Ver Tema Pregunta*/
+.verTemas {
+    overflow-y: scroll;
+    height: 921px;
+}
 .verTemas a{
     color: black;
     text-decoration: none;
