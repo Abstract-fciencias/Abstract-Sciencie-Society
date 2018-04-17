@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f = "http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
@@ -28,10 +29,14 @@
                     <h3><a href="#tema1">#{tema.contenido}</a></h3>
                     <ul class="infoTema">
                         <li>Comentarios</li>
-                        <li>Personas</li>
-                        <li>Disponiblidad</li>
-                        <li>Fecha</li>
-                        <li>Categoría</li>
+                        <li>#{tema.idusuario.nombre}</li>
+                        <li>#{tema.disponibilidad}</li>
+                        <li>
+                            <h:outputText value="#{tema.fechapublicacion}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </li>
+                        <li>#{tema.idcategoria.nombre}</li>
                     </ul>
                 </div>
             </ui:repeat>
