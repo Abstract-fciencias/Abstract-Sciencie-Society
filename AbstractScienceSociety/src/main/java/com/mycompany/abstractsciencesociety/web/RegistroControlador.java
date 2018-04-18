@@ -53,7 +53,7 @@ public class RegistroControlador {
         // Validando que pertenezca a un correo de @ciencias.unam.mx
         usuarioCorreo = partesCorreo[0];
         dominioCorreo = partesCorreo[1];
-        if (usuarioCorreo.equals("") && !dominioCorreo.equals("ciencias.unam.mx")) {
+        if (usuarioCorreo.equals("") || !dominioCorreo.equals("ciencias.unam.mx")) {
             return false;
         }
 
