@@ -72,8 +72,8 @@ public class RegistroControlador {
             context.addMessage(null
                                                          , new FacesMessage(FacesMessage.SEVERITY_ERROR, "Fallo de registro: Sólo se puede registrar con un correo de @ciencias.unam.mx", ""));
         } else {
-            System.out.println(user.getAñoingreso());
-            nuevoUsuario = new com.mycompany.abstractsciencesociety.model.Usuario(user.getNombre(), user.getCorreo(), user.getContraseña(), "normal", user.getCarrera(), user.getAñoingreso());
+            System.out.println(user.getAnioingreso());
+            nuevoUsuario = new com.mycompany.abstractsciencesociety.model.Usuario(user.getNombre(), user.getCorreo(), user.getContraseña(), "normal", user.getCarrera(), user.getAnioingreso());
             EntityManagerFactory emf = EntityProvider.provider();
             UsuarioJpaController usuarioJpaC = new UsuarioJpaController(emf);
             usuarioJpaC.create(nuevoUsuario);

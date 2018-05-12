@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuario.findByContrase\u00f1a", query = "SELECT u FROM Usuario u WHERE u.contrase\u00f1a = :contrase\u00f1a")
     , @NamedQuery(name = "Usuario.findByTipo", query = "SELECT u FROM Usuario u WHERE u.tipo = :tipo")
     , @NamedQuery(name = "Usuario.findByCarrera", query = "SELECT u FROM Usuario u WHERE u.carrera = :carrera")
-    , @NamedQuery(name = "Usuario.findByA\u00f1oingreso", query = "SELECT u FROM Usuario u WHERE u.a\u00f1oingreso = :a\u00f1oingreso")})
+    , @NamedQuery(name = "Usuario.findByAnioingreso", query = "SELECT u FROM Usuario u WHERE u.anioingreso = :anioingreso")})
 @NamedNativeQueries(value = {
     @NamedNativeQuery(
             name = "canLogin",
@@ -76,8 +76,8 @@ public class Usuario implements Serializable {
     @Column(name = "carrera")
     private String carrera;
     @Basic(optional = false)
-    @Column(name = "a\u00f1oingreso")
-    private int añoingreso;
+    @Column(name = "anioingreso")
+    private int anioingreso;
 
     public Usuario() {
     }
@@ -86,23 +86,23 @@ public class Usuario implements Serializable {
         this.idusuario = idusuario;
     }
 
-    public Usuario(Integer idusuario, String nombre, String correo, String contraseña, String tipo, String carrera, int añoingreso) {
+    public Usuario(Integer idusuario, String nombre, String correo, String contraseña, String tipo, String carrera, int anioingreso) {
         this.idusuario = idusuario;
         this.nombre = nombre;
         this.correo = correo;
         this.contraseña = contraseña;
         this.tipo = tipo;
         this.carrera = carrera;
-        this.añoingreso = añoingreso;
+        this.anioingreso = anioingreso;
     }
     
-    public Usuario(String nombre, String correo, String contraseña, String tipo, String carrera, int añoingreso) {
+    public Usuario(String nombre, String correo, String contraseña, String tipo, String carrera, int anioingreso) {
         this.nombre = nombre;
         this.correo = correo;
         this.contraseña = contraseña;
         this.tipo = tipo;
         this.carrera = carrera;
-        this.añoingreso = añoingreso;
+        this.anioingreso = anioingreso;
     }
 
     public Integer getIdusuario() {
@@ -153,12 +153,12 @@ public class Usuario implements Serializable {
         this.carrera = carrera;
     }
 
-    public int getAñoingreso() {
-        return añoingreso;
+    public int getAnioingreso() {
+        return anioingreso;
     }
 
-    public void setAñoingreso(int añoingreso) {
-        this.añoingreso = añoingreso;
+    public void setAnioingreso(int anioingreso) {
+        this.anioingreso = anioingreso;
     }
 
     @Override
