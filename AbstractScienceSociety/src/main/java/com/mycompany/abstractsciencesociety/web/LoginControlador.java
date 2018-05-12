@@ -50,7 +50,11 @@ public class LoginControlador {
             context.getExternalContext().getSessionMap().put("usuario", usuarioM);
             return "index.xhtml?faces-redirect=true";
         }
-        return "registro?faces-redirect=true";
+        usuarioM = jpaController.findUsuario(usuario.getCorreo());
+        if (usuarioM != null) {
+            return "inicio_de_sesion?faces-redirect=true&password=1";
+        }
+        return "inicio_de_sesion?faces-redirect=true&email=1";
     }
 
     public String logout() {

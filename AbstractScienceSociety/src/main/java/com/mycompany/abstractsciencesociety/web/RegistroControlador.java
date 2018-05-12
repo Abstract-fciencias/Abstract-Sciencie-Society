@@ -83,11 +83,7 @@ public class RegistroControlador {
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Felicidades, el registro se ha realizado correctamente", ""));
             
             // Redireccionando a la pantalla de inicio
-            try {
-                context.getExternalContext().redirect("index.xhtml");
-            } catch (IOException e) {
-                System.out.println("No se encontró el archivo index.xhtml");
-            }
+            return "index.xhtml?faces-redirect=true&register=1";
         }
         return null;
     }

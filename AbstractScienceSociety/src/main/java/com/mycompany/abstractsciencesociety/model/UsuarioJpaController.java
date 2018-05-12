@@ -153,5 +153,15 @@ public class UsuarioJpaController implements Serializable {
         }
         return (Usuario) q.getSingleResult();
     }
+    
+    public Usuario findUsuario(String correo) {
+        EntityManager em = getEntityManager();
+        Query q = em.createNamedQuery("Usuario.findByCorreo")
+                .setParameter("correo", correo);
+        if (q.getResultList().isEmpty()) {
+            return null;
+        }
+        return (Usuario) q.getSingleResult();
+    }
 
 }
