@@ -28,7 +28,7 @@ CREATE TABLE Usuario (
     contraseña TEXT NOT NULL,
     tipo VARCHAR(30) NOT NULL,
     carrera VARCHAR(100) NOT NULL,
-    anioIngreso INTEGER NOT NULL
+    anioingreso VARCHAR(4) NOT NULL
 );
 
 comment on table Usuario

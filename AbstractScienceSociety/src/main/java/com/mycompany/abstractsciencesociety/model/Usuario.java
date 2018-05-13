@@ -77,7 +77,7 @@ public class Usuario implements Serializable {
     private String carrera;
     @Basic(optional = false)
     @Column(name = "anioingreso")
-    private int anioingreso;
+    private String anioingreso;
 
     public Usuario() {
     }
@@ -86,7 +86,7 @@ public class Usuario implements Serializable {
         this.idusuario = idusuario;
     }
 
-    public Usuario(Integer idusuario, String nombre, String correo, String contraseña, String tipo, String carrera, int anioingreso) {
+    public Usuario(Integer idusuario, String nombre, String correo, String contraseña, String tipo, String carrera, String anioingreso) {
         this.idusuario = idusuario;
         this.nombre = nombre;
         this.correo = correo;
@@ -96,7 +96,7 @@ public class Usuario implements Serializable {
         this.anioingreso = anioingreso;
     }
     
-    public Usuario(String nombre, String correo, String contraseña, String tipo, String carrera, int anioingreso) {
+    public Usuario(String nombre, String correo, String contraseña, String tipo, String carrera, String anioingreso) {
         this.nombre = nombre;
         this.correo = correo;
         this.contraseña = contraseña;
@@ -153,11 +153,11 @@ public class Usuario implements Serializable {
         this.carrera = carrera;
     }
 
-    public int getAnioingreso() {
+    public String getAnioingreso() {
         return anioingreso;
     }
 
-    public void setAnioingreso(int anioingreso) {
+    public void setAnioingreso(String anioingreso) {
         this.anioingreso = anioingreso;
     }
 

@@ -16,7 +16,7 @@ public class Usuario {
     private String contraseña;
     private String confirmacionContraseña;
     private String carrera;
-    private int anioingreso;
+    private String anioingreso;
 
     public String getNombre() {
         return nombre;
@@ -58,12 +58,13 @@ public class Usuario {
         this.carrera = carrera;
     }
     
-    public int getAnioingreso() {
-        return anioingreso;
+    public String getAnioingreso() {
+        System.out.println(this.anioingreso);
+        return this.anioingreso;
     }
 
-    public void setAnioingreso(int anioIngreso) {
-        this.anioingreso = anioingreso;
+    public void setAnioingreso(String anioIngreso) {
+        this.anioingreso = anioIngreso;
     }
 
 }
