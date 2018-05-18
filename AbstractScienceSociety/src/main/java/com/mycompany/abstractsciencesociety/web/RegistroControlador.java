@@ -7,7 +7,10 @@ package com.mycompany.abstractsciencesociety.web;
 
 import com.mycompany.abstractsciencesociety.model.EntityProvider;
 import com.mycompany.abstractsciencesociety.model.UsuarioJpaController;
+import com.mycompany.abstractsciencesociety.model.EntityProvider;
 import java.util.Locale;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -28,6 +31,14 @@ import java.lang.InterruptedException;
 @RequestScoped
 public class RegistroControlador {
     private Usuario user = new Usuario();
+    private LinkedList<com.mycompany.abstractsciencesociety.model.Usuario> usuarios = new LinkedList();
+    private EntityManagerFactory emf = EntityProvider.provider();;
+    private UsuarioJpaController controladorUsuario = new UsuarioJpaController(emf);
+
+    public RegistroControlador() {
+        FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale("es-Mx"));
+        allUsuarios();
+    }
 
     public Usuario getUser() {
         return user;
@@ -37,8 +48,10 @@ public class RegistroControlador {
         this.user = user;
     }
 
-    public RegistroControlador() {
-        FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale("es-Mx"));
+    public LinkedList<com.mycompany.abstractsciencesociety.model.Usuario> getUsuarios() {
+        for (com.mycompany.abstractsciencesociety.model.Usuario usuario: usuarios) {
+        }
+        return usuarios;
     }
 
     private boolean validarCorreoCiencias() {
@@ -78,6 +91,9 @@ public class RegistroControlador {
             usuarioJpaC.create(nuevoUsuario);
             user = null;
 
+            // Agregando el nuevo usuario a nuestra lista de usuarios.
+            usuarios.add(nuevoUsuario);
+
             context.addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Felicidades, el registro se ha realizado correctamente", ""));
             
@@ -85,5 +101,12 @@ public class RegistroControlador {
             return "index.xhtml?faces-redirect=true&register=1";
         }
         return null;
+    }
+
+    private void allUsuarios(){
+        List<com.mycompany.abstractsciencesociety.model.Usuario> u = controladorUsuario.findUsuarioEntities(); 
+        for(com.mycompany.abstractsciencesociety.model.Usuario usuario : u){
+           usuarios.add(usuario);
+        }
     }
 }
