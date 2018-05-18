@@ -8,7 +8,9 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-
+    <f:metadata>
+        <f:viewAction action="#{usuarioBean.loggeadoAdmin()}" />
+    </f:metadata>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="css/index.css"></link>
@@ -29,7 +31,7 @@
                 <div class="tema">
                     <h3><a href="#tema1">#{usuario.nombre}</a></h3>
                     <ul class="infoTema">
-                        <li>Comentarios</li>
+                        <li>#{usuario.correo}</li>
                         <li></li>
                         <li></li>
                         <li></li>

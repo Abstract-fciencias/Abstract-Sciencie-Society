@@ -45,7 +45,7 @@ import javax.xml.bind.annotation.XmlTransient;
     )
     , @NamedNativeQuery(
             name = "Usuario.findByCorreoAndContraseña",
-            query = "select idusuario, nombre from usuario where correo = ?1 and contraseña = crypt(?2, contraseña)",
+            query = "select * from usuario where correo = ?1 and contraseña = crypt(?2, contraseña)",
             resultClass = Usuario.class
     )
 })
@@ -138,7 +138,7 @@ public class Usuario implements Serializable {
     }
 
     public String getTipo() {
-        return tipo;
+        return this.tipo;
     }
 
     public void setTipo(String tipo) {

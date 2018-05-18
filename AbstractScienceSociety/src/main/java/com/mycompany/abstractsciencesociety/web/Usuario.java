@@ -59,7 +59,6 @@ public class Usuario {
     }
     
     public String getAnioingreso() {
-        System.out.println(this.anioingreso);
         return this.anioingreso;
     }
 

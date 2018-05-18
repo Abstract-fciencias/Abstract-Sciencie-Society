@@ -40,6 +40,13 @@
                     </a>
                 </li>
                 </c:if>
+                <c:if test="#{usuarioBean.isLoggedAdmin()}">
+                <li>
+                    <a class="link-menu" href="/AbstractScienceSociety/usuarios.xhtml">
+                        <h2>Usuarios</h2>
+                    </a>
+                </li>
+                </c:if>
             </ul>
         </nav>
     </div>
