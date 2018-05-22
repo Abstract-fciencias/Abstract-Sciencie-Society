@@ -26,15 +26,31 @@ import javax.persistence.EntityManagerFactory;
  */
 public class CategoriaJpaController implements Serializable {
 
-    public CategoriaJpaController(EntityManagerFactory emf) {
-        this.emf = emf;
-    }
-    private EntityManagerFactory emf = null;
+    /**
+     * emf.
+     */
+    private EntityManagerFactory emf;
 
+    /**
+     * Constructor.
+     * @param emfAux
+     */
+    public CategoriaJpaController(final EntityManagerFactory emfAux) {
+        this.emf = emfAux;
+    }
+
+    /**
+     * getEntityManager.
+     * @return EntityManager
+     */
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
+    /**
+     * create.
+     * @param categoria
+     */
     public void create(Categoria categoria) {
         if (categoria.getTemaCollection() == null) {
             categoria.setTemaCollection(new ArrayList<Tema>());
@@ -67,6 +83,13 @@ public class CategoriaJpaController implements Serializable {
         }
     }
 
+    /**
+     * edit.
+     * @param categoria
+     * @throws IllegalOrphanException
+     * @throws NonexistentEntityException
+     * @throws Exception
+     */
     public void edit(Categoria categoria) throws IllegalOrphanException, NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -123,6 +146,12 @@ public class CategoriaJpaController implements Serializable {
         }
     }
 
+    /**
+     * destroy.
+     * @param id
+     * @throws IllegalOrphanException
+     * @throws NonexistentEntityException
+     */
     public void destroy(Integer id) throws IllegalOrphanException, NonexistentEntityException {
         EntityManager em = null;
         try {
@@ -155,14 +184,31 @@ public class CategoriaJpaController implements Serializable {
         }
     }
 
+    /**
+     * findCategoriaEntities.
+     * @return categorias
+     */
     public List<Categoria> findCategoriaEntities() {
         return findCategoriaEntities(true, -1, -1);
     }
 
+    /**
+     * findCategoriaEntities.
+     * @param maxResults
+     * @param firstResult
+     * @return categorias
+     */
     public List<Categoria> findCategoriaEntities(int maxResults, int firstResult) {
         return findCategoriaEntities(false, maxResults, firstResult);
     }
 
+    /**
+     * findCategoriaEntities.
+     * @param all
+     * @param maxResults
+     * @param firstResult
+     * @return categorias
+     */
     private List<Categoria> findCategoriaEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
@@ -179,6 +225,11 @@ public class CategoriaJpaController implements Serializable {
         }
     }
 
+    /**
+     * findCategoria.
+     * @param id
+     * @return categoria
+     */
     public Categoria findCategoria(Integer id) {
         EntityManager em = getEntityManager();
         try {
@@ -188,6 +239,10 @@ public class CategoriaJpaController implements Serializable {
         }
     }
 
+    /**
+     * getCategoriaCount.
+     * @return categoria
+     */
     public int getCategoriaCount() {
         EntityManager em = getEntityManager();
         try {
@@ -200,5 +255,4 @@ public class CategoriaJpaController implements Serializable {
             em.close();
         }
     }
-    
 }

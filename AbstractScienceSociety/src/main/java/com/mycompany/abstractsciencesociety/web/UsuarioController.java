@@ -24,10 +24,22 @@ import static javax.faces.context.FacesContext.getCurrentInstance;
 @SessionScoped
 public class UsuarioController {
 
+    /**
+     * emf.
+     */
     private EntityManagerFactory emf;
+    /**
+     * jpaController.
+     */
     private UsuarioJpaController jpaController;
+    /**
+     * usuario.
+     */
     private Usuario usuario;
 
+    /**
+     * Constructor.
+     */
     public UsuarioController() {
         FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale("es-Mx"));
         emf = EntityProvider.provider();
@@ -35,14 +47,26 @@ public class UsuarioController {
         usuario = new Usuario();
     }
 
+    /**
+     * getusuario.
+     * @return usuario
+     */
     public Usuario getusuario() {
         return usuario;
     }
 
+    /**
+     * setUsuario.
+     * @param usuario
+     */
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
+    /**
+     * canLogin.
+     * @return redirect
+     */
     public String canLogin() {
         Usuario l = jpaController.findUsuario(usuario.getNombre(), usuario.getContraseña());
         boolean logged = l != null;

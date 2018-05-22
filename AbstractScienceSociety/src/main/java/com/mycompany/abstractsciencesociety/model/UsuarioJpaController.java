@@ -10,7 +10,6 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import com.mycompany.abstractsciencesociety.model.Tema;
 import com.mycompany.abstractsciencesociety.web.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -24,16 +23,32 @@ import javax.persistence.EntityManagerFactory;
  */
 public class UsuarioJpaController implements Serializable {
 
-    public UsuarioJpaController(EntityManagerFactory emf) {
-        this.emf = emf;
-    }
+    /**
+     * emf.
+     */
     private EntityManagerFactory emf = null;
 
+    /**
+     * UsuarioJpaController.
+     * @param emfAux
+     */
+    public UsuarioJpaController(final EntityManagerFactory emfAux) {
+        this.emf = emfAux;
+    }
+
+    /**
+     * getEntityManager.
+     * @return entityManager
+     */
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
-    public void create(com.mycompany.abstractsciencesociety.model.Usuario usuario) {
+    /**
+     * create.
+     * @param usuario
+     */
+    public void create(final com.mycompany.abstractsciencesociety.model.Usuario usuario) {
         if (usuario.getTemaCollection() == null) {
             usuario.setTemaCollection(new ArrayList<Tema>());
         }
@@ -65,6 +80,12 @@ public class UsuarioJpaController implements Serializable {
         }
     }
 
+    /**
+     * edit.
+     * @param usuario
+     * @throws NonexistentEntityException
+     * @throws Exception
+     */
     public void edit(com.mycompany.abstractsciencesociety.model.Usuario usuario) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -115,6 +136,11 @@ public class UsuarioJpaController implements Serializable {
         }
     }
 
+    /**
+     * destroy.
+     * @param id
+     * @throws NonexistentEntityException
+     */
     public void destroy(Integer id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
@@ -141,14 +167,31 @@ public class UsuarioJpaController implements Serializable {
         }
     }
 
+    /**
+     * findUsuarioEntities.
+     * @return usuarios
+     */
     public List<com.mycompany.abstractsciencesociety.model.Usuario> findUsuarioEntities() {
         return findUsuarioEntities(true, -1, -1);
     }
 
+    /**
+     * findUsuarioEntities.
+     * @param maxResults
+     * @param firstResult
+     * @return usuarios
+     */
     public List<com.mycompany.abstractsciencesociety.model.Usuario> findUsuarioEntities(int maxResults, int firstResult) {
         return findUsuarioEntities(false, maxResults, firstResult);
     }
 
+    /**
+     * findUsuarioEntities.
+     * @param all
+     * @param maxResults
+     * @param firstResult
+     * @return usuarios
+     */
     private List<com.mycompany.abstractsciencesociety.model.Usuario> findUsuarioEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
@@ -165,6 +208,11 @@ public class UsuarioJpaController implements Serializable {
         }
     }
 
+    /**
+     * findUsuario.
+     * @param id
+     * @return usuario
+     */
     public com.mycompany.abstractsciencesociety.model.Usuario findUsuario(Integer id) {
         EntityManager em = getEntityManager();
         try {
@@ -174,6 +222,12 @@ public class UsuarioJpaController implements Serializable {
         }
     }
 
+    /**
+     * findUsuario.
+     * @param correo
+     * @param contraseña
+     * @return usuario
+     */
     public com.mycompany.abstractsciencesociety.model.Usuario findUsuario(String correo, String contraseña) {
         EntityManager em = getEntityManager();
         Query q = em.createNamedQuery("Usuario.findByCorreoAndContraseña")
@@ -186,6 +240,11 @@ public class UsuarioJpaController implements Serializable {
         return (com.mycompany.abstractsciencesociety.model.Usuario) q.getSingleResult();
     }
     
+    /**
+     * findUsuario.
+     * @param correo
+     * @return usuario
+     */
     public Usuario findUsuario(String correo) {
         EntityManager em = getEntityManager();
         Query q = em.createNamedQuery("Usuario.findByCorreo")
@@ -196,6 +255,10 @@ public class UsuarioJpaController implements Serializable {
         return (Usuario) q.getSingleResult();
     }
 
+    /**
+     * getUsuarioCount.
+     * @return usuarioCount
+     */
     public int getUsuarioCount() {
         EntityManager em = getEntityManager();
         try {

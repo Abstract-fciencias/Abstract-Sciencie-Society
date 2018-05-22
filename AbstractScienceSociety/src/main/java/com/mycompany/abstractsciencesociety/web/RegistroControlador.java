@@ -7,7 +7,6 @@ package com.mycompany.abstractsciencesociety.web;
 
 import com.mycompany.abstractsciencesociety.model.EntityProvider;
 import com.mycompany.abstractsciencesociety.model.UsuarioJpaController;
-import com.mycompany.abstractsciencesociety.model.EntityProvider;
 import java.util.Locale;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,10 +16,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManagerFactory;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;
-import java.lang.InterruptedException;
 
 /**
  *
@@ -30,30 +25,65 @@ import java.lang.InterruptedException;
 @ManagedBean
 @RequestScoped
 public class RegistroControlador {
-    private Usuario user = new Usuario();
-    private LinkedList<com.mycompany.abstractsciencesociety.model.Usuario> usuarios = new LinkedList();
-    private EntityManagerFactory emf = EntityProvider.provider();;
-    private UsuarioJpaController controladorUsuario = new UsuarioJpaController(emf);
+    /**
+     * user.
+     */
+    private Usuario user;
+    /**
+     * usuarios.
+     */
+    final private LinkedList<com.mycompany.abstractsciencesociety.model.Usuario> usuarios;
+    /**
+     * emf.
+     */
+    private EntityManagerFactory emf;
+    /**
+     * controladorUsuario.
+     */
+    private UsuarioJpaController controladorUsuario;
 
+    /**
+     * RegistroControlador.
+     */
     public RegistroControlador() {
+        user = new Usuario();
+        usuarios = new LinkedList();
+        emf = EntityProvider.provider();
+        controladorUsuario = new UsuarioJpaController(emf);
         FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale("es-Mx"));
         allUsuarios();
     }
 
+    /**
+     * getUser.
+     * @return user
+     */
     public Usuario getUser() {
         return user;
     }
 
+    /**
+     * setUser.
+     * @param user
+     */
     public void setUser(Usuario user) {
         this.user = user;
     }
 
+    /**
+     * getUsuarios.
+     * @return usuarios.
+     */
     public LinkedList<com.mycompany.abstractsciencesociety.model.Usuario> getUsuarios() {
         for (com.mycompany.abstractsciencesociety.model.Usuario usuario: usuarios) {
         }
         return usuarios;
     }
 
+    /**
+     * validarCorreoCiencias.
+     * @return boolean
+     */
     private boolean validarCorreoCiencias() {
         String usuarioCorreo, dominioCorreo;
         String[] partesCorreo = user.getCorreo().split("@");
@@ -62,7 +92,6 @@ public class RegistroControlador {
             return false;
         }
 
-        
         // Validando que pertenezca a un correo de @ciencias.unam.mx
         usuarioCorreo = partesCorreo[0];
         dominioCorreo = partesCorreo[1];
@@ -73,6 +102,10 @@ public class RegistroControlador {
         return true;
     }
 
+    /**
+     * agregarUsuario.
+     * @return redirect
+     */
     public String agregarUsuario() {
         com.mycompany.abstractsciencesociety.model.Usuario nuevoUsuario;
         FacesContext context = FacesContext.getCurrentInstance();
@@ -96,16 +129,19 @@ public class RegistroControlador {
 
             context.addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Felicidades, el registro se ha realizado correctamente", ""));
-            
+
             // Redireccionando a la pantalla de inicio
             return "index.xhtml?faces-redirect=true&register=1";
         }
         return null;
     }
 
-    private void allUsuarios(){
+    /**
+     * allUsuarios.
+     */
+    private void allUsuarios() {
         List<com.mycompany.abstractsciencesociety.model.Usuario> u = controladorUsuario.findUsuarioEntities(); 
-        for(com.mycompany.abstractsciencesociety.model.Usuario usuario : u){
+        for (com.mycompany.abstractsciencesociety.model.Usuario usuario : u) {
            usuarios.add(usuario);
         }
     }

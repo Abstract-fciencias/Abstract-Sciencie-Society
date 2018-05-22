@@ -10,10 +10,22 @@ package com.mycompany.abstractsciencesociety.exceptions;
  * @author edervs
  */
 public class NonexistentEntityException extends Exception {
-    public NonexistentEntityException(String message, Throwable cause) {
+
+    /**
+     * NonExistentEntityException.
+     * @param message
+     * @param cause
+     */
+    public NonexistentEntityException(
+        final String message, final Throwable cause) {
         super(message, cause);
     }
-    public NonexistentEntityException(String message) {
+
+    /**
+     * NonExistentEntityException.
+     * @param message
+     */
+    public NonexistentEntityException(final String message) {
         super(message);
     }
 }

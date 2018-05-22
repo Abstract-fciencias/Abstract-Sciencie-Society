@@ -10,10 +10,21 @@ package com.mycompany.abstractsciencesociety.exceptions;
  * @author edervs
  */
 public class PreexistingEntityException extends Exception {
-    public PreexistingEntityException(String message, Throwable cause) {
+
+    /**
+     * PreexistingEntityException.
+     * @param message
+     * @param cause
+     */
+    public PreexistingEntityException(final String message, final Throwable cause) {
         super(message, cause);
     }
-    public PreexistingEntityException(String message) {
+    
+    /**
+     * PreexistingEntityException.
+     * @param message
+     */
+    public PreexistingEntityException(final String message) {
         super(message);
     }
 }

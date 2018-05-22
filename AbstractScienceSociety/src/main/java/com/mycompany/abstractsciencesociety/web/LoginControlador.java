@@ -23,10 +23,22 @@ import static javax.faces.context.FacesContext.getCurrentInstance;
 @SessionScoped
 public class LoginControlador {
 
+    /**
+     * emf.
+     */
     private EntityManagerFactory emf;
+    /**
+     * jpaController.
+     */
     private UsuarioJpaController jpaController;
+    /**
+     * usuario.
+     */
     private Usuario usuario;
 
+    /**
+     * Constructor.
+     */
     public LoginControlador() {
         FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale("es-Mx"));
         emf = EntityProvider.provider();
@@ -34,14 +46,26 @@ public class LoginControlador {
         usuario = new Usuario();
     }
 
+    /**
+     * getUsuario.
+     * @return usuario
+     */
     public Usuario getusuario() {
         return usuario;
     }
 
+    /**
+     * setUsuario.
+     * @param usuario
+     */
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
+    /**
+     * canLogin.
+     * @return redirect
+     */
     public String canLogin() {
         com.mycompany.abstractsciencesociety.model.Usuario usuarioM = jpaController.findUsuario(usuario.getCorreo(), usuario.getContraseña());
         boolean logged = usuarioM != null;
@@ -57,6 +81,10 @@ public class LoginControlador {
         return "inicio_de_sesion?faces-redirect=true&email=1";
     }
 
+    /**
+     * Logout.
+     * @return redirect
+     */
     public String logout() {
         FacesContext context = getCurrentInstance();
         context.getExternalContext().invalidateSession();

@@ -5,20 +5,26 @@
  */
 package com.mycompany.abstractsciencesociety.web;
 
- 
+
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
- 
- 
+
+/**
+ * UtilCierre.
+ * @author edervs
+ */
 public class UtilCierre {
- 
-      public static HttpSession getSession() {
+
+    /**
+     * getSession.
+     * @return session
+     */
+    public static HttpSession getSession() {
         return (HttpSession)
           FacesContext.
           getCurrentInstance().
           getExternalContext().
           getSession(false);
       }
-       
+
 }

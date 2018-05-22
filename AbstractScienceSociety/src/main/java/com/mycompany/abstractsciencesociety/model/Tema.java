@@ -38,88 +38,171 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Tema implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    /**
+     * idtema.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idtema")
     private Integer idtema;
+    /**
+     * contenido.
+     */
     @Column(name = "contenido")
     private String contenido;
+    /**
+     * fechapublicacion.
+     */
     @Basic(optional = false)
     @Column(name = "fechapublicacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechapublicacion;
+    /**
+     * disponibilidad.
+     */
     @Basic(optional = false)
     @Column(name = "disponibilidad")
     private String disponibilidad;
+    /**
+     * idcategoria.
+     */
     @JoinColumn(name = "idcategoria", referencedColumnName = "idcategoria")
     @ManyToOne(optional = false)
     private Categoria idcategoria;
+    /**
+     * idusuario.
+     */
     @JoinColumn(name = "idusuario", referencedColumnName = "idusuario")
     @ManyToOne
     private Usuario idusuario;
 
+    /**
+     * Tema.
+     */
     public Tema() {
     }
-
-    public Tema(Integer idtema) {
-        this.idtema = idtema;
+    
+    /**
+     * Tema.
+     * @param idtemaAux
+     */
+    public Tema(final Integer idtemaAux) {
+        this.idtema = idtemaAux;
     }
 
-    public Tema(Integer idtema, Date fechapublicacion, String disponibilidad) {
-        this.idtema = idtema;
-        this.fechapublicacion = fechapublicacion;
-        this.disponibilidad = disponibilidad;
+    /**
+     * Tema.
+     * @param idtemaAux
+     * @param fechapublicacionAux
+     * @param disponibilidadAux
+     */
+    public Tema(final Integer idtemaAux, final Date fechapublicacionAux, final String disponibilidadAux) {
+        this.idtema = idtemaAux;
+        this.fechapublicacion = fechapublicacionAux;
+        this.disponibilidad = disponibilidadAux;
     }
 
+    /**
+     * getIdtema.
+     * @return idtema
+     */
     public Integer getIdtema() {
         return idtema;
     }
 
-    public void setIdtema(Integer idtema) {
-        this.idtema = idtema;
+    /**
+     * setIdtema.
+     * @param idtemaAux
+     */
+    public void setIdtema(final Integer idtemaAux) {
+        this.idtema = idtemaAux;
     }
 
+    /**
+     * getContenido.
+     * @return contenido
+     */
     public String getContenido() {
         return contenido;
     }
 
-    public void setContenido(String contenido) {
-        this.contenido = contenido;
+    /**
+     * setContenido.
+     * @param contenidoAux
+     */
+    public void setContenido(final String contenidoAux) {
+        this.contenido = contenidoAux;
     }
 
+    /**
+     * getFechapublicacion.
+     * @return fechapublicacion
+     */
     public Date getFechapublicacion() {
         return fechapublicacion;
     }
 
-    public void setFechapublicacion(Date fechapublicacion) {
-        this.fechapublicacion = fechapublicacion;
+    /**
+     * setFechapublicacion.
+     * @param fechapublicacionAux
+     */
+    public void setFechapublicacion(final Date fechapublicacionAux) {
+        this.fechapublicacion = fechapublicacionAux;
     }
 
+    /**
+     * getDisponibilidad.
+     * @return disponibilidad
+     */
     public String getDisponibilidad() {
         return disponibilidad;
     }
 
-    public void setDisponibilidad(String disponibilidad) {
-        this.disponibilidad = disponibilidad;
+    /**
+     * setDisponibilidad.
+     * @param disponibilidadAux
+     */
+    public void setDisponibilidad(final String disponibilidadAux) {
+        this.disponibilidad = disponibilidadAux;
     }
 
+    /**
+     * getIdcategoria.
+     * @return idcategoria
+     */
     public Categoria getIdcategoria() {
         return idcategoria;
     }
 
-    public void setIdcategoria(Categoria idcategoria) {
-        this.idcategoria = idcategoria;
+    /**
+     * setIdcategoria.
+     * @param idcategoriaAux
+     */
+    public void setIdcategoria(final Categoria idcategoriaAux) {
+        this.idcategoria = idcategoriaAux;
     }
 
+    /**
+     * getIdusuario.
+     * @return idusuario
+     */
     public Usuario getIdusuario() {
         return idusuario;
     }
 
-    public void setIdusuario(Usuario idusuario) {
-        this.idusuario = idusuario;
+    /**
+     * setIdusuario.
+     * @param idusuarioAux
+     */
+    public void setIdusuario(Usuario idusuarioAux) {
+        this.idusuario = idusuarioAux;
     }
 
+    /**
+     * hashCode.
+     * @return hash
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -128,8 +211,7 @@ public class Tema implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+    public boolean equals(final Object object) {
         if (!(object instanceof Tema)) {
             return false;
         }
@@ -144,5 +226,4 @@ public class Tema implements Serializable {
     public String toString() {
         return "com.mycompany.abstractsciencesociety.model.Tema[ idtema=" + idtema + " ]";
     }
-    
 }
