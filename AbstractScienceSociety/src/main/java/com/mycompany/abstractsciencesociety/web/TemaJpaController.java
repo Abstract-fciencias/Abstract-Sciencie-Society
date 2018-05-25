@@ -147,7 +147,8 @@ public class TemaJpaController implements Serializable {
             }
         }
     }
-
+    
+    
     public List<Tema> findTemaEntities() {
         return findTemaEntities(true, -1, -1);
     }

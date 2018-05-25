@@ -29,7 +29,9 @@
                     <ul>
                         <ui:repeat value="#{creacionTemaBean.categorias}" var="categoria">
                             <h:form>
-                                <h2 class="command-link"><h:commandLink style="text-decoration:none;color:white;" class="subAnchor" styleClass="borderRemover" value="#{categoria.nombre}" action="#"></h:commandLink></h2>
+                                <h2 class="command-link">
+                                    <h:commandLink style="text-decoration:none;color:white;" class="subAnchor" styleClass="borderRemover" 
+                                                   value="#{categoria.nombre}" action="#{creacionTemaBean.buscaPorCategoria(categoria)}"></h:commandLink></h2>
                             </h:form>
                             
                         </ui:repeat>

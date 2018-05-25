@@ -145,4 +145,15 @@ public class CreacionTemaBean {
            temas.add(tema);
         }
     }
+    public void buscaPorCategoria(Categoria categoria){
+        List<Tema> aux = temacontrolador.findTemaEntities();
+        List<Tema> nueva = new LinkedList<Tema>();
+        for(Tema t : aux ){
+            if(t.getIdcategoria().equals(categoria)){
+               nueva.add(t);
+            }
+        }
+        
+        temas = nueva;
+    }
 }
