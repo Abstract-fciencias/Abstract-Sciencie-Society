@@ -37,6 +37,7 @@ public class CreacionTemaBean {
     private int idcategoria;
     private List<Tema> temas;
     private TemaJpaController temacontrolador;
+    private String busqueda;
     /**
      * Creates a new instance of CreacionTemaBean
      */
@@ -51,6 +52,8 @@ public class CreacionTemaBean {
           temacontrolador  = new TemaJpaController(emf);
           llenaCategorias();
           allTemas();
+          busqueda = "";
+          
     }
     
     public String creaTema(){
@@ -76,6 +79,14 @@ public class CreacionTemaBean {
         //return  requ;
          
          
+    }
+
+    public String getBusqueda() {
+        return busqueda;
+    }
+
+    public void setBusqueda(String busqueda) {
+        this.busqueda = busqueda;
     }
     
     public void asignaCategoria(){
@@ -155,5 +166,17 @@ public class CreacionTemaBean {
         }
         
         temas = nueva;
+    }
+    
+    public void busca(){
+      List<Tema> aux = temacontrolador.findTemaEntities();
+        List<Tema> nueva = new LinkedList<Tema>();
+        for(Tema t : aux ){
+            if(t.getContenido().contains(busqueda)){
+               nueva.add(t);
+            }
+        }
+        
+        temas = nueva; 
     }
 }

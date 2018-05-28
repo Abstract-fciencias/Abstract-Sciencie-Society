@@ -55,7 +55,9 @@ public class ControladorTemas {
           llenaCategorias();
           allTemas();
     }
-
+    
+   
+    
     public Tema getTema() {
         return tema;
     }

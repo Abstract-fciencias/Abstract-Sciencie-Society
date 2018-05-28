@@ -40,8 +40,12 @@ nav ul {
     position: absolute;
     
 }
-.command-link{
+
+
+.category-link2 {
     
+    color:white;
+    text-decoration: none;
 }
 
 #imagen-usuario-contenedor {
