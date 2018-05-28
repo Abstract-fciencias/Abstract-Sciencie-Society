@@ -26,11 +26,11 @@
         <nav>
             <ul>
                 <li>
-                    <a class="link-menu" href="#"><h2>Categorias</h2></a>
+                    <a  href="#"><h2>Categorias</h2></a>
                     
                         <ui:repeat value="#{creacionTemaBean.categorias}" var="categoria">
                             <h:form>
-                                <h2 class="command-link">
+                                <h2 class="command-link2">
                                     <h:commandLink  class="category-link2" 
                                                    value="#{categoria.nombre}" action="#{creacionTemaBean.buscaPorCategoria(categoria)}"></h:commandLink></h2>
                             </h:form>
