@@ -172,7 +172,7 @@ public class CreacionTemaBean {
 
     
 
-    public void busca(){
+    public String busca(){
       List<Tema> aux = temacontrolador.findTemaEntities();
         List<Tema> nueva = new LinkedList<Tema>();
         for(Tema t : aux ){
@@ -182,5 +182,7 @@ public class CreacionTemaBean {
         }
         
         temas = nueva; 
+        return "http://localhost:8084/AbstractScienceSociety/index.xhtml";
     }
+    
 }

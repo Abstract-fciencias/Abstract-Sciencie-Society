@@ -4,8 +4,9 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
-    
     <link rel="stylesheet" type="text/css" href="css/header.css"></link>
+    
+   
 
     <header>
             <div id="header-contenedor">
@@ -15,12 +16,17 @@
                 <a href="/AbstractScienceSociety/index.xhtml"><h2 id="titulo" class="header">Abstract Science Society</h2></a>
                 <span id="busqueda" class="header">
                     <h:form>
-                          <h:inputText onclick="#{creacionTemaBean.busca()}" value="#{creacionTemaBean.busqueda}" class="searchBar" maxlength="240"  required="True"  
-                                                               ></h:inputText>
-                  
-                    <h:commandLink action="#{creacionTemaBean.busca()}">
-                          <img src="img/searchIcon.png"></img>
-                    </h:commandLink>
+                        <div class="campoBusqueda">
+                           <h:inputText  style ="display:none;" onclick="#{creacionTemaBean.busca()}" value="#{creacionTemaBean.busqueda}" class="searchBar" maxlength="240"  required="True"  
+                                                               ></h:inputText> 
+                        </div>
+                          
+                        <div class="serchIcon">
+                            <h:commandLink  style="display:none" action="#{creacionTemaBean.busca()}">
+                               <img src="img/searchIcon.png"></img>
+                            </h:commandLink>
+                        </div>
+                        
                         
                     </h:form>
                       

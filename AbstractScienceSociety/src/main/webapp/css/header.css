@@ -75,3 +75,12 @@ header {
 .header {
     display: inline-block;
 }
+#campoBusqueda{
+    display: none;
+}
+
+
+.serchIcon:hover .campoBusqueda{
+    display: block;
+}
+
