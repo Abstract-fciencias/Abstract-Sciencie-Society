@@ -29,7 +29,7 @@
         <div class="verTemas">
             <ui:repeat value="#{registroControlador.usuarios}" var="usuario">
                 <div class="tema">
-                    <h3><a href="#tema1">#{usuario.nombre}</a></h3>
+                    <h3><a href="/AbstractScienceSociety/ver-usuario.xhtml?idUsuario=#{usuario.idusuario}">#{usuario.nombre}</a></h3>
                     <ul class="infoTema">
                         <li>#{usuario.correo}</li>
                         <li></li>
