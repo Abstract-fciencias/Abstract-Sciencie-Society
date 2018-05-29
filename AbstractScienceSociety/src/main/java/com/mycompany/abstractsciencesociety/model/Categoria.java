@@ -64,6 +64,12 @@ public class Categoria implements Serializable {
 
     /**
      * Categoria.
+     */
+    public Categoria() {
+    }
+
+    /**
+     * Categoria.
      * @param idcategoria
      */
     public Categoria(final Integer idcategoria) {
