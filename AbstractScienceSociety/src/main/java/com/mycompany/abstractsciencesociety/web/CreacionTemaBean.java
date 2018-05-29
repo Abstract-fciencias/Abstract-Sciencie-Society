@@ -9,7 +9,6 @@ import com.mycompany.abstractsciencesociety.model.Categoria;
 import com.mycompany.abstractsciencesociety.model.EntityProvider;
 import com.mycompany.abstractsciencesociety.model.Tema;
 import com.mycompany.abstractsciencesociety.model.Usuario;
-import com.sun.corba.se.impl.naming.pcosnaming.NameService;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,8 +18,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManagerFactory;
-import static javax.faces.context.FacesContext.getCurrentInstance;
-import static org.eclipse.persistence.logging.SessionLog.EJB;
 /**
  *
  * @author aide
@@ -28,20 +25,48 @@ import static org.eclipse.persistence.logging.SessionLog.EJB;
 @ManagedBean
 @RequestScoped
 public class CreacionTemaBean {
-    
+    /**
+     * emf.
+     */
     private EntityManagerFactory emf;
+    /**
+     * controladorCategoria.
+     */
     private CategoriaJpaController controladorCategoria;
-    private TemaJpaController controladorTema;
+    /**
+     * controladorTema.
+     */
+    private final TemaJpaController controladorTema;
+    /**
+     * tema.
+     */
     private Tema tema;
+    /**
+     * categorias.
+     */
     private List<Categoria> categorias;
+    /**
+     * idcategoria.
+     */
     private int idcategoria;
+<<<<<<< HEAD
     private List<Tema> temas;
     private TemaJpaController temacontrolador;
     private String busqueda;
+=======
+>>>>>>> origin/feature/upload-image
     /**
-     * Creates a new instance of CreacionTemaBean
+     * temas.
      */
-    public CreacionTemaBean(){
+    private final List<Tema> temas;
+    /**
+     * temacontrolador.
+     */
+    private final  TemaJpaController temacontrolador;
+    /**
+     * Creates a new instance of CreacionTemaBean.
+     */
+    public CreacionTemaBean() {
           FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale("es-Mx"));
           emf = EntityProvider.provider();
           controladorCategoria = new CategoriaJpaController(emf);
@@ -56,6 +81,13 @@ public class CreacionTemaBean {
           
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * creaTema.
+     * @return index home redirect
+     */
+>>>>>>> origin/feature/upload-image
     public String creaTema(){
         // Obteniendo el usuario Loggeado
         FacesContext context = FacesContext.getCurrentInstance();
@@ -77,10 +109,9 @@ public class CreacionTemaBean {
         return   "ver-tema.xhtml?faces-redirect=true&id="+String.valueOf(tema.getIdtema());
         //String requ = String.format("ver-tema?faces-redirect=true&amp;idTema = %s", nombre);
         //return  requ;
-         
-         
     }
 
+<<<<<<< HEAD
     public String getBusqueda() {
         return busqueda;
     }
@@ -92,68 +123,126 @@ public class CreacionTemaBean {
     public void asignaCategoria(){
         for(Categoria c : categorias){
              if(c.getIdcategoria() == idcategoria){
+=======
+    /**
+     * asignaCategoria.
+     */
+    public void asignaCategoria () {
+        for (Categoria c : categorias) {
+             if (c.getIdcategoria() == idcategoria) {
+>>>>>>> origin/feature/upload-image
                 tema.setIdcategoria(c);
                 return;
              }
         }
 
     }
+
+    /**
+     * getEmf.
+     * @return emf
+     */
     public EntityManagerFactory getEmf() {
         return emf;
     }
 
+    /**
+     * setEmf.
+     * @param emf
+     */
     public void setEmf(EntityManagerFactory emf) {
         this.emf = emf;
     }
 
+    /**
+     * getControladorCategoria.
+     * @return controladorCategoria
+     */
     public CategoriaJpaController getControladorCategoria() {
         return controladorCategoria;
     }
 
+    /**
+     * setControladorCategoria.
+     * @param controladorCategoria
+     */
     public void setControladorCategoria(CategoriaJpaController controladorCategoria) {
         this.controladorCategoria = controladorCategoria;
     }
 
+    /**
+     * getTema.
+     * @return tema
+     */
     public Tema getTema() {
         return tema;
     }
 
+    /**
+     * setTema.
+     * @param tema
+     */
     public void setTema(Tema tema) {
         this.tema = tema;
     }
 
+    /**
+     * getIdcategoria.
+     * @return idcategoria
+     */
     public int getIdcategoria() {
         return idcategoria;
     }
 
+    /**
+     * setIdcategoria.
+     * @param idcategoria
+     */
     public void setIdcategoria(int idcategoria) {
         this.idcategoria = idcategoria;
     }
 
+    /**
+     * getCategorias.
+     * @return categorias
+     */
     public List<Categoria> getCategorias() {
         return categorias;
     }
 
+    /**
+     * getTemas.
+     * @return temas
+     */
     public List<Tema> getTemas() {
         return temas;
     }
 
+    /**
+     * setCategorias.
+     * @param categorias
+     */
     public void setCategorias(List<Categoria> categorias) {
         this.categorias = categorias;
     }
-   
-    private void llenaCategorias(){
-        List<Categoria> l = controladorCategoria.findCategoriaEntities(); 
-        for(Categoria c : l){
+
+    /**
+     * llenaCategorias.
+     */
+    private void llenaCategorias() {
+        List<Categoria> l = controladorCategoria.findCategoriaEntities();
+        for (Categoria c : l) {
            categorias.add(c);
         }
-    
     }
 
+    /**
+     * allTemas.
+     */
     private void allTemas(){
-        List<Tema> t = controladorTema.findTemaEntities(); 
-        for(Tema tema : t){
-           temas.add(tema);
+        List<Tema> t = controladorTema.findTemaEntities();
+        for (Tema temaAux : t) {
+           temas.add(temaAux);
         }
     }
     public void buscaPorCategoria(Categoria categoria){

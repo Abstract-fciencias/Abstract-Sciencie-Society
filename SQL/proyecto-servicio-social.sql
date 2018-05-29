@@ -40,6 +40,9 @@ create or replace function hash() returns trigger as $$
     if TG_OP = 'INSERT' then
        new.contraseña = crypt(new.contraseña, gen_salt('bf', 8)::text);
     end if;
+    if TG_OP = 'UPDATE' then
+       new.contraseña = crypt(new.contraseña, gen_salt('bf', 8)::text);
+    end if;
     return new;
   end;
 $$ language plpgsql;
@@ -50,6 +53,11 @@ is
 
 create trigger cifra
 before insert on Usuario
+for each row execute procedure hash();
+
+
+create trigger cifraUpdate
+before update on Usuario
 for each row execute procedure hash();
 
 
@@ -97,3 +105,7 @@ CREATE TABLE Categoria(
 ALTER TABLE Tema ADD CONSTRAINT FKCATEGORIA
 FOREIGN KEY (idCategoria)
 REFERENCES Categoria (idCategoria);
+
+ALTER TABLE Usuario ADD COLUMN urlimagen varchar(100) NOT NULL DEFAULT '';
+
+ALTER TABLE Usuario ADD COLUMN confirmado boolean NOT NULL DEFAULT FALSE;

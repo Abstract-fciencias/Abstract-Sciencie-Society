@@ -24,15 +24,31 @@ import javax.persistence.EntityManagerFactory;
  */
 public class TemaJpaController implements Serializable {
 
-    public TemaJpaController(EntityManagerFactory emf) {
-        this.emf = emf;
+    /**
+     * emf.
+     */
+    private EntityManagerFactory emf;
+    
+    /**
+     * TemaJpaController.
+     * @param emfAux
+     */
+    public TemaJpaController(final EntityManagerFactory emfAux) {
+        this.emf = emfAux;
     }
-    private EntityManagerFactory emf = null;
 
+    /**
+     * getEntityManager.
+     * @return EntityManager
+     */
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
+    /**
+     * create.
+     * @param tema
+     */
     public void create(Tema tema) {
         EntityManager em = null;
         try {
@@ -65,6 +81,12 @@ public class TemaJpaController implements Serializable {
         }
     }
 
+    /**
+     * edit.
+     * @param tema
+     * @throws NonexistentEntityException
+     * @throws Exception
+     */
     public void edit(Tema tema) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -117,6 +139,11 @@ public class TemaJpaController implements Serializable {
         }
     }
 
+    /**
+     * destroy.
+     * @param id
+     * @throws NonexistentEntityException
+     */
     public void destroy(Integer id) throws NonexistentEntityException {
         System.out.println(id);
         EntityManager em = null;
@@ -155,16 +182,37 @@ public class TemaJpaController implements Serializable {
             }
         }
     }
+<<<<<<< HEAD
     
     
+=======
+
+    /**
+     * findTemaEntities.
+     * @return
+     */
+>>>>>>> origin/feature/upload-image
     public List<Tema> findTemaEntities() {
         return findTemaEntities(true, -1, -1);
     }
 
+    /**
+     * findTemaEntities.
+     * @param maxResults
+     * @param firstResult
+     * @return
+     */
     public List<Tema> findTemaEntities(int maxResults, int firstResult) {
         return findTemaEntities(false, maxResults, firstResult);
     }
 
+    /**
+     * findTemaEntities.
+     * @param all
+     * @param maxResults
+     * @param firstResult
+     * @return 
+     */
     private List<Tema> findTemaEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
@@ -181,6 +229,11 @@ public class TemaJpaController implements Serializable {
         }
     }
 
+    /**
+     * findTema.
+     * @param id
+     * @return
+     */
     public Tema findTema(Integer id) {
         EntityManager em = getEntityManager();
         try {
@@ -190,6 +243,10 @@ public class TemaJpaController implements Serializable {
         }
     }
 
+    /**
+     * getTemaCount.
+     * @return tema count.
+     */
     public int getTemaCount() {
         EntityManager em = getEntityManager();
         try {
@@ -202,5 +259,4 @@ public class TemaJpaController implements Serializable {
             em.close();
         }
     }
-    
 }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <f:metadata>
+            <f:viewAction action="#{usuarioBean.loggeado()}" />
+        </f:metadata>
+     
+        <title>Crear | Abstract Science Society</title>
+        <link rel="stylesheet" type="text/css" href="css/index.css"></link>
+        
+        <h:outputStylesheet name="css/styles.css" />
+    </h:head>
+    <h:body>
+        <ui:include src="./header.xhtml" />
+        <ui:include src="./menu.xhtml"/>
+         <h:form class="Creacion-form">
+        
+               <div class = "Creacion">
+       	<div class = "Tema">
+            <p:inputText class="input-text input" type="text" maxlength="240"  placeholder="Tema Nuevo" value="#{creacionTemaBean.tema.contenido}" required="true" requiredMessage="El tema es un campo requerido para la creación"/>
+            
+       	</div>
+       	<p>Categoria</p>
+         <h:selectOneMenu class="input input-select" value="#{creacionTemaBean.idcategoria}" required="true" requiredMessage="Categoria requerida">
+            
+             <f:selectItems value="#{creacionTemaBean.getCategorias()}" var="entry"
+                    itemValue="#{entry.idcategoria}"
+                    itemLabel="#{entry.nombre}"/>
+           
+         </h:selectOneMenu> 
+        </div>
+        <div class="div-submit">
+            <h:commandButton class="submit" style="padding: 7px 12px;" action="#{creacionTemaBean.creaTema()}" value="Crear"/>
+        </div>
+        <p:messages id="messages" autoUpdate="true" closable="true" />
+
+            
+           <p:messages id="messages" autoUpdate="true" closable="true" />  
+        </h:form>
+                 
+        
+        <ui:include src="./footer.xhtml" />
+        
+    </h:body>
+    <link rel="stylesheet" type="text/css" href="css/registro.css"></link>
+</html>

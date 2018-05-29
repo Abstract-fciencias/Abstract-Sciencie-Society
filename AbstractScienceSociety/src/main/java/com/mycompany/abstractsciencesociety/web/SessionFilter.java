@@ -22,11 +22,14 @@ import javax.servlet.http.HttpSession;
  */
 public class SessionFilter implements Filter {
 
+    /**
+     * SessionFilter.
+     */
     public SessionFilter() {
     }
 
     /**
-     *
+     * doFilter.
      * @param request The servlet request we are processing
      * @param response The servlet response we are creating
      * @param chain The filter chain we are processing
@@ -51,10 +54,18 @@ public class SessionFilter implements Filter {
 
     }
 
+    /**
+     * init.
+     * @param fc
+     * @throws ServletException
+     */
     @Override
     public void init(FilterConfig fc) throws ServletException {
     }
 
+    /**
+     * destroy.
+     */
     @Override
     public void destroy() {
     }

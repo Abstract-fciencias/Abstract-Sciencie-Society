@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+  <h:head>
+    <f:metadata>
+        <f:viewAction action="#{usuarioBean.loggeadoAdmin()}" />
+        <f:viewAction action="#{usuarioController.setUsuarioById(param.idUsuario)}" />
+    </f:metadata>
+      <title>#{usuarioController.usuarioM.nombre} | Abstract Science Society</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css"></link>
+    <h:outputStylesheet name="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/mensajes.css"></link>
+  </h:head>
+  <h:body>
+      
+    <ui:include src="./header.xhtml" />
+    <ui:include src="./menu.xhtml"/>
+    
+    <!-- Mensajes -->
+    <c:if test="#{param.actualizado == 1}">
+        <div id="mensaje-contenedor">
+            <div class="mensaje">
+                <p>
+                    Se han actualizado los datos correctamente.
+                </p>
+            </div>
+        </div>
+    </c:if>
+    <c:if test="#{param.problema == 'actualizar'}">
+        <div id="mensaje-contenedor">
+            <div class="mensaje mensaje-error">
+                <p>
+                    Hubo un problema al momento de actualizar.
+                </p>
+            </div>
+        </div>
+    </c:if>
+    <c:if test="#{param.problema == 'eliminar'}">
+        <div id="mensaje-contenedor">
+            <div class="mensaje mensaje-error">
+                <p>
+                    Hubo un problema al momento de eliminar el usuario.
+                </p>
+            </div>
+        </div>
+    </c:if>
+    <c:if test="#{param.problema == 'bloquear'}">
+        <div id="mensaje-contenedor">
+            <div class="mensaje mensaje-error">
+                <p>
+                    Hubo un problema al momento de bloquear el usuario.
+                </p>
+            </div>
+        </div>
+    </c:if>
+    <c:if test="#{param.problema == 'password'}">
+        <div id="mensaje-contenedor">
+            <div class="mensaje mensaje-error">
+                <p>
+                    Las contraseñas no coinciden.
+                </p>
+            </div>
+        </div>
+    </c:if>
+    
+    <h1 id="registro-title">#{usuarioController.usuarioM.nombre}</h1>
+    
+    <h:form id="registro-form">
+        <div id="registro">
+            <picture id="imagen-usuario-picture"></picture>
+            <div id="formulario-usuario">
+                <p:inputText class="input-text input" type="text" placeholder="Correo Electronico" value="#{usuarioController.usuarioM.correo}" required="true" requiredMessage="Correo requerido"/>
+                <p:password class="input-text input" value="#{usuarioController.contraseña}" placeholder="Contraseña" id="Password" requiredMessage="Contraseña requerida"/>
+                <p:password class="input-text input" value="#{usuarioController.confirmacionContraseña}" placeholder="Repetir Contraseña" id="ConfirmPassword" requiredMessage="Confirmación requerida"/>
+                <h:selectOneMenu class="input input-select" value="#{usuarioController.usuarioM.carrera}" required="true" requiredMessage="Carrera requerida">
+                    <f:selectItem itemValue="matemáticas" itemLabel="Matemáticas"/>
+                    <f:selectItem itemValue="ciencias de la computacion" itemLabel="Ciencias de la Computación"/>
+                    <f:selectItem itemValue="fisica" itemLabel="Física"/>
+                    <f:selectItem itemValue="actuaria" itemLabel="Actuaría"/>
+                    <f:selectItem itemValue="biologia" itemLabel="Biología"/>
+                    <f:selectItem itemValue="ciencias de la tierra" itemLabel="Ciencias de la Tierra"/>
+                    <f:selectItem itemValue="ciencias ambientales" itemLabel="Ciencias Ambientales"/>
+                    <f:selectItem itemValue="fisica biomedica" itemLabel="Física Biomédica"/>
+                    <f:selectItem itemValue="manejo sustentable de zonas costeras" itemLabel="Manejo Sustentable de Zonas Costeras"/>
+                    <f:selectItem itemValue="matematicas aplicadas" itemLabel="Matemáticas Aplicadas"/>
+                    <f:selectItem itemValue="neurociencias" itemLabel="Neurociencias"/>
+                    <f:selectItem itemValue="trabajador" itemLabel="Trabajador"/>
+                </h:selectOneMenu>
+                <p:inputText class="input-text input" type="text" placeholder="Año de ingreso" value="#{usuarioController.usuarioM.anioingreso}" required="true" requiredMessage="Año de ingreso requerido"/>
+            </div>
+        </div>
+        <div class="div-submit">
+            <c:if test="#{param.idUsuario != usuarioBean.usuario.idusuario}">
+                <p:commandButton class="delete" style="padding: 7px 12px;" action="#{usuarioController.deleteUsuario()}" value="Eliminar"/>
+            </c:if>
+            <p:commandButton class="submit" style="padding: 7px 12px;" action="#{usuarioController.updateUsuario()}" value="Actualizar"/>
+        </div>
+        <p:messages id="messages" autoUpdate="true" closable="true" />
+    </h:form>
+    <ui:include src="./footer.xhtml" />
+  </h:body>
+    <link rel="stylesheet" type="text/css" href="css/formas.css"></link>
+    <link rel="stylesheet" type="text/css" href="css/registro.css"></link>
+</html>

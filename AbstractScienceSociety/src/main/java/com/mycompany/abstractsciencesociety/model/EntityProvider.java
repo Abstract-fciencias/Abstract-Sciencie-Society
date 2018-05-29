@@ -14,11 +14,15 @@ import javax.persistence.Persistence;
  */
 public class EntityProvider {
 
+    /**
+     * EntityManagerFactory.
+     */
     private static EntityManagerFactory _emf;
 
-    public EntityProvider() {
-    }
-
+    /**
+     * EntityManagerFactory.
+     * @return _emf
+     */
     public static EntityManagerFactory provider() {
         if (_emf == null) {
             _emf = Persistence.createEntityManagerFactory("PersistenceUnit");

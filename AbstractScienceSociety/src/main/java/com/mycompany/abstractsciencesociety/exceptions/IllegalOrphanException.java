@@ -8,17 +8,32 @@ package com.mycompany.abstractsciencesociety.exceptions;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * IllegalOrphanException.
+ * @author abstract
+ */
 public class IllegalOrphanException extends Exception {
-    private List<String> messages;
-    public IllegalOrphanException(List<String> messages) {
-        super((messages != null && messages.size() > 0 ? messages.get(0) : null));
-        if (messages == null) {
+    /**
+     * Mensajes.
+     */
+    private final List<String> messages;
+    /**
+     * IllegalOrphanException.
+     * @param messagesAux
+     */
+    public IllegalOrphanException(final List<String> messagesAux) {
+        super("String");
+        if (messagesAux == null) {
             this.messages = new ArrayList<String>();
-        }
-        else {
-            this.messages = messages;
+        } else {
+            this.messages = messagesAux;
         }
     }
+
+    /**
+     * Get all Messages.
+     * @return all messages
+     */
     public List<String> getMessages() {
         return messages;
     }

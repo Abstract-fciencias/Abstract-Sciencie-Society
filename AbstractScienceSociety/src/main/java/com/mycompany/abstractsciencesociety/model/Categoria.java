@@ -36,66 +36,127 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Categoria implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    /**
+     * idCategoria.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idcategoria")
     private Integer idcategoria;
+    /**
+     * nombre.
+     */
     @Basic(optional = false)
     @Column(name = "nombre")
     private String nombre;
+    /**
+     * descripcion.
+     */
     @Basic(optional = false)
     @Column(name = "descripcion")
     private String descripcion;
+    /**
+     * temaCollection.
+     */
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcategoria")
     private Collection<Tema> temaCollection;
 
+    /**
+     * Categoria.
+     */
     public Categoria() {
     }
 
-    public Categoria(Integer idcategoria) {
+    /**
+     * Categoria.
+     * @param idcategoria
+     */
+    public Categoria(final Integer idcategoria) {
         this.idcategoria = idcategoria;
     }
 
-    public Categoria(Integer idcategoria, String nombre, String descripcion) {
+    /**
+     * Categoria.
+     * @param idcategoria
+     * @param nombre
+     * @param descripcion
+     */
+    public Categoria(final Integer idcategoria, final String nombre, final String descripcion) {
         this.idcategoria = idcategoria;
         this.nombre = nombre;
         this.descripcion = descripcion;
     }
 
+    /**
+     * getIdcategoria.
+     * @return idcategoria
+     */
     public Integer getIdcategoria() {
         return idcategoria;
     }
 
-    public void setIdcategoria(Integer idcategoria) {
+    /**
+     * setIdcategoria.
+     * @param idcategoria
+     */
+    public void setIdcategoria(final Integer idcategoria) {
         this.idcategoria = idcategoria;
     }
 
+    /**
+     * getNombre.
+     * @return nombre
+     */
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    /**
+     * setNombre.
+     * @param nombre
+     */
+    public void setNombre(final String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     * getDescription.
+     * @return description
+     */
     public String getDescripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
+    /**
+     * setDescription.
+     * @param descripcion
+     */
+    public void setDescripcion(final String descripcion) {
         this.descripcion = descripcion;
     }
 
+    /**
+     * getTemaCollection.
+     * @return temaCollection
+     */
     @XmlTransient
     public Collection<Tema> getTemaCollection() {
         return temaCollection;
     }
 
-    public void setTemaCollection(Collection<Tema> temaCollection) {
+    /**
+     * setTemaCollection.
+     * @param temaCollection
+     */
+    public void setTemaCollection(final Collection<Tema> temaCollection) {
         this.temaCollection = temaCollection;
     }
 
+    /**
+     * hashCode.
+     * @return hash
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -104,8 +165,7 @@ public class Categoria implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+    public boolean equals(final Object object) {
         if (!(object instanceof Categoria)) {
             return false;
         }
@@ -120,5 +180,4 @@ public class Categoria implements Serializable {
     public String toString() {
         return "com.mycompany.abstractsciencesociety.model.Categoria[ idcategoria=" + idcategoria + " ]";
     }
-    
 }

@@ -20,26 +20,60 @@ import javax.faces.context.FacesContext;
 @ManagedBean(name = "comentarioControlador")
 @RequestScoped
 public class ComentarioControlador {
-    private Usuario user = new Usuario();
-    private String comentario = "";
+    /**
+     * user.
+     */
+    private Usuario user;
+    /**
+     * comentario.
+     */
+    private String comentario;
 
+    /**
+     * getUser.
+     * @return usuario
+     */
     public Usuario getUser() {
         return user;
     }
 
-    public void setUser(Usuario user) {
+    /**
+     * setUser.
+     * @param user
+     */
+    public void setUser(final Usuario user) {
         this.user = user;
     }
+
+    /**
+     * getComentario.
+     * @return comentario
+     */
     public String getComentario() {
         return comentario;
     }
 
-    public void setComentario(String comentario) {
+    /**
+     * setComentario.
+     * @param comentario
+     */
+    public void setComentario(final String comentario) {
         this.comentario = comentario;
     }
+
+    /**
+     * Constructor.
+     */
     public ComentarioControlador() {
+        user = new Usuario();
+        comentario = "";
         FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale("es-Mx"));
     }
+
+    /**
+     * agregarComentario.
+     * @return ver-comentario redirect
+     */
     public String agregarComentario(){
         //implementar codigo
         return "ver-comentario.html";

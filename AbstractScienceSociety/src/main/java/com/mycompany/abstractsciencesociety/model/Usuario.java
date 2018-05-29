@@ -43,122 +43,228 @@ import javax.xml.bind.annotation.XmlTransient;
             name = "canLogin",
             query = "select login(?, ?)"
     )
-    , @NamedNativeQuery(
+    , @NamedNativeQuery( 
             name = "Usuario.findByCorreoAndContraseña",
-            query = "select idusuario, nombre from usuario where correo = ?1 and contraseña = crypt(?2, contraseña)",
+            query = "select * from usuario where correo = ?1 and contraseña = crypt(?2, contraseña)",
             resultClass = Usuario.class
     )
 })
 public class Usuario implements Serializable {
 
+    /**
+     * temaCollection.
+     */
     @OneToMany(mappedBy = "idusuario")
     private Collection<Tema> temaCollection;
 
     private static final long serialVersionUID = 1L;
+    /**
+     * idusuario.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idusuario")
     private Integer idusuario;
+    /**
+     * nombre.
+     */
     @Basic(optional = false)
     @Column(name = "nombre")
     private String nombre;
+    /**
+     * correo.
+     */
     @Basic(optional = false)
     @Column(name = "correo")
     private String correo;
+    /**
+     * contraseña.
+     */
     @Basic(optional = false)
     @Column(name = "contrase\u00f1a")
     private String contraseña;
+    /**
+     * tipo.
+     */
     @Basic(optional = false)
     @Column(name = "tipo")
     private String tipo;
+    /**
+     * carrera.
+     */
     @Basic(optional = false)
     @Column(name = "carrera")
     private String carrera;
+    /**
+     * anioingreso.
+     */
     @Basic(optional = false)
     @Column(name = "anioingreso")
     private String anioingreso;
 
+    /**
+     * Usuario.
+     */
     public Usuario() {
     }
 
-    public Usuario(Integer idusuario) {
-        this.idusuario = idusuario;
+    /**
+     * Usuario.
+     * @param idusuarioAux
+     */
+    public Usuario(final Integer idusuarioAux) {
+        this.idusuario = idusuarioAux;
     }
 
-    public Usuario(Integer idusuario, String nombre, String correo, String contraseña, String tipo, String carrera, String anioingreso) {
-        this.idusuario = idusuario;
-        this.nombre = nombre;
-        this.correo = correo;
-        this.contraseña = contraseña;
-        this.tipo = tipo;
-        this.carrera = carrera;
-        this.anioingreso = anioingreso;
-    }
-    
-    public Usuario(String nombre, String correo, String contraseña, String tipo, String carrera, String anioingreso) {
-        this.nombre = nombre;
-        this.correo = correo;
-        this.contraseña = contraseña;
-        this.tipo = tipo;
-        this.carrera = carrera;
-        this.anioingreso = anioingreso;
+    /**
+     * Usuario.
+     * @param idusuarioAux
+     * @param nombreAux
+     * @param correoAux
+     * @param contraseñaAux
+     * @param tipoAux
+     * @param carreraAux
+     * @param anioingresoAux
+     */
+    public Usuario(final Integer idusuarioAux, final String nombreAux, final String correoAux, final String contraseñaAux, final String tipoAux, final String carreraAux, final String anioingresoAux) {
+        this.idusuario = idusuarioAux;
+        this.nombre = nombreAux;
+        this.correo = correoAux;
+        this.contraseña = contraseñaAux;
+        this.tipo = tipoAux;
+        this.carrera = carreraAux;
+        this.anioingreso = anioingresoAux;
     }
 
+    /**
+     * Usuario.
+     * @param nombreAux
+     * @param correoAux
+     * @param contraseñaAux
+     * @param tipoAux
+     * @param carreraAux
+     * @param anioingresoAux
+     */
+    public Usuario(final String nombreAux, final String correoAux, final String contraseñaAux, final String tipoAux, final String carreraAux, final String anioingresoAux) {
+        this.nombre = nombreAux;
+        this.correo = correoAux;
+        this.contraseña = contraseñaAux;
+        this.tipo = tipoAux;
+        this.carrera = carreraAux;
+        this.anioingreso = anioingresoAux;
+    }
+
+    /**
+     * getIdusuario.
+     * @return idusuario
+     */
     public Integer getIdusuario() {
         return idusuario;
     }
 
-    public void setIdusuario(Integer idusuario) {
-        this.idusuario = idusuario;
+    /**
+     * setIdusuario
+     * @param idusuarioAux
+     */
+    public void setIdusuario(final Integer idusuarioAux) {
+        this.idusuario = idusuarioAux;
     }
 
+    /**
+     * getNombre.
+     * @return nombre
+     */
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    /**
+     * setNombre.
+     * @param nombreAux
+     */
+    public void setNombre(final String nombreAux) {
+        this.nombre = nombreAux;
     }
 
+    /**
+     * getCorreo.
+     * @return correo
+     */
     public String getCorreo() {
         return correo;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    /**
+     * setCorreo.
+     * @param correoAux
+     */
+    public void setCorreo(final String correoAux) {
+        this.correo = correoAux;
     }
 
+    /**
+     * getContraseña.
+     * @return contraseña
+     */
     public String getContraseña() {
         return contraseña;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    /**
+     * setContraseña.
+     * @param contraseñaAux
+     */
+    public void setContraseña(final String contraseñaAux) {
+        this.contraseña = contraseñaAux;
     }
 
+    /**
+     * getTipo.
+     * @return tipo
+     */
     public String getTipo() {
-        return tipo;
+        return this.tipo;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    /**
+     * setTipo.
+     * @param tipoAux
+     */
+    public void setTipo(final String tipoAux) {
+        this.tipo = tipoAux;
     }
 
+    /**
+     * getCarrera.
+     * @return carrera
+     */
     public String getCarrera() {
         return carrera;
     }
 
-    public void setCarrera(String carrera) {
-        this.carrera = carrera;
+    /**
+     * setCarrera.
+     * @param carreraAux
+     */
+    public void setCarrera(final String carreraAux) {
+        this.carrera = carreraAux;
     }
 
+    /**
+     * getAnioingreso.
+     * @return anioingreso
+     */
     public String getAnioingreso() {
         return anioingreso;
     }
 
-    public void setAnioingreso(String anioingreso) {
-        this.anioingreso = anioingreso;
+    /**
+     * setAnioingreso.
+     * @param anioingresoAux
+     */
+    public void setAnioingreso(final String anioingresoAux) {
+        this.anioingreso = anioingresoAux;
     }
 
     @Override
@@ -169,8 +275,7 @@ public class Usuario implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+    public boolean equals(final Object object) {
         if (!(object instanceof Usuario)) {
             return false;
         }
@@ -186,13 +291,20 @@ public class Usuario implements Serializable {
         return "com.mycompany.abstractsciencesociety.model.Usuario[ idusuario=" + idusuario + " ]";
     }
 
+    /**
+     * getTemasCollection.
+     * @return temaCollection
+     */
     @XmlTransient
     public Collection<Tema> getTemaCollection() {
         return temaCollection;
     }
 
-    public void setTemaCollection(Collection<Tema> temaCollection) {
-        this.temaCollection = temaCollection;
+    /**
+     * setTemaCollection.
+     * @param temaCollectionAux
+     */
+    public void setTemaCollection(final Collection<Tema> temaCollectionAux) {
+        this.temaCollection = temaCollectionAux;
     }
-    
 }

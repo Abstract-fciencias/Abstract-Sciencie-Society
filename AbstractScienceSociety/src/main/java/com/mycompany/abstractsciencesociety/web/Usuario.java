@@ -10,61 +10,125 @@ package com.mycompany.abstractsciencesociety.web;
  * @author abstract
  */
 public class Usuario {
-
+    /**
+     * nombre.
+     */
     private String nombre;
+    /**
+     * correo.
+     */
     private String correo;
+    /**
+     * contraseña.
+     */
     private String contraseña;
+    /**
+     * confirmacionContraseña.
+     */
     private String confirmacionContraseña;
+    /**
+     * carrera.
+     */
     private String carrera;
+    /**
+     * anioingreso.
+     */
     private String anioingreso;
 
+    /**
+     * getNombre.
+     * @return nombre
+     */
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    /**
+     * setNombre.
+     * @param nombreAux
+     */
+    public void setNombre(String nombreAux) {
+        this.nombre = nombreAux;
     }
-    
+
+    /**
+     * getCorreo.
+     * @return correo
+     */
     public String getCorreo() {
         return correo;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    /**
+     * setCorreo.
+     * @param correoAux
+     */
+    public void setCorreo(String correoAux) {
+        this.correo = correoAux;
     }
 
+    /**
+     * getContraseña.
+     * @return contraseña
+     */
     public String getContraseña() {
         return contraseña;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    /**
+     * setContraseña.
+     * @param contraseñaAux
+     */
+    public void setContraseña(String contraseñaAux) {
+        this.contraseña = contraseñaAux;
     }
 
+    /**
+     * getConfirmacionContraseña.
+     * @return confirmacionContraseña
+     */
     public String getConfirmacionContraseña() {
         return confirmacionContraseña;
     }
 
-    public void setConfirmacionContraseña(String confirmacionContraseña) {
-        this.confirmacionContraseña = confirmacionContraseña;
+    /**
+     * setConfirmacionContraseña.
+     * @param confirmacionContraseñaAux
+     */
+    public void setConfirmacionContraseña(String confirmacionContraseñaAux) {
+        this.confirmacionContraseña = confirmacionContraseñaAux;
     }
-    
+
+    /**
+     * getCarrera.
+     * @return carrera
+     */
     public String getCarrera() {
         return carrera;
     }
 
-    public void setCarrera(String carrera) {
-        this.carrera = carrera;
+    /**
+     * setCarrera.
+     * @param carreraAux
+     */
+    public void setCarrera(String carreraAux) {
+        this.carrera = carreraAux;
     }
-    
+
+    /**
+     * getAnioIngreso.
+     * @return anioIngreso
+     */
     public String getAnioingreso() {
-        System.out.println(this.anioingreso);
         return this.anioingreso;
     }
 
-    public void setAnioingreso(String anioIngreso) {
-        this.anioingreso = anioIngreso;
+    /**
+     * setAnioingreso.
+     * @param anioIngresoAux
+     */
+    public void setAnioingreso(String anioIngresoAux) {
+        this.anioingreso = anioIngresoAux;
     }
 
 }

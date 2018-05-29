@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+  <h:head>
+    <f:metadata>
+        <f:viewAction action="#{usuarioBean.noLoggeado()}" />
+    </f:metadata>
+    <title>Registro | Abstract Science Society</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css"></link>
+    <h:outputStylesheet name="css/styles.css" />
+  </h:head>
+  <h:body>
+      
+    <ui:include src="./header.xhtml" />
+    <ui:include src="./menu.xhtml"/>
+    <h1 id="registro-title">Registro</h1>
+    
+    <h:form id="registro-form" enctype="multipart/form-data">
+        <div id="registro">
+            <picture id="imagen-usuario-picture"></picture>
+            <h:inputFile value="#{registroControlador.image}" class="upload-image">
+                <f:passThroughAttribute name="accept" value="image/jpeg"/>
+            </h:inputFile>
+            <div id="formulario-usuario">
+                <p:inputText class="input-text input" type="text" placeholder="Nombre de Usuario" value="#{registroControlador.user.nombre}" required="true" requiredMessage="Nombre requerido"/>
+                <p:inputText class="input-text input" type="text" placeholder="Correo Electronico" value="#{registroControlador.user.correo}" required="true" requiredMessage="Correo requerido"/>
+                <p:password class="input-text input" value="#{registroControlador.user.contraseña}" placeholder="Contraseña" required="true" id="Password" requiredMessage="Contraseña requerida"/>
+                <p:password class="input-text input" value="#{registroControlador.user.confirmacionContraseña}" placeholder="Repetir Contraseña" required="true" id="ConfirmPassword" requiredMessage="Confirmación requerida"/>
+                <h:selectOneMenu class="input input-select" value="#{registroControlador.user.carrera}" required="true" requiredMessage="Carrera requerida">
+                    <f:selectItem itemValue="matemáticas" itemLabel="Matemáticas"/>
+                    <f:selectItem itemValue="ciencias de la computacion" itemLabel="Ciencias de la Computación"/>
+                    <f:selectItem itemValue="fisica" itemLabel="Física"/>
+                    <f:selectItem itemValue="actuaria" itemLabel="Actuaría"/>
+                    <f:selectItem itemValue="biologia" itemLabel="Biología"/>
+                    <f:selectItem itemValue="ciencias de la tierra" itemLabel="Ciencias de la Tierra"/>
+                    <f:selectItem itemValue="ciencias ambientales" itemLabel="Ciencias Ambientales"/>
+                    <f:selectItem itemValue="fisica biomedica" itemLabel="Física Biomédica"/>
+                    <f:selectItem itemValue="manejo sustentable de zonas costeras" itemLabel="Manejo Sustentable de Zonas Costeras"/>
+                    <f:selectItem itemValue="matematicas aplicadas" itemLabel="Matemáticas Aplicadas"/>
+                    <f:selectItem itemValue="neurociencias" itemLabel="Neurociencias"/>
+                    <f:selectItem itemValue="trabajador" itemLabel="Trabajador"/>
+                </h:selectOneMenu>
+                <p:inputText class="input-text input" type="text" placeholder="Año de ingreso" value="#{registroControlador.user.anioingreso}" required="true" requiredMessage="Año de ingreso requerido"/>
+            </div>
+        </div>
+        <div class="div-submit">
+            <h:commandButton class="submit" style="padding: 7px 12px;" action="#{registroControlador.agregarUsuario}" value="Registrarse" ajax="false">
+            </h:commandButton>
+        </div>
+        <p:messages id="messages" autoUpdate="true" closable="true" />
+    </h:form>
+    <ui:include src="./footer.xhtml" />
+  </h:body>
+    <link rel="stylesheet" type="text/css" href="css/formas.css"></link>
+    <link rel="stylesheet" type="text/css" href="css/registro.css"></link>
+</html>

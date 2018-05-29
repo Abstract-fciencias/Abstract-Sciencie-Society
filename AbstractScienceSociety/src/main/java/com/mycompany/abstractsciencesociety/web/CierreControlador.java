@@ -5,15 +5,13 @@
  */
 package com.mycompany.abstractsciencesociety.web;
 
-import java.util.*;
+import java.util.Locale;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import javax.faces.context.FacesContext;
 
-import javax.servlet.http.HttpServletRequest; 
 import javax.servlet.http.HttpSession;
 
 /**
@@ -24,20 +22,39 @@ import javax.servlet.http.HttpSession;
 @ManagedBean(name = "cierreControlador")
 @RequestScoped
 public class CierreControlador {
-    private Usuario user = new Usuario();
+    /**
+     * user.
+     */
+    private Usuario user;
 
+    /**
+     * getUser.
+     * @return user
+     */
     public Usuario getUser() {
         return user;
     }
 
-    public void setUser(Usuario user) {
+    /**
+     * setUser.
+     * @param user
+     */
+    public void setUser(final Usuario user) {
         this.user = user;
     }
 
+    /**
+     * Constructor.
+     */
     public CierreControlador() {
+        user = new Usuario();
         FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale("es-Mx"));
-    }      
+    }
 
+    /**
+     * logout.
+     * @return index home page
+     */
     public String logout() {
       HttpSession session = UtilCierre.getSession();
       session.invalidate();
