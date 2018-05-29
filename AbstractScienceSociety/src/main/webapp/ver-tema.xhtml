@@ -15,7 +15,10 @@
     <link rel="stylesheet" type="text/css" href="css/agregar-comentario.css"></link>
     <link rel="stylesheet" type="text/css" href="css/ver-comentario.css"></link>
     <title>Abstract | Ver Tema </title>
-
+   
+    <f:metadata>
+        <f:viewAction action="#{controladorTemas.setTemaById(param.id)}" />
+    </f:metadata>
 
 </h:head>
 <h:body>
@@ -26,19 +29,26 @@
         <p:messages id="messages" autoUpdate="true" closable="true" />
         <div class = "Ver Tema">
             <div class = "Tema">
-                
-                <h4>#{controladorTemas.getTema(param.id).contenido}</h4>
-                    <h4>#{controladorTemas.getTema(param.id).idcategoria.nombre}</h4>
+                <div class="tema">
+                    <h3>#{controladorTemas.tema.contenido}</h3>
+                    <h3>#{controladorTemas.tema.idcategoria.nombre}</h3>
+                    <h:form >
+                        <p:commandButton  action="#{controladorTemas.elimina()}" value="Eliminar" ></p:commandButton> 
+                    </h:form>
+                    
                     <ul class="infoTema">
-                        <li>#{controladorTemas.getTema(param.id).idusuario.nombre}</li>
-                        <li>#{controladorTemas.getTema(param.id).disponibilidad}</li>
+                      
+                        <li>#{controladorTemas.tema.idusuario.nombre}</li>
+                        <li>#{controladorTemas.tema.disponibilidad}</li>
                         <li>
-                            <h:outputText value="#{controladorTemas.getTema(param.id).fechapublicacion}" >
+                            <h:outputText value="#{controladorTemas.tema.fechapublicacion}" >
                                 <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText>
                         </li>
                         
                     </ul>
+                </div>
+                        
             </div>
             <div class = "Comentarios">
                 

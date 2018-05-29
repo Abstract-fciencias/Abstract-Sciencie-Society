@@ -143,5 +143,30 @@ public class ControladorTemas {
         }
     }
     
+    public String setTemaById(int id){
+       tema = controladorTema.findTema(id);
+       System.out.println(tema);
+       return null;
+    }
+    
+    public String elimina(){
+        System.out.println("entrando");
+      
+         try{
+           System.out.println(tema.getIdtema());
+           System.out.println(tema);
+           controladorTema.destroy(tema.getIdtema());
+           
+         }catch(Exception e){
+             
+            System.out.print("si eder ");
+         }
+         
+         
+       
+       
+        return   "index.xhtml?faces-redirect=true";
+    }
+    
    
 }
