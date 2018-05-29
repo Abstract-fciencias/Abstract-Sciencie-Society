@@ -42,13 +42,26 @@
                     </li>
 
                 </ul>
-                <a href="/AbstractScienceSociety/eliminar-tema.xhtml?id=#{controladorTemas.temaM.idtema}">Eliminar</a>
+                <c:if test="#{usuarioBean.isLoggedAdmin()}">
+                    <a href="/AbstractScienceSociety/eliminar-tema.xhtml?id=#{controladorTemas.temaM.idtema}">Eliminar</a>
+                </c:if>
+                
 
             </div>
 
         </div>
         <div class = "Comentarios">
-
+             
+        </div>
+        <div class="Agrega-comentario" style="width: 35%;margin:auto; background:white ;color:white">
+            <h:form>
+                <p:inputTextarea  maxlength="255">
+                    
+                </p:inputTextarea>
+                <p:commandButton value = "Comentar"  style="padding: 7px 12px;color:white; background: navy ">
+                    
+                </p:commandButton>
+            </h:form>            
         </div>
     </div>
          

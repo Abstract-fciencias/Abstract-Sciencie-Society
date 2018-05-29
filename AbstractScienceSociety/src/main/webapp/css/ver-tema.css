@@ -31,3 +31,12 @@ and open the template in the editor.
     margin-top: 30px;
 }
 
+.Agrega-comentario{
+    width: 50%;
+    margin-left: auto;
+    color:aqua;
+}
+
+.Agrega-comentario textArea{
+    width: 50%;
+}

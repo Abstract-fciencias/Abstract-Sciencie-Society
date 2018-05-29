@@ -176,7 +176,7 @@ public class CreacionTemaBean {
       List<Tema> aux = temacontrolador.findTemaEntities();
         List<Tema> nueva = new LinkedList<Tema>();
         for(Tema t : aux ){
-            if(t.getContenido().contains(busqueda)){
+            if(t.getContenido().toLowerCase().contains(busqueda.toLowerCase())){
                nueva.add(t);
             }
         }
