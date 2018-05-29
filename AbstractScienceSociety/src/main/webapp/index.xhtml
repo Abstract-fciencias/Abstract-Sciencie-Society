@@ -36,7 +36,7 @@
         <div class="verTemas">
             <ui:repeat value="#{creacionTemaBean.temas}" var="tema">
                 <div class="tema">
-                    <h3><a href="#{controladorTemas.muestraTema(tema.idtema)}">#{tema.contenido}</a></h3>
+                    <h3><a href="/AbstractScienceSociety/ver-tema.xhtml?id=#{tema.idtema}">#{tema.contenido}</a></h3>
                     <ul class="infoTema">
                         <li>Comentarios</li>
                         <li>#{tema.idusuario.nombre}</li>

@@ -33,7 +33,7 @@ public class ControladorTemas {
     
     @ManagedProperty(value = "#{param.idTema}")
     private int idTema;
-    private Tema tema;
+    private Tema temaM;
     private EntityManagerFactory emf;
     private CategoriaJpaController controladorCategoria;
     private TemaJpaController controladorTema;
@@ -58,12 +58,8 @@ public class ControladorTemas {
     
    
     
-    public Tema getTema() {
-        return tema;
-    }
-
-    public void setTema(Tema tema) {
-        this.tema = tema;
+    public Tema getTemaM() {
+        return temaM;
     }
     
     public void setIdTema(int idTema) {
@@ -80,14 +76,7 @@ public class ControladorTemas {
     public Tema getTema(int id){
         return controladorTema.findTema(id);
     }
-    
-    /*
-    *Método para redirigir a la pagina de el tema seleccionado
-    */
-    public String muestraTema(int id){
-        tema = controladorTema.findTema(id);
-        return   "ver-tema.xhtml?faces-redirect=true&id="+String.valueOf(id);
-    }
+
     
     public EntityManagerFactory getEmf() {
         return emf;
@@ -143,29 +132,39 @@ public class ControladorTemas {
         }
     }
     
-    public String setTemaById(int id){
-       tema = controladorTema.findTema(id);
-       System.out.println(tema);
-       return null;
+    public Tema getTemaById(String idUsuario) {
+        Tema temaMAux = controladorTema.findTema(Integer.valueOf(idUsuario));
+        return temaMAux;
     }
     
-    public String elimina(){
-        System.out.println("entrando");
-      
-         try{
-           System.out.println(tema.getIdtema());
-           System.out.println(tema);
-           controladorTema.destroy(tema.getIdtema());
-           
-         }catch(Exception e){
-             
-            System.out.print("si eder ");
-         }
-         
-         
-       
-       
-        return   "index.xhtml?faces-redirect=true";
+    public String setTemaById(String id){
+        if (id == "") {
+            return "404";
+        }
+        Tema temaMAux = getTemaById(id);
+        if (temaMAux == null) {
+            return "404";
+        }
+        this.temaM = temaMAux;
+        System.out.println(this.temaM);
+        return null;
+    }
+
+    public String elimina(String id) {
+
+        Tema temaMAux = getTemaById(id);
+
+        if (temaMAux == null) {
+            return "index?faces-redirect=true&eliminar=1";
+        }
+
+        try {
+            controladorTema.destroy(temaMAux.getIdtema());
+        } catch (Exception e) {
+            System.out.println(e);
+            return "ver-tema?faces-redirect=true?id=" + temaMAux.getIdtema().toString() + "&problema=eliminar";
+        }
+        return "index?faces-redirect=true&eliminar=1";
     }
     
    
