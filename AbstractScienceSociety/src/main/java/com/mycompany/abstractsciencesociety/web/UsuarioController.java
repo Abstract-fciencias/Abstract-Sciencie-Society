@@ -178,7 +178,7 @@ public class UsuarioController {
      */
     public String updateUsuario() {
         if (this.usuarioM == null) {
-            return "index?faces-redirect=true&problema=1";
+            return "usuarios?faces-redirect=true&actualizar=1";
         }
         
         if (contraseña != null && !contraseña.equals("")) {
@@ -201,6 +201,25 @@ public class UsuarioController {
             return "ver-usuario?faces-redirect=true?idUsuario=" + usuarioM.getIdusuario().toString() + "&problema=actualizar";
         }
         return "ver-usuario?faces-redirect=true&idUsuario=" + usuarioM.getIdusuario().toString() + "&actualizado=1";
+    }
+    
+    /**
+     * deleteUsuario.
+     *
+     * @return String
+     */
+    public String deleteUsuario() {
+        if (this.usuarioM == null) {
+            return "usuarios?faces-redirect=true&eliminar=1";
+        }
+
+        try {
+            jpaController.destroy(usuarioM.getIdusuario());
+        } catch (Exception e) {
+            System.out.println(e);
+            return "ver-usuario?faces-redirect=true?idUsuario=" + usuarioM.getIdusuario().toString() + "&problema=eliminar";
+        }
+        return "usuarios?faces-redirect=true&eliminar=1";
     }
 
 }

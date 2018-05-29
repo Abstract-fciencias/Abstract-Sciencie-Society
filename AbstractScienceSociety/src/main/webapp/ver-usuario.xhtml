@@ -96,6 +96,7 @@
             </div>
         </div>
         <div class="div-submit">
+            <p:commandButton class="delete" style="padding: 7px 12px;" action="#{usuarioController.deleteUsuario()}" value="Eliminar"/>
             <p:commandButton class="submit" style="padding: 7px 12px;" action="#{usuarioController.updateUsuario()}" value="Actualizar"/>
         </div>
         <p:messages id="messages" autoUpdate="true" closable="true" />
