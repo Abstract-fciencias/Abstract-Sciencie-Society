@@ -102,6 +102,12 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "anioingreso")
     private String anioingreso;
+    /**
+     * imagen.
+     */
+    @Basic(optional = false)
+    @Column(name = "imagen")
+    private boolean imagen;
 
     /**
      * Usuario.
@@ -145,14 +151,16 @@ public class Usuario implements Serializable {
      * @param tipoAux
      * @param carreraAux
      * @param anioingresoAux
+     * @param imagen
      */
-    public Usuario(final String nombreAux, final String correoAux, final String contraseñaAux, final String tipoAux, final String carreraAux, final String anioingresoAux) {
+    public Usuario(final String nombreAux, final String correoAux, final String contraseñaAux, final String tipoAux, final String carreraAux, final String anioingresoAux, boolean imagen) {
         this.nombre = nombreAux;
         this.correo = correoAux;
         this.contraseña = contraseñaAux;
         this.tipo = tipoAux;
         this.carrera = carreraAux;
         this.anioingreso = anioingresoAux;
+        this.imagen = imagen;
     }
 
     /**
@@ -265,6 +273,22 @@ public class Usuario implements Serializable {
      */
     public void setAnioingreso(final String anioingresoAux) {
         this.anioingreso = anioingresoAux;
+    }
+
+    /**
+     * getImagen.
+     * @return imagen
+     */
+    public boolean getImagen() {
+        return imagen;
+    }
+
+    /**
+     * setImagen.
+     * @param imagenAux
+     */
+    public void setImagen(final boolean imagenAux) {
+        this.imagen = imagenAux;
     }
 
     @Override

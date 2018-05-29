@@ -87,6 +87,11 @@ nav ul {
     width: 170px;
 }
 
+#imagen-usuario-contenedor picture img{
+    height: 170px;
+    width: 170px;
+}
+
 #imagen-usuario-div {
     background-color: rgb(5, 50, 94);
     height: 300px;

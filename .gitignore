@@ -23,3 +23,5 @@ hs_err_pid*
 /AbstractScienceSociety/target/
 
 *.swp
+
+/AbstractScienceSociety/src/main/webapp/resources/

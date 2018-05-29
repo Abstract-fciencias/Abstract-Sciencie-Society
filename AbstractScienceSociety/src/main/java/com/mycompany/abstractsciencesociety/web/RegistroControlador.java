@@ -132,7 +132,7 @@ public class RegistroControlador {
         try{
             InputStream in = image.getInputStream();
 
-            File f = new File(System.getProperty("user.dir") + "/media/" + user.getNombre() + ".jpeg");
+            File f = new File(System.getProperty("user.dir") + "/src/main/webapp/media/" + user.getNombre() + ".jpeg");
             f.createNewFile();
             FileOutputStream out = new FileOutputStream(f);
 
@@ -167,10 +167,12 @@ public class RegistroControlador {
                                                          , new FacesMessage(FacesMessage.SEVERITY_ERROR, "Fallo de registro: Sólo se puede registrar con un correo de @ciencias.unam.mx", ""));
         } else {
 
+            boolean imagen = false;
             if (image != null) {
                 doUpload();
+                imagen = true;
             }
-            nuevoUsuario = new com.mycompany.abstractsciencesociety.model.Usuario(user.getNombre(), user.getCorreo(), user.getContraseña(), "normal", user.getCarrera(), user.getAnioingreso());
+            nuevoUsuario = new com.mycompany.abstractsciencesociety.model.Usuario(user.getNombre(), user.getCorreo(), user.getContraseña(), "normal", user.getCarrera(), user.getAnioingreso(), imagen);
             EntityManagerFactory emf = EntityProvider.provider();
             UsuarioJpaController usuarioJpaC = new UsuarioJpaController(emf);
             usuarioJpaC.create(nuevoUsuario);
