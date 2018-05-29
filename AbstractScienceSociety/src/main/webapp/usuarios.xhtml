@@ -23,17 +23,27 @@
 </h:head>
 <h:body>
 
+    
     <ui:include src="./header.xhtml" />
     <ui:include src="./menu.xhtml"/>
-        
+    <!-- Mensajes -->
+    <c:if test="#{param.eliminar == 1}">
+        <div id="mensaje-contenedor">
+            <div class="mensaje">
+                <p>
+                    Se ha eliminado el usuario correctamente.
+                </p>
+            </div>
+        </div>
+    </c:if>    
         <div class="verTemas">
             <ui:repeat value="#{registroControlador.usuarios}" var="usuario">
                 <div class="tema">
                     <h3><a href="/AbstractScienceSociety/ver-usuario.xhtml?idUsuario=#{usuario.idusuario}">#{usuario.nombre}</a></h3>
                     <ul class="infoTema">
                         <li>#{usuario.correo}</li>
-                        <li></li>
-                        <li></li>
+                        <li>#{usuario.carrera}</li>
+                        <li>#{usuario.anioingreso}</li>
                         <li></li>
                         <li></li>
                     </ul>

@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlTransient;
             name = "canLogin",
             query = "select login(?, ?)"
     )
-    , @NamedNativeQuery(
+    , @NamedNativeQuery( 
             name = "Usuario.findByCorreoAndContraseña",
             query = "select * from usuario where correo = ?1 and contraseña = crypt(?2, contraseña)",
             resultClass = Usuario.class
