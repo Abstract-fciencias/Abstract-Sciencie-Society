@@ -20,9 +20,12 @@
     <ui:include src="./menu.xhtml"/>
     <h1 id="registro-title">Registro</h1>
     
-    <h:form id="registro-form">
+    <h:form id="registro-form" enctype="multipart/form-data">
         <div id="registro">
             <picture id="imagen-usuario-picture"></picture>
+            <h:inputFile value="#{registroControlador.image}" class="upload-image">
+                <f:passThroughAttribute name="accept" value="image/jpeg"/>
+            </h:inputFile>
             <div id="formulario-usuario">
                 <p:inputText class="input-text input" type="text" placeholder="Nombre de Usuario" value="#{registroControlador.user.nombre}" required="true" requiredMessage="Nombre requerido"/>
                 <p:inputText class="input-text input" type="text" placeholder="Correo Electronico" value="#{registroControlador.user.correo}" required="true" requiredMessage="Correo requerido"/>
@@ -46,7 +49,8 @@
             </div>
         </div>
         <div class="div-submit">
-            <p:commandButton class="submit" style="padding: 7px 12px;" action="#{registroControlador.agregarUsuario}" value="Registrarse"/>
+            <h:commandButton class="submit" style="padding: 7px 12px;" action="#{registroControlador.agregarUsuario}" value="Registrarse" ajax="false">
+            </h:commandButton>
         </div>
         <p:messages id="messages" autoUpdate="true" closable="true" />
     </h:form>

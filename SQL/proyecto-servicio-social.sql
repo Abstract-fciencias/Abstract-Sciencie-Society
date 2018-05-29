@@ -107,3 +107,5 @@ FOREIGN KEY (idCategoria)
 REFERENCES Categoria (idCategoria);
 
 ALTER TABLE Usuario ADD COLUMN urlimagen varchar(100) NOT NULL DEFAULT '';
+
+ALTER TABLE Usuario ADD COLUMN confirmado boolean NOT NULL DEFAULT FALSE;

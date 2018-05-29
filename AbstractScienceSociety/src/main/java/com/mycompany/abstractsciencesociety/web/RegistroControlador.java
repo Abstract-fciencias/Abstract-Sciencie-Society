@@ -17,6 +17,11 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManagerFactory;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import javax.servlet.http.Part;
+
 /**
  *
  * @author abstract
@@ -41,6 +46,10 @@ public class RegistroControlador {
      * controladorUsuario.
      */
     private UsuarioJpaController controladorUsuario;
+    /**
+     * imagen.
+     */
+    private Part image;
 
     /**
      * RegistroControlador.
@@ -52,6 +61,20 @@ public class RegistroControlador {
         controladorUsuario = new UsuarioJpaController(emf);
         FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale("es-Mx"));
         allUsuarios();
+    }
+
+    /**
+     * getImage.
+     */
+    public Part getImage() {
+        return image;
+    }
+
+    /**
+     * setImage
+     */
+    public void setImage(Part imageAux) {
+        this.image = imageAux;
     }
 
     /**
@@ -103,6 +126,31 @@ public class RegistroControlador {
     }
 
     /**
+     * doUpload.
+     */
+    public void doUpload() {
+        try{
+            InputStream in = image.getInputStream();
+
+            File f = new File(System.getProperty("user.dir") + "/media/" + user.getNombre() + ".jpeg");
+            f.createNewFile();
+            FileOutputStream out = new FileOutputStream(f);
+
+            byte[] buffer = new byte[1024];
+            int length;
+
+            while ((length = in.read(buffer)) > 0) {
+                out.write(buffer, 0, length);
+            }
+
+            out.close();
+            in.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    /**
      * agregarUsuario.
      * @return redirect
      */
@@ -118,6 +166,10 @@ public class RegistroControlador {
             context.addMessage(null
                                                          , new FacesMessage(FacesMessage.SEVERITY_ERROR, "Fallo de registro: Sólo se puede registrar con un correo de @ciencias.unam.mx", ""));
         } else {
+
+            if (image != null) {
+                doUpload();
+            }
             nuevoUsuario = new com.mycompany.abstractsciencesociety.model.Usuario(user.getNombre(), user.getCorreo(), user.getContraseña(), "normal", user.getCarrera(), user.getAnioingreso());
             EntityManagerFactory emf = EntityProvider.provider();
             UsuarioJpaController usuarioJpaC = new UsuarioJpaController(emf);

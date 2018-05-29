@@ -98,6 +98,12 @@ select {
     box-shadow: inset 0 0px 0 #fff;
     text-shadow: 0 0px 0 rgba(255,255,255,0.7);
 }
+
+.upload-image {
+    position: absolute;
+    top: 190px;
+}
+
 .ui-button-text{
     padding: 0;
 }
