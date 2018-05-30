@@ -146,7 +146,6 @@ public class ControladorTemas {
             return "404";
         }
         this.temaM = temaMAux;
-        System.out.println(this.temaM);
         return null;
     }
 

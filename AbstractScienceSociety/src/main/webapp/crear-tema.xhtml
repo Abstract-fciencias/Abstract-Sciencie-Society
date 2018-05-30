@@ -9,6 +9,7 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <f:metadata>
@@ -17,6 +18,9 @@ and open the template in the editor.
      
         <title>Crear | Abstract Science Society</title>
         <link rel="stylesheet" type="text/css" href="css/index.css"></link>
+        <link rel="stylesheet" type="text/css" href="css/mensajes.css"></link>
+        <link rel="stylesheet" type="text/css" href="css/registro.css"></link>
+        <link rel="stylesheet" type="text/css" href="css/crear_tema.css"></link>
         
         <h:outputStylesheet name="css/styles.css" />
     </h:head>
@@ -29,6 +33,15 @@ and open the template in the editor.
        	<div class = "Tema">
             <p:inputText class="input-text input" type="text" maxlength="240"  placeholder="Tema Nuevo" value="#{creacionTemaBean.tema.contenido}" required="true" requiredMessage="El tema es un campo requerido para la creación"/>
             
+        <c:if test="#{param.problema == 'tema'}">
+            <div id="mensaje-contenedor">
+                <div class="mensaje mensaje-error">
+                    <p>
+                        Hubo un problema al momento de crear el tema.
+                    </p>
+                </div>
+            </div>
+        </c:if>
        	</div>
        	<p>Categoria</p>
          <h:selectOneMenu class="input input-select" value="#{creacionTemaBean.idcategoria}" required="true" requiredMessage="Categoria requerida">
@@ -42,8 +55,6 @@ and open the template in the editor.
         <div class="div-submit">
             <h:commandButton class="submit" style="padding: 7px 12px;" action="#{creacionTemaBean.creaTema()}" value="Crear"/>
         </div>
-        <p:messages id="messages" autoUpdate="true" closable="true" />
-
             
            <p:messages id="messages" autoUpdate="true" closable="true" />  
         </h:form>
@@ -52,5 +63,4 @@ and open the template in the editor.
         <ui:include src="./footer.xhtml" />
         
     </h:body>
-    <link rel="stylesheet" type="text/css" href="css/registro.css"></link>
 </html>

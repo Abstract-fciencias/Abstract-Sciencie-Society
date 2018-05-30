@@ -35,7 +35,7 @@
                     <a  href="#" style="text-decoration:none; color:white; " ><h2>Categorias</h2></a>
                     
                         <ui:repeat value="#{creacionTemaBean.categorias}" var="categoria">
-                            <h:form>
+                            <h:form class="categoriaform">
                                 <h2 class="command-link2">
                                     <h:commandLink  class="category-link2" 
                                                    value="#{categoria.nombre}" action="#{creacionTemaBean.buscaPorCategoria(categoria)}"></h:commandLink></h2>

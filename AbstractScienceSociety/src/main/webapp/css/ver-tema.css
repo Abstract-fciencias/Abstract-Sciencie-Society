@@ -8,16 +8,103 @@ and open the template in the editor.
     Author     : aide
 */
 
+.comentarios {
+    display: block;
+    margin: 0 auto;
+    width: 600px;
+    overflow-y: scroll;
+    height: 700px;
+}
+
+.comentario-comentario {
+    display: inline-block;
+    width: 55%;
+    height: 100%;
+    position: absolute;
+}
+
+.contenedor-comentario {
+    height: 110px;
+    border-top: 1px solid black;
+    position: relative;
+}
+
+.contenedor-comentario {
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.contenedor-comentario:first-child {
+    border-top: 0px solid black;
+    margin-top: 25px;
+    padding-top: 0px;
+}
+
+.eliminar-comentario {
+    display: inline-block;
+    position: absolute;
+    background-color: rgba(186, 0, 0);
+    padding: 2px 4px;
+    right: 0px;
+}
+
+.eliminar-comentario a:link {
+    color: white;
+    text-decoration: none;
+}
+
+.eliminar-comentario a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.eliminar-comentario a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.eliminar-comentario a:active {
+    color: white;
+    text-decoration: none;
+}
+
 .tema{
     width: 70%;
-    text-align: center;
     margin: auto;
-    
 }
 
 .tema:first-child {
     border-top-width: 0px;
     margin-top: 30px;
+}
+
+.eliminar-tema {
+    display: inline-block;
+    position: absolute;
+    background-color: rgba(186, 0, 0);
+    padding: 5px 10px;
+    right: 0px;
+}
+
+.eliminar-tema a:link {
+    color: white;
+    text-decoration: none;
+}
+
+.eliminar-tema a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.eliminar-tema a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.eliminar-tema a:active {
+    color: white;
+    text-decoration: none;
 }
 
 .tema {
@@ -28,15 +115,55 @@ and open the template in the editor.
 
 .tema:first-child {
     border-top-width: 0px;
-    margin-top: 30px;
+}
+
+.titulo-tema {
+    position: relative;
 }
 
 .Agrega-comentario{
-    width: 50%;
-    margin-left: auto;
-    color:aqua;
+    width: 60%;
 }
 
 .Agrega-comentario textArea{
-    width: 50%;
+    width: 96%;
+    font-size: 14px;
+    height: 90px;
+}
+
+.infoTema {
+    border-bottom: 1px solid black;
+    padding-left: 0;
+    padding-bottom: 10px;
+    margin-bottom: 0px;
+}
+
+.info-usuario-comentario {
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    left: 90px;
+}
+
+.nombre-usuario-comentario {
+}
+
+.usuario-comentario {
+    display: inline-block;
+    position: absolute;
+    left: 60%;
+    width: 40%;
+    height: 100%;
+}
+
+.usuario-imagen-comentario {
+    display: inline-block;
+    border: 1px solid black;
+    height: 80px;
+    width: 80px;
+}
+
+.usuario-imagen-comentario img {
+    height:80px;
+    width: 80px;
 }

@@ -4,6 +4,7 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.mycompany.abstractsciencesociety.model.Categoria</class>
     <class>com.mycompany.abstractsciencesociety.model.Tema</class>
+    <class>com.mycompany.abstractsciencesociety.model.Comentario</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <class>com.mycompany.abstractsciencesociety.model.Usuario</class>
     <properties>

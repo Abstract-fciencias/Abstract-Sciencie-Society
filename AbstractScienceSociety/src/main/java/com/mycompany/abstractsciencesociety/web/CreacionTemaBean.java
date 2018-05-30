@@ -51,9 +51,10 @@ public class CreacionTemaBean {
      * idcategoria.
      */
     private int idcategoria;
-
+    /**
+     * busqueda..
+     */
     private String busqueda;
-
     /**
      * temas.
      */
@@ -117,9 +118,12 @@ public class CreacionTemaBean {
         this.busqueda = busqueda;
     }
 
-    public void asignaCategoria() {
-        for (Categoria c : categorias) {
-            if (c.getIdcategoria() == idcategoria) {
+    /**
+     * asignaCategoria.
+     */
+    public void asignaCategoria(){
+        for(Categoria c : categorias){
+             if(c.getIdcategoria() == idcategoria){
                 tema.setIdcategoria(c);
             }
 
@@ -250,9 +254,9 @@ public class CreacionTemaBean {
                 nueva.add(t);
             }
         }
-
-        temas = nueva;
-        return "http://localhost:8084/AbstractScienceSociety/index.xhtml";
+        
+        temas = nueva; 
+        return "index";
     }
 
 }

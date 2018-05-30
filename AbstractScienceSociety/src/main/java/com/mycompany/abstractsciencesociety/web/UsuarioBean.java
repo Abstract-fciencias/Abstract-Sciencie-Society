@@ -30,7 +30,7 @@ public class UsuarioBean {
     /**
      * redirect login.
      */
-    public static final String LOGIN_PAGE_REDIRECT = "inicio_de_sesion.xhtml?faces-redirect=true";
+public static final String LOGIN_PAGE_REDIRECT = "inicio_de_sesion.xhtml?faces-redirect=true";
     /**
      * emf.
      */
@@ -128,5 +128,4 @@ public class UsuarioBean {
         }
         return null;
     }
-
 }

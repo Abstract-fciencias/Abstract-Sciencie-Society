@@ -6,11 +6,18 @@
 package com.mycompany.abstractsciencesociety.web;
 
 import java.util.Locale;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import com.mycompany.abstractsciencesociety.model.Comentario;
+import com.mycompany.abstractsciencesociety.model.EntityProvider;
+import com.mycompany.abstractsciencesociety.model.ComentarioJpaController;
+import javax.persistence.EntityManagerFactory;
 
 /**
  *
@@ -21,35 +28,19 @@ import javax.faces.context.FacesContext;
 @RequestScoped
 public class ComentarioControlador {
     /**
-     * user.
-     */
-    private Usuario user;
-    /**
      * comentario.
      */
-    private String comentario;
-
+    private Comentario comentario;
     /**
-     * getUser.
-     * @return usuario
+     * comentarios.
      */
-    public Usuario getUser() {
-        return user;
-    }
-
-    /**
-     * setUser.
-     * @param user
-     */
-    public void setUser(final Usuario user) {
-        this.user = user;
-    }
+    private LinkedList<Comentario> comentarios;
 
     /**
      * getComentario.
      * @return comentario
      */
-    public String getComentario() {
+    public Comentario getComentario() {
         return comentario;
     }
 
@@ -57,17 +48,24 @@ public class ComentarioControlador {
      * setComentario.
      * @param comentario
      */
-    public void setComentario(final String comentario) {
+    public void setComentario(final Comentario comentario) {
         this.comentario = comentario;
+    }
+
+    /**
+     * getComentarios.
+     * @return comentarios
+     */
+    public LinkedList<Comentario> getComentarios() {
+        return comentarios;
     }
 
     /**
      * Constructor.
      */
     public ComentarioControlador() {
-        user = new Usuario();
-        comentario = "";
         FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale("es-Mx"));
+        this.comentario = new Comentario();
     }
 
     /**
@@ -75,8 +73,77 @@ public class ComentarioControlador {
      * @return ver-comentario redirect
      */
     public String agregarComentario(){
-        //implementar codigo
-        return "ver-comentario.html";
+        // Tema
+        String idTema = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idtema");
+        // Usuario 
+        FacesContext context = FacesContext.getCurrentInstance();
+        com.mycompany.abstractsciencesociety.model.Usuario usuario = (com.mycompany.abstractsciencesociety.model.Usuario) context.getExternalContext().getSessionMap().get("usuario");
+        comentario.setIdusuario(usuario);
+        if (usuario == null) {
+            return "ver-tema?faces-redirect=true&id=" + idTema;
+        }
+        if (idTema == null) {
+            return "index?faces-redirect=true";
+        }
+        ControladorTemas temasControlador = new ControladorTemas();
+        comentario.setIdtema(temasControlador.getTemaById(idTema));
+        // Fecha
+        Date d = new Date();
+        comentario.setFechapublicacion(d);
+
+        EntityManagerFactory emf = EntityProvider.provider();
+        ComentarioJpaController comentarioJpaC = new ComentarioJpaController(emf);
+        comentarioJpaC.create(comentario);
+        return "ver-tema?faces-redirect=true&agregado=1&id=" + idTema;
     }
 
+    public Comentario getComentarioById(String id) {
+        EntityManagerFactory emf = EntityProvider.provider();
+        ComentarioJpaController comentarioJpaC = new ComentarioJpaController(emf);
+        Comentario comentarioMAux = comentarioJpaC.findComentario(Integer.valueOf(id));
+        return comentarioMAux;
+    }
+
+    /**
+     * elimina.
+     */
+    public String elimina(String id) {
+
+        Comentario comentarioMAux = getComentarioById(id);
+
+        EntityManagerFactory emf = EntityProvider.provider();
+        ComentarioJpaController comentarioJpaC = new ComentarioJpaController(emf);
+
+        if (comentarioMAux == null) {
+            return "index?faces-redirect=true&problema=eliminar-comentario";
+        }
+        String idtema = comentarioMAux.getIdtema().getIdtema().toString();
+
+        try {
+            comentarioJpaC.destroy(comentarioMAux.getIdcomentario());
+        } catch (Exception e) {
+            System.out.println(e);
+            return "ver-tema?faces-redirect=true&id=" + idtema + "&problema=eliminar-comentario";
+        }
+        return "ver-tema?faces-redirect=true&id=" + idtema + "&eliminar=comentario";
+    }
+
+    /**
+     * allComentarios.
+     */
+    public String allComentarios(String idTema) {
+        comentarios = new LinkedList(); 
+        EntityManagerFactory emf = EntityProvider.provider();
+        ComentarioJpaController comentarioJpaC = new ComentarioJpaController(emf);
+
+        List<Comentario> c = comentarioJpaC.findComentarios(idTema);
+        if (c == null || c.isEmpty()) {
+            return null;
+        }
+        for (Comentario comentarioAux : c) {
+           comentarios.add(comentarioAux);
+        }
+
+        return null;
+    }
 }

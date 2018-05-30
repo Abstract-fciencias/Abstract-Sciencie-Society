@@ -56,11 +56,6 @@ before insert on Usuario
 for each row execute procedure hash();
 
 
-create trigger cifraUpdate
-before update on Usuario
-for each row execute procedure hash();
-
-
 create or replace function login(correo VARCHAR(80), contraseñaN text) returns boolean as $$
   select exists(select 1
                   from Usuario
@@ -77,25 +72,31 @@ CREATE TABLE Comentario (
     fechaPublicacion TIMESTAMP NOT NULL
 );
 
-ALTER TABLE Comentario ADD CONSTRAINT FKCOMENTARIO
-FOREIGN KEY (idUsuario)
-REFERENCES Usuario (idUsuario);
-
---creacion de tablas para temas y pregutas 
 create table Tema (
     idTema SERIAL PRIMARY KEY NOT NULL,
     Contenido VARCHAR(240),
-    idUsuario INTEGER ,
+    idUsuario INTEGER,
     fechaPublicacion TIMESTAMP NOT NULL,
     disponibilidad VARCHAR(30) NOT NULL,
     idCategoria INTEGER NOT NULL
 );
 
+
+ALTER TABLE Comentario ADD CONSTRAINT FKCOMENTARIO
+FOREIGN KEY (idUsuario)
+REFERENCES Usuario (idUsuario) ON DELETE CASCADE;
+
+ALTER TABLE Comentario ADD COLUMN idTema INTEGER;
+
+ALTER TABLE Comentario ADD CONSTRAINT FKCOMENTARIOIDTEMA
+FOREIGN KEY (idTema)
+REFERENCES Tema (idTema) ON DELETE CASCADE;
+
+--creacion de tablas para temas y pregutas 
 ALTER TABLE Tema ADD CONSTRAINT FKUSUARIO
 FOREIGN KEY (idUsuario)
-REFERENCES  Usuario (idUsuario);
+REFERENCES Usuario (idUsuario) ON DELETE CASCADE;
 
--- Falta indicar que categorías exiten o como se generan
 CREATE TABLE Categoria(
     idCategoria SERIAL PRIMARY KEY,		
     nombre VARCHAR(100) NOT NULL, 
@@ -104,7 +105,7 @@ CREATE TABLE Categoria(
 
 ALTER TABLE Tema ADD CONSTRAINT FKCATEGORIA
 FOREIGN KEY (idCategoria)
-REFERENCES Categoria (idCategoria);
+REFERENCES Categoria (idCategoria) ON DELETE CASCADE;
 
 ALTER TABLE Usuario ADD COLUMN imagen boolean NOT NULL DEFAULT FALSE;
 
