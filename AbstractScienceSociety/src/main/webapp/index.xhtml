@@ -33,6 +33,33 @@
                 </div>
             </div>
         </c:if>
+        <c:if test="#{param.cuenta == 'activada'}">
+            <div id="mensaje-contenedor">
+                <div class="mensaje">
+                    <p>
+                        Tu cuenta ha sido activada.
+                    </p>
+                </div>
+            </div>
+        </c:if>
+        <c:if test="#{param.login == 1}">
+            <div id="mensaje-contenedor">
+                <div class="mensaje">
+                    <p>
+                        Has iniciado sesión.
+                    </p>
+                </div>
+            </div>
+        </c:if>
+        <c:if test="#{param.eliminar == 1}">
+            <div id="mensaje-contenedor">
+                <div class="mensaje">
+                    <p>
+                        El tema ha sido eliminado.
+                    </p>
+                </div>
+            </div>
+        </c:if>
         <div class="verTemas">
             <ui:repeat value="#{creacionTemaBean.temas}" var="tema">
                 <div class="tema">

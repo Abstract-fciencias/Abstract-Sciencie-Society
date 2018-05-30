@@ -106,7 +106,7 @@ public class Usuario implements Serializable {
      * imagen.
      */
     @Basic(optional = false)
-    @Column(name = "urlimagen")
+    @Column(name = "imagen")
     private boolean imagen;
 
     /**

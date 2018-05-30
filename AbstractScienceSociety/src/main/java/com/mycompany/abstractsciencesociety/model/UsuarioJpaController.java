@@ -246,6 +246,7 @@ public class UsuarioJpaController implements Serializable {
      * @return usuario
      */
     public Usuario findUsuario(String correo) {
+        System.out.println("Correo: " + correo);
         EntityManager em = getEntityManager();
         Query q = em.createNamedQuery("Usuario.findByCorreo")
                 .setParameter("correo", correo);

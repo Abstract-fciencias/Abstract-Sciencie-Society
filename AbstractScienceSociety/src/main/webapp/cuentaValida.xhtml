@@ -12,7 +12,7 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <f:metadata>
-
+            <f:viewAction action="#{registroControlador.activeUser(param.correo)}" />
         </f:metadata>
 
         <title>Crear | Abstract Science Society</title>
@@ -21,14 +21,6 @@ and open the template in the editor.
         <h:outputStylesheet name="css/styles.css" />
     </h:head>
     <h:body>
-        <ui:include src="./header.xhtml" />
-        <ui:include src="./menu.xhtml"/>
-        <h:form>
-            <p:commandButton  action="#{registroControlador.activeUser(param.correo)}" value="Unirme">
-
-            </p:commandButton>
-        </h:form>
-
 
 
         <ui:include src="./footer.xhtml" />
