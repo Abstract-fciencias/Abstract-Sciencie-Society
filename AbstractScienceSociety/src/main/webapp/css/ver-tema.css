@@ -12,6 +12,8 @@ and open the template in the editor.
     display: block;
     margin: 0 auto;
     width: 600px;
+    overflow-y: scroll;
+    height: 700px;
 }
 
 .comentario-comentario {
@@ -49,6 +51,34 @@ and open the template in the editor.
     margin-top: 30px;
 }
 
+.eliminar-tema {
+    display: inline-block;
+    position: absolute;
+    background-color: rgba(186, 0, 0);
+    padding: 5px 10px;
+    right: 0px;
+}
+
+.eliminar-tema a:link {
+    color: white;
+    text-decoration: none;
+}
+
+.eliminar-tema a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.eliminar-tema a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.eliminar-tema a:active {
+    color: white;
+    text-decoration: none;
+}
+
 .tema {
     border-top: 1px solid black;
      margin: 0 auto;
@@ -59,14 +89,18 @@ and open the template in the editor.
     border-top-width: 0px;
 }
 
+.titulo-tema {
+    position: relative;
+}
+
 .Agrega-comentario{
-    width: 50%;
-    margin-left: auto;
-    color:aqua;
+    width: 60%;
 }
 
 .Agrega-comentario textArea{
-    width: 50%;
+    width: 96%;
+    font-size: 14px;
+    height: 90px;
 }
 
 .infoTema {

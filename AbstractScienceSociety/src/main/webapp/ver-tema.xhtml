@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="css/index.css"></link>
     <link rel="stylesheet" type="text/css" href="css/agregar-comentario.css"></link>
     <link rel="stylesheet" type="text/css" href="css/ver-tema.css"></link>
+    <link rel="stylesheet" type="text/css" href="css/mensajes.css"></link>
     <title>Abstract | Ver Tema </title>
 
 </h:head>
@@ -25,12 +26,23 @@
     <ui:include src="./header.xhtml" />
     <ui:include src="./menu.xhtml"/>
 
+    <c:if test="#{param.agregado== 1}">
+        <div id="mensaje-contenedor">
+            <div class="mensaje">
+                <p>
+                    Se ha agreado tu comentario.
+                </p>
+            </div>
+        </div>
+    </c:if>
     <div class = "ver-tema">
         <div class = "tema">
             <div class="titulo-tema">
                 <h3 class="contenido-tema">#{controladorTemas.temaM.contenido}</h3>
                 <c:if test="#{usuarioBean.isLoggedAdmin()}">
-                    <a href="/AbstractScienceSociety/eliminar-tema.xhtml?id=#{controladorTemas.temaM.idtema}">Eliminar</a>
+                    <div class="eliminar-tema">
+                        <a href="/AbstractScienceSociety/eliminar-tema.xhtml?id=#{controladorTemas.temaM.idtema}">Eliminar</a>
+                    </div>
                 </c:if>
             </div>
             <h3 class="nombre-tema">#{controladorTemas.temaM.idcategoria.nombre}</h3>
@@ -75,19 +87,19 @@
                 </div>
             </ui:repeat>
              
+            <c:if test="#{usuarioBean.isLogged()}">
+            <div class="Agrega-comentario" >
+                <h:form>
+                    <p:inputTextarea class="nuevo-comentario"  maxlength="255" value="#{comentarioControlador.comentario.comentario}">
+                    </p:inputTextarea>
+                    <input type="hidden" name="idtema" value="#{param.id}" />
+                    <p:commandButton value="Comentar" action="#{comentarioControlador.agregarComentario()}" style="padding: 7px 12px;color:white; background: navy ">
+                        
+                    </p:commandButton>
+                </h:form>            
+            </div>
+            </c:if>
         </div>
-        <c:if test="#{usuarioBean.isLogged()}">
-        <div class="Agrega-comentario" style="width: 35%;margin:auto; background:white ;color:white">
-            <h:form>
-                <p:inputTextarea  maxlength="255" value="#{comentarioControlador.comentario.comentario}">
-                </p:inputTextarea>
-                <input type="hidden" name="idtema" value="#{param.id}" />
-                <p:commandButton value="Comentar" action="#{comentarioControlador.agregarComentario()}" style="padding: 7px 12px;color:white; background: navy ">
-                    
-                </p:commandButton>
-            </h:form>            
-        </div>
-        </c:if>
     </div>
          
  

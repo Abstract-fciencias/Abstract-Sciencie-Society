@@ -116,8 +116,6 @@ public class Comentario implements Serializable {
     }
 
     public Usuario getIdusuario() {
-        System.out.println("lalalalalalala");
-        System.out.println(idusuario.getImagen());
         return idusuario;
     }
 
