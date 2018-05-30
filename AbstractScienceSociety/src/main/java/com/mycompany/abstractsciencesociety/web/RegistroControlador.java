@@ -186,7 +186,7 @@ public class RegistroControlador {
             UsuarioJpaController usuarioJpaC = new UsuarioJpaController(emf);
             mandarCorreo();
             usuarioJpaC.create(nuevoUsuario);
-            user = null;
+            user = new Usuario();
 
             // Agregando el nuevo usuario a nuestra lista de usuarios.
             usuarios.add(nuevoUsuario);
@@ -249,6 +249,17 @@ public class RegistroControlador {
             enviado = false;
         }
         return enviado;
+    }
+
+    public String activeUser(String correo) {
+        com.mycompany.abstractsciencesociety.model.Usuario usuario = controladorUsuario.findUsuario(correo);
+        usuario.setConfirmado(true);
+        try {
+            controladorUsuario.edit(usuario);
+        } catch (Exception e) {
+            System.out.println("Problemas al activar un usuario");
+        }
+        return "index";
     }
 
 }

@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author edervs
  */
 @Entity
-@Table(name = "usuario", schema="public")
+@Table(name = "usuario", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlTransient;
             name = "canLogin",
             query = "select login(?, ?)"
     )
-    , @NamedNativeQuery( 
+    , @NamedNativeQuery(
             name = "Usuario.findByCorreoAndContraseña",
             query = "select * from usuario where correo = ?1 and contraseña = crypt(?2, contraseña)",
             resultClass = Usuario.class
@@ -106,8 +106,15 @@ public class Usuario implements Serializable {
      * imagen.
      */
     @Basic(optional = false)
-    @Column(name = "imagen")
+    @Column(name = "urlimagen")
     private boolean imagen;
+
+    /**
+     * Confirmado.
+     */
+    @Basic(optional = false)
+    @Column(name = "confirmado")
+    private boolean confirmado;
 
     /**
      * Usuario.
@@ -117,6 +124,7 @@ public class Usuario implements Serializable {
 
     /**
      * Usuario.
+     *
      * @param idusuarioAux
      */
     public Usuario(final Integer idusuarioAux) {
@@ -125,6 +133,7 @@ public class Usuario implements Serializable {
 
     /**
      * Usuario.
+     *
      * @param idusuarioAux
      * @param nombreAux
      * @param correoAux
@@ -145,6 +154,7 @@ public class Usuario implements Serializable {
 
     /**
      * Usuario.
+     *
      * @param nombreAux
      * @param correoAux
      * @param contraseñaAux
@@ -163,8 +173,17 @@ public class Usuario implements Serializable {
         this.imagen = imagen;
     }
 
+    public boolean isConfirmado() {
+        return confirmado;
+    }
+
+    public void setConfirmado(boolean confirmado) {
+        this.confirmado = confirmado;
+    }
+
     /**
      * getIdusuario.
+     *
      * @return idusuario
      */
     public Integer getIdusuario() {
@@ -173,6 +192,7 @@ public class Usuario implements Serializable {
 
     /**
      * setIdusuario
+     *
      * @param idusuarioAux
      */
     public void setIdusuario(final Integer idusuarioAux) {
@@ -181,6 +201,7 @@ public class Usuario implements Serializable {
 
     /**
      * getNombre.
+     *
      * @return nombre
      */
     public String getNombre() {
@@ -189,6 +210,7 @@ public class Usuario implements Serializable {
 
     /**
      * setNombre.
+     *
      * @param nombreAux
      */
     public void setNombre(final String nombreAux) {
@@ -197,6 +219,7 @@ public class Usuario implements Serializable {
 
     /**
      * getCorreo.
+     *
      * @return correo
      */
     public String getCorreo() {
@@ -205,6 +228,7 @@ public class Usuario implements Serializable {
 
     /**
      * setCorreo.
+     *
      * @param correoAux
      */
     public void setCorreo(final String correoAux) {
@@ -213,6 +237,7 @@ public class Usuario implements Serializable {
 
     /**
      * getContraseña.
+     *
      * @return contraseña
      */
     public String getContraseña() {
@@ -221,6 +246,7 @@ public class Usuario implements Serializable {
 
     /**
      * setContraseña.
+     *
      * @param contraseñaAux
      */
     public void setContraseña(final String contraseñaAux) {
@@ -229,6 +255,7 @@ public class Usuario implements Serializable {
 
     /**
      * getTipo.
+     *
      * @return tipo
      */
     public String getTipo() {
@@ -237,6 +264,7 @@ public class Usuario implements Serializable {
 
     /**
      * setTipo.
+     *
      * @param tipoAux
      */
     public void setTipo(final String tipoAux) {
@@ -245,6 +273,7 @@ public class Usuario implements Serializable {
 
     /**
      * getCarrera.
+     *
      * @return carrera
      */
     public String getCarrera() {
@@ -253,6 +282,7 @@ public class Usuario implements Serializable {
 
     /**
      * setCarrera.
+     *
      * @param carreraAux
      */
     public void setCarrera(final String carreraAux) {
@@ -261,6 +291,7 @@ public class Usuario implements Serializable {
 
     /**
      * getAnioingreso.
+     *
      * @return anioingreso
      */
     public String getAnioingreso() {
@@ -269,6 +300,7 @@ public class Usuario implements Serializable {
 
     /**
      * setAnioingreso.
+     *
      * @param anioingresoAux
      */
     public void setAnioingreso(final String anioingresoAux) {
@@ -277,6 +309,7 @@ public class Usuario implements Serializable {
 
     /**
      * getImagen.
+     *
      * @return imagen
      */
     public boolean getImagen() {
@@ -285,6 +318,7 @@ public class Usuario implements Serializable {
 
     /**
      * setImagen.
+     *
      * @param imagenAux
      */
     public void setImagen(final boolean imagenAux) {
@@ -317,6 +351,7 @@ public class Usuario implements Serializable {
 
     /**
      * getTemasCollection.
+     *
      * @return temaCollection
      */
     @XmlTransient
@@ -326,6 +361,7 @@ public class Usuario implements Serializable {
 
     /**
      * setTemaCollection.
+     *
      * @param temaCollectionAux
      */
     public void setTemaCollection(final Collection<Tema> temaCollectionAux) {

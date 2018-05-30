@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="css/index.css"></link>
     <h:outputStylesheet name="css/styles.css" />
     <link rel="stylesheet" type="text/css" href="css/mensajes.css"></link>
+    <link rel="stylesheet" type="text/css" href="css/perfil.css"></link>
   </h:head>
   <h:body>
       
@@ -73,7 +74,11 @@
     
     <h:form id="registro-form">
         <div id="registro">
-            <picture id="imagen-usuario-picture"></picture>
+            <picture id="imagen-usuario-picture">
+                <c:if test="#{usuarioController.usuarioM.imagen}">
+                <img src="resources/media/#{usuarioController.usuarioM.nombre}.jpeg" alt="" ></img>
+                </c:if>
+            </picture>
             <div id="formulario-usuario">
                 <p:inputText class="input-text input" type="text" placeholder="Correo Electronico" value="#{usuarioController.usuarioM.correo}" required="true" requiredMessage="Correo requerido"/>
                 <p:password class="input-text input" value="#{usuarioController.contraseña}" placeholder="Contraseña" id="Password" requiredMessage="Contraseña requerida"/>

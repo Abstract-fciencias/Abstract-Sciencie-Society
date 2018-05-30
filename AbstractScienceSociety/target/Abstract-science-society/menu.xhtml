@@ -9,7 +9,13 @@
     <div id="menu">
         <div id="imagen-usuario-div">
             <div id="imagen-usuario-contenedor">
-                <picture>imagen usuario fake</picture>
+                <picture>
+                    <c:if test="#{usuarioBean.isLogged()}">
+                        <c:if test="#{usuarioBean.getUsuario().imagen}">
+                        <img src="resources/media/#{usuarioBean.getUsuario().nombre}.jpeg" alt="" ></img>
+                        </c:if>
+                    </c:if>
+                </picture>
                 <c:if test="#{!usuarioBean.isLogged()}">
                 <a id="iniciar-sesion" href="/AbstractScienceSociety/inicio_de_sesion.xhtml"><h3>Iniciar sesion</h3></a>
                 <a id="registrarse" href="/AbstractScienceSociety/registro.xhtml"><h3>Registrarse</h3></a>
