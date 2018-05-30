@@ -34,10 +34,18 @@ nav ul {
     position: absolute;
 }
 
-#cerrar-sesion {
+.command-link{
     margin-left: 240px;
     top: 160px;
     position: absolute;
+    
+}
+
+
+.category-link2 {
+    
+    color:white;
+    text-decoration: none;
 }
 
 #imagen-usuario-contenedor {
@@ -123,4 +131,13 @@ nav ul {
 .link-menu:active {
     color: white;
     text-decoration: none;
+}
+.MenuCategorias{
+    color:white;
+    
+}
+
+.ui-menu .ui-menuitem .ui-state-hover{
+color : white;
+
 }

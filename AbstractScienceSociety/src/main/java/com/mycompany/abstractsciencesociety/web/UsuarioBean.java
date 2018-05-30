@@ -122,5 +122,33 @@ public class UsuarioBean {
         }
         return null;
     }
-
+    
+     /**
+     * loggeadoAdmin.
+     * @return redirect.
+     */
+    public String loggeadoAdmin() {
+        FacesContext context = getCurrentInstance();
+        com.mycompany.abstractsciencesociety.model.Usuario l = (com.mycompany.abstractsciencesociety.model.Usuario) context.getExternalContext().getSessionMap().get("usuario");
+        if (l == null){
+            return HOME_PAGE_REDIRECT;
+        }
+        if (!l.getTipo().equals("admin")) {
+            return HOME_PAGE_REDIRECT;
+        }
+        return null;
+    }
+    
+     /**
+     * isLoggedAdmin.
+     * @return boolean
+     */
+    public boolean isLoggedAdmin() {
+        FacesContext context = getCurrentInstance();
+        com.mycompany.abstractsciencesociety.model.Usuario l = (com.mycompany.abstractsciencesociety.model.Usuario) context.getExternalContext().getSessionMap().get("usuario");
+        if (l != null) {
+            return l.getTipo().equals("admin");
+        }
+        return false;
+}
 }

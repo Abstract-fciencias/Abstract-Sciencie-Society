@@ -145,27 +145,35 @@ public class TemaJpaController implements Serializable {
      * @throws NonexistentEntityException
      */
     public void destroy(Integer id) throws NonexistentEntityException {
+        System.out.println(id);
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             Tema tema;
             try {
+                System.out.println("1");
                 tema = em.getReference(Tema.class, id);
+                System.out.println("1.1");
                 tema.getIdtema();
+                System.out.println("2");
             } catch (EntityNotFoundException enfe) {
+                System.out.println("3");
                 throw new NonexistentEntityException("The tema with id " + id + " no longer exists.", enfe);
             }
             Categoria idcategoria = tema.getIdcategoria();
             if (idcategoria != null) {
+                System.out.println("4");
                 idcategoria.getTemaCollection().remove(tema);
                 idcategoria = em.merge(idcategoria);
             }
             Usuario idusuario = tema.getIdusuario();
             if (idusuario != null) {
+                System.out.println("5");
                 idusuario.getTemaCollection().remove(tema);
                 idusuario = em.merge(idusuario);
             }
+             
             em.remove(tema);
             em.getTransaction().commit();
         } finally {

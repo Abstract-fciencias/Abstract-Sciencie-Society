@@ -50,6 +50,10 @@ public class CreacionTemaBean {
      */
     private int idcategoria;
     /**
+     * busqueda..
+     */
+    private String busqueda;
+    /**
      * temas.
      */
     private final List<Tema> temas;
@@ -71,6 +75,8 @@ public class CreacionTemaBean {
           temacontrolador  = new TemaJpaController(emf);
           llenaCategorias();
           allTemas();
+          busqueda = "";
+          
     }
 
     /**
@@ -95,17 +101,25 @@ public class CreacionTemaBean {
 
         // Mandando notificación
         String nombre = tema.getContenido();
-        return "index.xhtml?faces-redirect=true";
+        return   "ver-tema.xhtml?faces-redirect=true&id="+String.valueOf(tema.getIdtema());
         //String requ = String.format("ver-tema?faces-redirect=true&amp;idTema = %s", nombre);
         //return  requ;
     }
 
+    public String getBusqueda() {
+        return busqueda;
+    }
+
+    public void setBusqueda(String busqueda) {
+        this.busqueda = busqueda;
+    }
+    
     /**
      * asignaCategoria.
      */
-    public void asignaCategoria () {
-        for (Categoria c : categorias) {
-             if (c.getIdcategoria() == idcategoria) {
+    public void asignaCategoria(){
+        for(Categoria c : categorias){
+             if(c.getIdcategoria() == idcategoria){
                 tema.setIdcategoria(c);
                 return;
              }
@@ -220,4 +234,33 @@ public class CreacionTemaBean {
            temas.add(temaAux);
         }
     }
+    public void buscaPorCategoria(Categoria categoria){
+        System.out.print("holi eder");
+        List<Tema> aux = temacontrolador.findTemaEntities();
+        List<Tema> nueva = new LinkedList<Tema>();
+        for(Tema t : aux ){
+            if(t.getIdcategoria().equals(categoria)){
+               nueva.add(t);
+            }
+        }
+        
+        temas = nueva;
+        
+    }
+
+    
+
+    public String busca(){
+      List<Tema> aux = temacontrolador.findTemaEntities();
+        List<Tema> nueva = new LinkedList<Tema>();
+        for(Tema t : aux ){
+            if(t.getContenido().toLowerCase().contains(busqueda.toLowerCase())){
+               nueva.add(t);
+            }
+        }
+        
+        temas = nueva; 
+        return "http://localhost:8084/AbstractScienceSociety/index.xhtml";
+    }
+    
 }

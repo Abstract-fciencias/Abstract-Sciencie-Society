@@ -173,7 +173,7 @@ public class Categoria implements Serializable {
         if ((this.idcategoria == null && other.idcategoria != null) || (this.idcategoria != null && !this.idcategoria.equals(other.idcategoria))) {
             return false;
         }
-        return true;
+        return this.nombre.equals(other.nombre);
     }
 
     @Override
