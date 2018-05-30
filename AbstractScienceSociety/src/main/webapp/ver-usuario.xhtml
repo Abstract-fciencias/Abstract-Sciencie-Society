@@ -98,6 +98,7 @@
                     <f:selectItem itemValue="trabajador" itemLabel="Trabajador"/>
                 </h:selectOneMenu>
                 <p:inputText class="input-text input" type="text" placeholder="Año de ingreso" value="#{usuarioController.usuarioM.anioingreso}" required="true" requiredMessage="Año de ingreso requerido"/>
+                <h:selectBooleanCheckbox value="#{usuarioController.usuarioM.confirmado}" /> confirmado
             </div>
         </div>
         <div class="div-submit">
