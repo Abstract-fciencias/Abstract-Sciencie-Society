@@ -33,6 +33,15 @@
                 </div>
             </div>
         </c:if>
+        <c:if test="#{param.login == 1}">
+            <div id="mensaje-contenedor">
+                <div class="mensaje">
+                    <p>
+                        Has iniciado sesión.
+                    </p>
+                </div>
+            </div>
+        </c:if>
         <c:if test="#{param.eliminar == 1}">
             <div id="mensaje-contenedor">
                 <div class="mensaje">

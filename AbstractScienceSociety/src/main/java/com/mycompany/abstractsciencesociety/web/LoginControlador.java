@@ -72,7 +72,7 @@ public class LoginControlador {
         if (logged) {
             FacesContext context = getCurrentInstance();
             context.getExternalContext().getSessionMap().put("usuario", usuarioM);
-            return "index.xhtml?faces-redirect=true";
+            return "index.xhtml?faces-redirect=true&login=1";
         }
         usuarioM = jpaController.findUsuario(usuario.getCorreo());
         if (usuarioM != null) {
