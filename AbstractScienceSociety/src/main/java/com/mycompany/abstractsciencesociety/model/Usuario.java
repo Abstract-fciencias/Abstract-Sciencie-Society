@@ -52,9 +52,6 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Usuario implements Serializable {
 
     @Basic(optional = false)
-    @Column(name = "urlimagen")
-    private String urlimagen;
-    @Basic(optional = false)
     @Column(name = "confirmado")
     private boolean confirmado;
     @OneToMany(mappedBy = "idusuario")
@@ -339,14 +336,6 @@ public class Usuario implements Serializable {
      */
     public void setTemaCollection(final Collection<Tema> temaCollectionAux) {
         this.temaCollection = temaCollectionAux;
-    }
-
-    public String getUrlimagen() {
-        return urlimagen;
-    }
-
-    public void setUrlimagen(String urlimagen) {
-        this.urlimagen = urlimagen;
     }
 
     public boolean getConfirmado() {

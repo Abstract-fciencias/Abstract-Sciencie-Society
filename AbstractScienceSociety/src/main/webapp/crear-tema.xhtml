@@ -17,6 +17,7 @@ and open the template in the editor.
      
         <title>Crear | Abstract Science Society</title>
         <link rel="stylesheet" type="text/css" href="css/index.css"></link>
+        <link rel="stylesheet" type="text/css" href="css/mensajes"></link>
         
         <h:outputStylesheet name="css/styles.css" />
     </h:head>
@@ -29,6 +30,15 @@ and open the template in the editor.
        	<div class = "Tema">
             <p:inputText class="input-text input" type="text" maxlength="240"  placeholder="Tema Nuevo" value="#{creacionTemaBean.tema.contenido}" required="true" requiredMessage="El tema es un campo requerido para la creación"/>
             
+        <c:if test="#{param.register == 1}">
+            <div id="mensaje-contenedor">
+                <div class="mensaje">
+                    <p>
+                        Has sido registrado correctamente. ¡Inicia Sesión!
+                    </p>
+                </div>
+            </div>
+        </c:if>
        	</div>
        	<p>Categoria</p>
          <h:selectOneMenu class="input input-select" value="#{creacionTemaBean.idcategoria}" required="true" requiredMessage="Categoria requerida">

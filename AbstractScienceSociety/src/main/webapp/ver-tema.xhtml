@@ -35,6 +35,24 @@
             </div>
         </div>
     </c:if>
+    <c:if test="#{param.problema == 'eliminar-comentario'}">
+        <div id="mensaje-contenedor">
+            <div class="mensaje mensaje-error">
+                <p>
+                    Hubo un problema que impidió que el comentario se borrara.
+                </p>
+            </div>
+        </div>
+    </c:if>
+    <c:if test="#{param.eliminar == 'comentario'}">
+        <div id="mensaje-contenedor">
+            <div class="mensaje">
+                <p>
+                    El comentario fue eliminado.
+                </p>
+            </div>
+        </div>
+    </c:if>
     <div class = "ver-tema">
         <div class = "tema">
             <div class="titulo-tema">
