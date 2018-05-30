@@ -51,9 +51,6 @@ import javax.xml.bind.annotation.XmlTransient;
 })
 public class Usuario implements Serializable {
 
-    @Basic(optional = false)
-    @Column(name = "confirmado")
-    private boolean confirmado;
     @OneToMany(mappedBy = "idusuario")
     private Collection<Comentario> comentarioCollection;
 
@@ -183,9 +180,6 @@ public class Usuario implements Serializable {
         return confirmado;
     }
 
-    public void setConfirmado(boolean confirmado) {
-        this.confirmado = confirmado;
-    }
 
     /**
      * getIdusuario.

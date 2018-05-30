@@ -68,11 +68,14 @@ public class LoginControlador {
      */
     public String canLogin() {
         com.mycompany.abstractsciencesociety.model.Usuario usuarioM = jpaController.findUsuario(usuario.getCorreo(), usuario.getContraseña());
-        boolean logged = usuarioM != null;
+        boolean logged = usuarioM != null && usuarioM.getConfirmado();
         if (logged) {
             FacesContext context = getCurrentInstance();
             context.getExternalContext().getSessionMap().put("usuario", usuarioM);
             return "index.xhtml?faces-redirect=true&login=1";
+        }
+        if (usuarioM != null && !usuarioM.getConfirmado()) {
+            return "inicio_de_sesion?faces-redirect=true&confirmado=1";
         }
         usuarioM = jpaController.findUsuario(usuario.getCorreo());
         if (usuarioM != null) {

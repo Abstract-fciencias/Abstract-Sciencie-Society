@@ -29,6 +29,15 @@
             </div>
         </div>
     </c:if>
+    <c:if test="#{param.confirmado == 1}">
+        <div id="mensaje-contenedor">
+            <div class="mensaje mensaje-error">
+                <p>
+                    Tu correo no ha sido confirmado. ¡Revisa tu correo!
+                </p>
+            </div>
+        </div>
+    </c:if>
     <c:if test="#{param.password == 1}">
         <div id="mensaje-contenedor">
             <div class="mensaje mensaje-error">
