@@ -66,6 +66,11 @@
                         #{comentario.comentario}
                     </div>
                     <div class="usuario-comentario">
+                        <ui:fragment rendered="#{usuarioBean.isLoggedAdmin()}">
+                            <div class="eliminar-comentario">
+                                <a href="/AbstractScienceSociety/eliminar-comentario.xhtml?id=#{comentario.idcomentario}">x</a>
+                            </div>
+                        </ui:fragment>
                         <div class="contenedor-usuario-comentario">
                             <picture class="usuario-imagen-comentario">
                                 <ui:fragment rendered="#{comentario.idusuario.imagen}">

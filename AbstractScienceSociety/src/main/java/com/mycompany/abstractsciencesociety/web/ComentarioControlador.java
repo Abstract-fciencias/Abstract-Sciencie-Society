@@ -97,6 +97,37 @@ public class ComentarioControlador {
         return "ver-tema?faces-redirect=true&agregado=1&id=" + idTema;
     }
 
+    public Comentario getComentarioById(String id) {
+        EntityManagerFactory emf = EntityProvider.provider();
+        ComentarioJpaController comentarioJpaC = new ComentarioJpaController(emf);
+        Comentario comentarioMAux = comentarioJpaC.findComentario(Integer.valueOf(id));
+        return comentarioMAux;
+    }
+
+    /**
+     * elimina.
+     */
+    public String elimina(String id) {
+
+        Comentario comentarioMAux = getComentarioById(id);
+
+        EntityManagerFactory emf = EntityProvider.provider();
+        ComentarioJpaController comentarioJpaC = new ComentarioJpaController(emf);
+
+        if (comentarioMAux == null) {
+            return "index?faces-redirect=true&problema=eliminar-comentario";
+        }
+        String idtema = comentarioMAux.getIdtema().getIdtema().toString();
+
+        try {
+            comentarioJpaC.destroy(comentarioMAux.getIdcomentario());
+        } catch (Exception e) {
+            System.out.println(e);
+            return "ver-tema?faces-redirect=true&id=" + idtema + "&problema=eliminar-comentario";
+        }
+        return "ver-tema?faces-redirect=true&id=" + idtema + "&eliminar=comentario";
+    }
+
     /**
      * allComentarios.
      */
