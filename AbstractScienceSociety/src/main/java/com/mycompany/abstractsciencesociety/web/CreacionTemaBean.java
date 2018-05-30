@@ -56,7 +56,7 @@ public class CreacionTemaBean {
     /**
      * temas.
      */
-    private final List<Tema> temas;
+    private List<Tema> temas;
     /**
      * temacontrolador.
      */
