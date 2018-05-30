@@ -75,7 +75,7 @@ CREATE TABLE Comentario (
 create table Tema (
     idTema SERIAL PRIMARY KEY NOT NULL,
     Contenido VARCHAR(240),
-    idUsuario INTEGER ,
+    idUsuario INTEGER,
     fechaPublicacion TIMESTAMP NOT NULL,
     disponibilidad VARCHAR(30) NOT NULL,
     idCategoria INTEGER NOT NULL
@@ -95,9 +95,8 @@ REFERENCES Tema (idTema) ON DELETE CASCADE;
 --creacion de tablas para temas y pregutas 
 ALTER TABLE Tema ADD CONSTRAINT FKUSUARIO
 FOREIGN KEY (idUsuario)
-REFERENCES  Usuario (idUsuario) ON DELETE CASCADE;
+REFERENCES Usuario (idUsuario) ON DELETE CASCADE;
 
--- Falta indicar que categorías exiten o como se generan
 CREATE TABLE Categoria(
     idCategoria SERIAL PRIMARY KEY,		
     nombre VARCHAR(100) NOT NULL, 
