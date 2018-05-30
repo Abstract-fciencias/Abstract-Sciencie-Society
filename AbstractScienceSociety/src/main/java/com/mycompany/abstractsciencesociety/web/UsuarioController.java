@@ -15,7 +15,6 @@ import javax.faces.context.FacesContext;
 import javax.persistence.EntityManagerFactory;
 import com.mycompany.abstractsciencesociety.web.exceptions.NonexistentEntityException;
 
-
 import static javax.faces.context.FacesContext.getCurrentInstance;
 
 /**
@@ -38,12 +37,12 @@ public class UsuarioController {
      * usuario.
      */
     private Usuario usuario;
-    
+
     /**
      * usuario de model.
      */
     private com.mycompany.abstractsciencesociety.model.Usuario usuarioM;
-    
+
     /**
      * contraseñaCambio.
      */
@@ -66,6 +65,7 @@ public class UsuarioController {
 
     /**
      * getusuario.
+     *
      * @return usuario
      */
     public Usuario getusuario() {
@@ -74,14 +74,16 @@ public class UsuarioController {
 
     /**
      * setUsuarioM.
+     *
      * @param usuario
      */
     public void setUsuarioM(com.mycompany.abstractsciencesociety.model.Usuario usuario) {
         this.usuarioM = usuario;
     }
-    
+
     /**
      * getusuarioM.
+     *
      * @return usuario
      */
     public com.mycompany.abstractsciencesociety.model.Usuario getUsuarioM() {
@@ -90,14 +92,16 @@ public class UsuarioController {
 
     /**
      * setUsuario.
+     *
      * @param usuario
      */
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
+
     /**
      * getConfirmacionContraseña.
+     *
      * @return contraseña
      */
     public String getContraseña() {
@@ -106,14 +110,16 @@ public class UsuarioController {
 
     /**
      * setContraseña.
+     *
      * @param usuario
      */
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-    
+
     /**
      * getContraseña.
+     *
      * @return contraseña
      */
     public String getConfirmacionContraseña() {
@@ -122,6 +128,7 @@ public class UsuarioController {
 
     /**
      * setContraseña.
+     *
      * @param usuario
      */
     public void setConfirmacionContraseña(String contraseña) {
@@ -130,6 +137,7 @@ public class UsuarioController {
 
     /**
      * canLogin.
+     *
      * @return redirect
      */
     public String canLogin() {
@@ -145,6 +153,7 @@ public class UsuarioController {
 
     /**
      * getUsuarioById.
+     *
      * @param idUsuario
      * @return redirect
      */
@@ -152,9 +161,10 @@ public class UsuarioController {
         com.mycompany.abstractsciencesociety.model.Usuario usuarioM = jpaController.findUsuario(Integer.valueOf(idUsuario));
         return usuarioM;
     }
-    
+
     /**
      * setUsuarioById.
+     *
      * @param idUsuario
      * @return redirect
      */
@@ -170,7 +180,6 @@ public class UsuarioController {
         return null;
     }
 
-
     /**
      * updateUsuario.
      *
@@ -180,7 +189,7 @@ public class UsuarioController {
         if (this.usuarioM == null) {
             return "usuarios?faces-redirect=true&actualizar=1";
         }
-        
+
         if (contraseña != null && !contraseña.equals("")) {
             if (confirmacionContraseña != null && !confirmacionContraseña.equals("")) {
                 if (contraseña.equals(confirmacionContraseña)) {
@@ -202,7 +211,7 @@ public class UsuarioController {
         }
         return "ver-usuario?faces-redirect=true&idUsuario=" + usuarioM.getIdusuario().toString() + "&actualizado=1";
     }
-    
+
     /**
      * deleteUsuario.
      *
