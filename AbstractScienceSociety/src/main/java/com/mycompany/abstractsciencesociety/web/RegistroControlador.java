@@ -132,7 +132,7 @@ public class RegistroControlador {
         try{
             InputStream in = image.getInputStream();
 
-            File f = new File(System.getProperty("user.dir") + "/src/main/webapp/media/" + user.getNombre() + ".jpeg");
+            File f = new File(System.getProperty("user.dir") + "/src/main/webapp/resources/media/" + user.getNombre() + ".jpeg");
             f.createNewFile();
             FileOutputStream out = new FileOutputStream(f);
 

@@ -6,6 +6,7 @@
 package com.mycompany.abstractsciencesociety.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -17,10 +18,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -36,6 +39,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Tema.findByFechapublicacion", query = "SELECT t FROM Tema t WHERE t.fechapublicacion = :fechapublicacion")
     , @NamedQuery(name = "Tema.findByDisponibilidad", query = "SELECT t FROM Tema t WHERE t.disponibilidad = :disponibilidad")})
 public class Tema implements Serializable {
+
+    @OneToMany(mappedBy = "idtema")
+    private Collection<Comentario> comentarioCollection;
 
     private static final long serialVersionUID = 1L;
     /**
@@ -225,5 +231,14 @@ public class Tema implements Serializable {
     @Override
     public String toString() {
         return "com.mycompany.abstractsciencesociety.model.Tema[ idtema=" + idtema + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Comentario> getComentarioCollection() {
+        return comentarioCollection;
+    }
+
+    public void setComentarioCollection(Collection<Comentario> comentarioCollection) {
+        this.comentarioCollection = comentarioCollection;
     }
 }

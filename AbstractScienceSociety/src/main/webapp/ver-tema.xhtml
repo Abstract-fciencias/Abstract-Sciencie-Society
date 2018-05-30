@@ -11,6 +11,7 @@
 
     <f:metadata>
         <f:viewAction action="#{controladorTemas.setTemaById(param.id)}" />
+        <f:viewAction action="#{comentarioControlador.setComentarioIdTema(param.id)}" />
     </f:metadata>
     
     <link rel="stylesheet" type="text/css" href="css/index.css"></link>
@@ -55,10 +56,10 @@
         </div>
         <div class="Agrega-comentario" style="width: 35%;margin:auto; background:white ;color:white">
             <h:form>
-                <p:inputTextarea  maxlength="255">
-                    
+                <p:inputTextarea  maxlength="255" value="#{comentarioControlador.comentario.comentario}">
                 </p:inputTextarea>
-                <p:commandButton value = "Comentar"  style="padding: 7px 12px;color:white; background: navy ">
+                <input type="hidden" name="idtema" value="#{param.id}" />
+                <p:commandButton value="Comentar" action="#{comentarioControlador.agregarComentario()}" style="padding: 7px 12px;color:white; background: navy ">
                     
                 </p:commandButton>
             </h:form>            

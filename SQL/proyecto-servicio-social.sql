@@ -76,6 +76,12 @@ ALTER TABLE Comentario ADD CONSTRAINT FKCOMENTARIO
 FOREIGN KEY (idUsuario)
 REFERENCES Usuario (idUsuario);
 
+ALTER TABLE Comentario ADD COLUMN idTema INTEGER;
+
+ALTER TABLE Comentario ADD CONSTRAINT FKCOMENTARIOIDTEMA
+FOREIGN KEY (idTema)
+REFERENCES Tema (idTema);
+
 --creacion de tablas para temas y pregutas 
 create table Tema (
     idTema SERIAL PRIMARY KEY NOT NULL,

@@ -6,11 +6,17 @@
 package com.mycompany.abstractsciencesociety.web;
 
 import java.util.Locale;
+import java.util.Date;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import com.mycompany.abstractsciencesociety.model.Comentario;
+import com.mycompany.abstractsciencesociety.model.EntityProvider;
+import com.mycompany.abstractsciencesociety.model.ComentarioJpaController;
+import javax.persistence.EntityManagerFactory;
 
 /**
  *
@@ -21,35 +27,19 @@ import javax.faces.context.FacesContext;
 @RequestScoped
 public class ComentarioControlador {
     /**
-     * user.
-     */
-    private Usuario user;
-    /**
      * comentario.
      */
-    private String comentario;
-
+    private Comentario comentario;
     /**
-     * getUser.
-     * @return usuario
+     * comentarios.
      */
-    public Usuario getUser() {
-        return user;
-    }
-
-    /**
-     * setUser.
-     * @param user
-     */
-    public void setUser(final Usuario user) {
-        this.user = user;
-    }
+    private List<Comentario> comentarios;
 
     /**
      * getComentario.
      * @return comentario
      */
-    public String getComentario() {
+    public Comentario getComentario() {
         return comentario;
     }
 
@@ -57,7 +47,7 @@ public class ComentarioControlador {
      * setComentario.
      * @param comentario
      */
-    public void setComentario(final String comentario) {
+    public void setComentario(final Comentario comentario) {
         this.comentario = comentario;
     }
 
@@ -65,9 +55,8 @@ public class ComentarioControlador {
      * Constructor.
      */
     public ComentarioControlador() {
-        user = new Usuario();
-        comentario = "";
         FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale("es-Mx"));
+        this.comentario = new Comentario();
     }
 
     /**
@@ -75,8 +64,29 @@ public class ComentarioControlador {
      * @return ver-comentario redirect
      */
     public String agregarComentario(){
-        //implementar codigo
+        // Tema
+        String idTema = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idtema");
+        ControladorTemas temasControlador = new ControladorTemas();
+        comentario.setIdtema(temasControlador.getTemaById(idTema));
+        FacesContext context = FacesContext.getCurrentInstance();
+        // Usuario 
+        com.mycompany.abstractsciencesociety.model.Usuario usuario = (com.mycompany.abstractsciencesociety.model.Usuario) context.getExternalContext().getSessionMap().get("usuario");
+        comentario.setIdusuario(usuario);
+        System.out.println("USUARIO");
+        System.out.println(usuario);
+        System.out.println(comentario.getIdusuario());
+        // Fecha
+        Date d = new Date();
+        comentario.setFechapublicacion(d);
+
+        EntityManagerFactory emf = EntityProvider.provider();
+        ComentarioJpaController comentarioJpaC = new ComentarioJpaController(emf);
+        comentarioJpaC.create(comentario);
         return "ver-comentario.html";
+    }
+
+    public String setComentarioIdTema(String idTema) {
+        return null;
     }
 
 }
