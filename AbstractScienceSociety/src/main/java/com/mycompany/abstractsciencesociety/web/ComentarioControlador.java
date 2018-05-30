@@ -7,6 +7,7 @@ package com.mycompany.abstractsciencesociety.web;
 
 import java.util.Locale;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -33,7 +34,7 @@ public class ComentarioControlador {
     /**
      * comentarios.
      */
-    private List<Comentario> comentarios;
+    private LinkedList<Comentario> comentarios;
 
     /**
      * getComentario.
@@ -49,6 +50,14 @@ public class ComentarioControlador {
      */
     public void setComentario(final Comentario comentario) {
         this.comentario = comentario;
+    }
+
+    /**
+     * getComentarios.
+     * @return comentarios
+     */
+    public LinkedList<Comentario> getComentarios() {
+        return comentarios;
     }
 
     /**
@@ -88,8 +97,19 @@ public class ComentarioControlador {
         return "ver-tema?faces-redirect=true&agregado=1&id=" + idTema;
     }
 
-    public String setComentarioIdTema(String idTema) {
+    /**
+     * allComentarios.
+     */
+    public String allComentarios(String idTema) {
+        comentarios = new LinkedList(); 
+        EntityManagerFactory emf = EntityProvider.provider();
+        ComentarioJpaController comentarioJpaC = new ComentarioJpaController(emf);
+
+        List<Comentario> c = comentarioJpaC.findComentarios(idTema);
+        for (Comentario comentarioAux : c) {
+           comentarios.add(comentarioAux);
+        }
+
         return null;
     }
-
 }

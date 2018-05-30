@@ -17,6 +17,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -34,6 +36,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Comentario.findByIdcomentario", query = "SELECT c FROM Comentario c WHERE c.idcomentario = :idcomentario")
     , @NamedQuery(name = "Comentario.findByComentario", query = "SELECT c FROM Comentario c WHERE c.comentario = :comentario")
     , @NamedQuery(name = "Comentario.findByFechapublicacion", query = "SELECT c FROM Comentario c WHERE c.fechapublicacion = :fechapublicacion")})
+@NamedNativeQueries(value = {
+    @NamedNativeQuery( 
+            name = "Comentario.findByIdtema",
+            query = "select * from comentario where idtema = ?1",
+            resultClass = Comentario.class
+    )
+})
 public class Comentario implements Serializable {
 
     private static final long serialVersionUID = 1L;

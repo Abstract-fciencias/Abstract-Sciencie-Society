@@ -11,6 +11,7 @@
 
     <f:metadata>
         <f:viewAction action="#{controladorTemas.setTemaById(param.id)}" />
+        <f:viewAction action="#{comentarioControlador.allComentarios(param.id)}" />
     </f:metadata>
     
     <link rel="stylesheet" type="text/css" href="css/index.css"></link>
@@ -51,6 +52,9 @@
 
         </div>
         <div class = "Comentarios">
+            <ui:repeat value="#{comentarioControlador.comentarios}" var="comentario">
+            #{comentario.comentario}
+            </ui:repeat>
              
         </div>
         <c:if test="#{usuarioBean.isLogged()}">

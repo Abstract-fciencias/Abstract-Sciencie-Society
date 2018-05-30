@@ -193,5 +193,20 @@ public class ComentarioJpaController implements Serializable {
             em.close();
         }
     }
+
+    /**
+     * findComentarios.
+     * @param idTema
+     * @return usuario
+     */
+    public List<Comentario> findComentarios(String idTema) {
+        EntityManager em = getEntityManager();
+        Query q = em.createNamedQuery("Comentario.findByIdtema")
+                .setParameter(1, Integer.valueOf(idTema));
+        if (q.getResultList().isEmpty()) {
+            return null;
+        }
+        return (List<Comentario>) q.getResultList();
+    }
     
 }
