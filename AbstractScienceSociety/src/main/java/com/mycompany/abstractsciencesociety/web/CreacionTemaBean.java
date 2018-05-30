@@ -260,7 +260,7 @@ public class CreacionTemaBean {
         }
         
         temas = nueva; 
-        return "http://localhost:8084/AbstractScienceSociety/index.xhtml";
+        return "index";
     }
     
 }

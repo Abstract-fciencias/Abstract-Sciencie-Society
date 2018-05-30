@@ -18,6 +18,11 @@ header {
     padding: 15px 0;
 }
 
+#busqueda form {
+    padding: 0px;
+    width: 130px;
+}
+
 #busqueda {
     cursor: pointer;
     position: absolute;

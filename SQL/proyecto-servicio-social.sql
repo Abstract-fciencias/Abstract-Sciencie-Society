@@ -56,11 +56,6 @@ before insert on Usuario
 for each row execute procedure hash();
 
 
-create trigger cifraUpdate
-before update on Usuario
-for each row execute procedure hash();
-
-
 create or replace function login(correo VARCHAR(80), contraseñaN text) returns boolean as $$
   select exists(select 1
                   from Usuario
