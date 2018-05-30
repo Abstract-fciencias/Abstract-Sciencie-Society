@@ -16,7 +16,7 @@
     
     <link rel="stylesheet" type="text/css" href="css/index.css"></link>
     <link rel="stylesheet" type="text/css" href="css/agregar-comentario.css"></link>
-    <link rel="stylesheet" type="text/css" href="css/ver-comentario.css"></link>
+    <link rel="stylesheet" type="text/css" href="css/ver-tema.css"></link>
     <title>Abstract | Ver Tema </title>
 
 </h:head>
@@ -25,35 +25,54 @@
     <ui:include src="./header.xhtml" />
     <ui:include src="./menu.xhtml"/>
 
-    <div class = "Ver Tema">
-        <div class = "Tema">
-            <div class="tema">
-
-                <h3>#{controladorTemas.temaM.contenido}</h3>
-                <h3>#{controladorTemas.temaM.idcategoria.nombre}</h3>
-
-                <ul class="infoTema">
-
-                    <li>#{controladorTemas.temaM.idusuario.nombre}</li>
-                    <li>#{controladorTemas.temaM.disponibilidad}</li>
-                    <li>
-                        <h:outputText value="#{controladorTemas.temaM.fechapublicacion}" >
-                            <f:convertDateTime pattern="dd/MM/yyyy" />
-                        </h:outputText>
-                    </li>
-
-                </ul>
+    <div class = "ver-tema">
+        <div class = "tema">
+            <div class="titulo-tema">
+                <h3 class="contenido-tema">#{controladorTemas.temaM.contenido}</h3>
                 <c:if test="#{usuarioBean.isLoggedAdmin()}">
                     <a href="/AbstractScienceSociety/eliminar-tema.xhtml?id=#{controladorTemas.temaM.idtema}">Eliminar</a>
                 </c:if>
-                
-
             </div>
+            <h3 class="nombre-tema">#{controladorTemas.temaM.idcategoria.nombre}</h3>
 
+            <ul class="infoTema">
+                <li>#{controladorTemas.temaM.idusuario.nombre}</li>
+                <li>#{controladorTemas.temaM.disponibilidad}</li>
+                <li>
+                    <h:outputText value="#{controladorTemas.temaM.fechapublicacion}" >
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </li>
+
+            </ul>
+            <!-- Agregar una linea aquí -->
         </div>
-        <div class = "Comentarios">
+        <div class = "comentarios">
             <ui:repeat value="#{comentarioControlador.comentarios}" var="comentario">
-            #{comentario.comentario}
+                <div class="contenedor-comentario">
+                    <div class="comentario-comentario">
+                        #{comentario.comentario}
+                    </div>
+                    <div class="usuario-comentario">
+                        <div class="contenedor-usuario-comentario">
+                            <picture class="usuario-imagen-comentario">
+                                <ui:fragment rendered="#{comentario.idusuario.imagen}">
+                                    <img src="resources/media/#{comentario.idusuario.nombre}.jpeg" alt="" ></img>
+                                </ui:fragment>
+                            </picture>
+                            <div class="info-usuario-comentario">
+                                <div class="nombre-usuario-comentario">
+                                    #{comentario.idusuario.nombre}
+                                </div>
+                                <div class="fecha-usuario-comentario">
+                                    <h:outputText value="#{comentario.fechapublicacion}" >
+                                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                                    </h:outputText>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </ui:repeat>
              
         </div>

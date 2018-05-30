@@ -106,6 +106,9 @@ public class ComentarioControlador {
         ComentarioJpaController comentarioJpaC = new ComentarioJpaController(emf);
 
         List<Comentario> c = comentarioJpaC.findComentarios(idTema);
+        if (c == null || c.isEmpty()) {
+            return null;
+        }
         for (Comentario comentarioAux : c) {
            comentarios.add(comentarioAux);
         }

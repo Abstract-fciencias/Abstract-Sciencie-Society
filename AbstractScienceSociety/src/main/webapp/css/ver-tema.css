@@ -8,11 +8,40 @@ and open the template in the editor.
     Author     : aide
 */
 
+.comentarios {
+    display: block;
+    margin: 0 auto;
+    width: 600px;
+}
+
+.comentario-comentario {
+    display: inline-block;
+    width: 55%;
+    height: 100%;
+    position: absolute;
+}
+
+.contenedor-comentario {
+    height: 110px;
+    border-top: 1px solid black;
+    position: relative;
+}
+
+.contenedor-comentario {
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.contenedor-comentario:first-child {
+    border-top: 0px solid black;
+    margin-top: 25px;
+    padding-top: 0px;
+}
+
 .tema{
     width: 70%;
-    text-align: center;
     margin: auto;
-    
 }
 
 .tema:first-child {
@@ -28,7 +57,6 @@ and open the template in the editor.
 
 .tema:first-child {
     border-top-width: 0px;
-    margin-top: 30px;
 }
 
 .Agrega-comentario{
@@ -39,4 +67,41 @@ and open the template in the editor.
 
 .Agrega-comentario textArea{
     width: 50%;
+}
+
+.infoTema {
+    border-bottom: 1px solid black;
+    padding-left: 0;
+    padding-bottom: 10px;
+    margin-bottom: 0px;
+}
+
+.info-usuario-comentario {
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    left: 90px;
+}
+
+.nombre-usuario-comentario {
+}
+
+.usuario-comentario {
+    display: inline-block;
+    position: absolute;
+    left: 60%;
+    width: 40%;
+    height: 100%;
+}
+
+.usuario-imagen-comentario {
+    display: inline-block;
+    border: 1px solid black;
+    height: 80px;
+    width: 80px;
+}
+
+.usuario-imagen-comentario img {
+    height:80px;
+    width: 80px;
 }

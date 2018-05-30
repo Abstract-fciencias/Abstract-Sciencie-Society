@@ -289,6 +289,8 @@ public class Usuario implements Serializable {
      * @return imagen
      */
     public boolean getImagen() {
+        System.out.println("pero que es lo que está pasando");
+        System.out.println(imagen);
         return imagen;
     }
 
