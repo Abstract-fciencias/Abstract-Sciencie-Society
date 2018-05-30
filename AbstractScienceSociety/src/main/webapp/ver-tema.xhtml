@@ -11,7 +11,6 @@
 
     <f:metadata>
         <f:viewAction action="#{controladorTemas.setTemaById(param.id)}" />
-        <f:viewAction action="#{comentarioControlador.setComentarioIdTema(param.id)}" />
     </f:metadata>
     
     <link rel="stylesheet" type="text/css" href="css/index.css"></link>
@@ -54,6 +53,7 @@
         <div class = "Comentarios">
              
         </div>
+        <c:if test="#{usuarioBean.isLogged()}">
         <div class="Agrega-comentario" style="width: 35%;margin:auto; background:white ;color:white">
             <h:form>
                 <p:inputTextarea  maxlength="255" value="#{comentarioControlador.comentario.comentario}">
@@ -64,6 +64,7 @@
                 </p:commandButton>
             </h:form>            
         </div>
+        </c:if>
     </div>
          
  

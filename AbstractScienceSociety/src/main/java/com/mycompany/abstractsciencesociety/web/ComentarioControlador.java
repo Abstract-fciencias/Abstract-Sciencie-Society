@@ -66,15 +66,18 @@ public class ComentarioControlador {
     public String agregarComentario(){
         // Tema
         String idTema = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idtema");
-        ControladorTemas temasControlador = new ControladorTemas();
-        comentario.setIdtema(temasControlador.getTemaById(idTema));
-        FacesContext context = FacesContext.getCurrentInstance();
         // Usuario 
+        FacesContext context = FacesContext.getCurrentInstance();
         com.mycompany.abstractsciencesociety.model.Usuario usuario = (com.mycompany.abstractsciencesociety.model.Usuario) context.getExternalContext().getSessionMap().get("usuario");
         comentario.setIdusuario(usuario);
-        System.out.println("USUARIO");
-        System.out.println(usuario);
-        System.out.println(comentario.getIdusuario());
+        if (usuario == null) {
+            return "ver-tema?faces-redirect=true&id=" + idTema;
+        }
+        if (idTema == null) {
+            return "index?faces-redirect=true";
+        }
+        ControladorTemas temasControlador = new ControladorTemas();
+        comentario.setIdtema(temasControlador.getTemaById(idTema));
         // Fecha
         Date d = new Date();
         comentario.setFechapublicacion(d);
@@ -82,7 +85,7 @@ public class ComentarioControlador {
         EntityManagerFactory emf = EntityProvider.provider();
         ComentarioJpaController comentarioJpaC = new ComentarioJpaController(emf);
         comentarioJpaC.create(comentario);
-        return "ver-comentario.html";
+        return "ver-tema?faces-redirect=true&agregado=1&id=" + idTema;
     }
 
     public String setComentarioIdTema(String idTema) {
