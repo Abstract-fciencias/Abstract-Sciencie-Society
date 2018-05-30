@@ -22,14 +22,18 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import javax.servlet.http.Part;
 
+import java.util.Properties;
+import javax.mail.*;
+import javax.mail.internet.*;
+
 /**
  *
  * @author abstract
  */
-
 @ManagedBean
 @RequestScoped
 public class RegistroControlador {
+
     /**
      * user.
      */
@@ -79,6 +83,7 @@ public class RegistroControlador {
 
     /**
      * getUser.
+     *
      * @return user
      */
     public Usuario getUser() {
@@ -87,6 +92,7 @@ public class RegistroControlador {
 
     /**
      * setUser.
+     *
      * @param user
      */
     public void setUser(Usuario user) {
@@ -95,16 +101,18 @@ public class RegistroControlador {
 
     /**
      * getUsuarios.
+     *
      * @return usuarios.
      */
     public LinkedList<com.mycompany.abstractsciencesociety.model.Usuario> getUsuarios() {
-        for (com.mycompany.abstractsciencesociety.model.Usuario usuario: usuarios) {
+        for (com.mycompany.abstractsciencesociety.model.Usuario usuario : usuarios) {
         }
         return usuarios;
     }
 
     /**
      * validarCorreoCiencias.
+     *
      * @return boolean
      */
     private boolean validarCorreoCiencias() {
@@ -129,7 +137,7 @@ public class RegistroControlador {
      * doUpload.
      */
     public void doUpload() {
-        try{
+        try {
             InputStream in = image.getInputStream();
 
             File f = new File(System.getProperty("user.dir") + "/media/" + user.getNombre() + ".jpeg");
@@ -152,6 +160,7 @@ public class RegistroControlador {
 
     /**
      * agregarUsuario.
+     *
      * @return redirect
      */
     public String agregarUsuario() {
@@ -160,11 +169,11 @@ public class RegistroControlador {
         context.getViewRoot().setLocale(new Locale("es-Mx"));
 
         if (!user.getContraseña().equals(user.getConfirmacionContraseña())) {
-            context.addMessage(null
-                                                         , new FacesMessage(FacesMessage.SEVERITY_ERROR, "Fallo de registro: Las contraseñas deben coincidir", ""));
+            context.addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Fallo de registro: Las contraseñas deben coincidir", ""));
         } else if (!validarCorreoCiencias()) {
-            context.addMessage(null
-                                                         , new FacesMessage(FacesMessage.SEVERITY_ERROR, "Fallo de registro: Sólo se puede registrar con un correo de @ciencias.unam.mx", ""));
+            context.addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Fallo de registro: Sólo se puede registrar con un correo de @ciencias.unam.mx", ""));
         } else {
 
             if (image != null) {
@@ -173,6 +182,7 @@ public class RegistroControlador {
             nuevoUsuario = new com.mycompany.abstractsciencesociety.model.Usuario(user.getNombre(), user.getCorreo(), user.getContraseña(), "normal", user.getCarrera(), user.getAnioingreso());
             EntityManagerFactory emf = EntityProvider.provider();
             UsuarioJpaController usuarioJpaC = new UsuarioJpaController(emf);
+            mandarCorreo();
             usuarioJpaC.create(nuevoUsuario);
             user = null;
 
@@ -192,9 +202,50 @@ public class RegistroControlador {
      * allUsuarios.
      */
     private void allUsuarios() {
-        List<com.mycompany.abstractsciencesociety.model.Usuario> u = controladorUsuario.findUsuarioEntities(); 
+        List<com.mycompany.abstractsciencesociety.model.Usuario> u = controladorUsuario.findUsuarioEntities();
         for (com.mycompany.abstractsciencesociety.model.Usuario usuario : u) {
-           usuarios.add(usuario);
+            usuarios.add(usuario);
         }
+    }
+
+    /*regresa true si se mando el correo*/
+    private boolean mandarCorreo() {
+
+        String id_found = user.getCorreo();
+        String mensaje = "Dar click en el siguiente enlce para terminar tu registro porfavor\n";
+        mensaje += "http://localhost:8084/AbstractScienceSociety/cuentaValida.xhtml?correo=" + id_found;
+        return mandaCorreo(user.getCorreo(), "Abstract Sciene |Confirmacion Correo", mensaje, "abstractsciencesociety@gmail.com");
+    }
+
+    private boolean mandaCorreo(String a, String asunto, String msg, final String usr) {
+        boolean enviado = true;
+        // Get system properties
+        Properties properties = new Properties();
+
+        // Setup mail server
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+
+        // Get the default Session object.
+        Session session;
+        session = Session.getInstance(properties, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(usr, "abstractsciencesociety2018");
+            }
+        });
+
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(usr));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(a));
+            message.setSubject(asunto);
+            message.setText(msg);
+            Transport.send(message);
+        } catch (MessagingException mex) {
+            enviado = false;
+        }
+        return enviado;
     }
 }

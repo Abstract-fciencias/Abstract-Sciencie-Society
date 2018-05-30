@@ -18,6 +18,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManagerFactory;
+
 /**
  *
  * @author aide
@@ -25,6 +26,7 @@ import javax.persistence.EntityManagerFactory;
 @ManagedBean
 @RequestScoped
 public class CreacionTemaBean {
+
     /**
      * emf.
      */
@@ -49,46 +51,42 @@ public class CreacionTemaBean {
      * idcategoria.
      */
     private int idcategoria;
-<<<<<<< HEAD
-    private List<Tema> temas;
-    private TemaJpaController temacontrolador;
+
     private String busqueda;
-=======
->>>>>>> origin/feature/upload-image
+
     /**
      * temas.
      */
-    private final List<Tema> temas;
+    private List<Tema> temas;
     /**
      * temacontrolador.
      */
-    private final  TemaJpaController temacontrolador;
+    private final TemaJpaController temacontrolador;
+
     /**
      * Creates a new instance of CreacionTemaBean.
      */
     public CreacionTemaBean() {
-          FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale("es-Mx"));
-          emf = EntityProvider.provider();
-          controladorCategoria = new CategoriaJpaController(emf);
-          controladorTema = new TemaJpaController(emf);
-          tema = new Tema();
-          categorias = new LinkedList();
-          temas = new LinkedList();
-          temacontrolador  = new TemaJpaController(emf);
-          llenaCategorias();
-          allTemas();
-          busqueda = "";
-          
+        FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale("es-Mx"));
+        emf = EntityProvider.provider();
+        controladorCategoria = new CategoriaJpaController(emf);
+        controladorTema = new TemaJpaController(emf);
+        tema = new Tema();
+        categorias = new LinkedList();
+        temas = new LinkedList();
+        temacontrolador = new TemaJpaController(emf);
+        llenaCategorias();
+        allTemas();
+        busqueda = "";
+
     }
 
-<<<<<<< HEAD
-=======
     /**
      * creaTema.
+     *
      * @return index home redirect
      */
->>>>>>> origin/feature/upload-image
-    public String creaTema(){
+    public String creaTema() {
         // Obteniendo el usuario Loggeado
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null,
@@ -106,12 +104,11 @@ public class CreacionTemaBean {
 
         // Mandando notificación
         String nombre = tema.getContenido();
-        return   "ver-tema.xhtml?faces-redirect=true&id="+String.valueOf(tema.getIdtema());
+        return "ver-tema.xhtml?faces-redirect=true&id=" + String.valueOf(tema.getIdtema());
         //String requ = String.format("ver-tema?faces-redirect=true&amp;idTema = %s", nombre);
         //return  requ;
     }
 
-<<<<<<< HEAD
     public String getBusqueda() {
         return busqueda;
     }
@@ -119,43 +116,20 @@ public class CreacionTemaBean {
     public void setBusqueda(String busqueda) {
         this.busqueda = busqueda;
     }
-    
-    public void asignaCategoria(){
-        for(Categoria c : categorias){
-             if(c.getIdcategoria() == idcategoria){
-=======
-    /**
-     * asignaCategoria.
-     */
-    public void asignaCategoria () {
+
+    public void asignaCategoria() {
         for (Categoria c : categorias) {
-             if (c.getIdcategoria() == idcategoria) {
->>>>>>> origin/feature/upload-image
+            if (c.getIdcategoria() == idcategoria) {
                 tema.setIdcategoria(c);
-                return;
-             }
+            }
+
         }
 
     }
 
     /**
-     * getEmf.
-     * @return emf
-     */
-    public EntityManagerFactory getEmf() {
-        return emf;
-    }
-
-    /**
-     * setEmf.
-     * @param emf
-     */
-    public void setEmf(EntityManagerFactory emf) {
-        this.emf = emf;
-    }
-
-    /**
      * getControladorCategoria.
+     *
      * @return controladorCategoria
      */
     public CategoriaJpaController getControladorCategoria() {
@@ -164,6 +138,7 @@ public class CreacionTemaBean {
 
     /**
      * setControladorCategoria.
+     *
      * @param controladorCategoria
      */
     public void setControladorCategoria(CategoriaJpaController controladorCategoria) {
@@ -172,6 +147,7 @@ public class CreacionTemaBean {
 
     /**
      * getTema.
+     *
      * @return tema
      */
     public Tema getTema() {
@@ -180,6 +156,7 @@ public class CreacionTemaBean {
 
     /**
      * setTema.
+     *
      * @param tema
      */
     public void setTema(Tema tema) {
@@ -188,6 +165,7 @@ public class CreacionTemaBean {
 
     /**
      * getIdcategoria.
+     *
      * @return idcategoria
      */
     public int getIdcategoria() {
@@ -196,6 +174,7 @@ public class CreacionTemaBean {
 
     /**
      * setIdcategoria.
+     *
      * @param idcategoria
      */
     public void setIdcategoria(int idcategoria) {
@@ -204,6 +183,7 @@ public class CreacionTemaBean {
 
     /**
      * getCategorias.
+     *
      * @return categorias
      */
     public List<Categoria> getCategorias() {
@@ -212,6 +192,7 @@ public class CreacionTemaBean {
 
     /**
      * getTemas.
+     *
      * @return temas
      */
     public List<Tema> getTemas() {
@@ -220,6 +201,7 @@ public class CreacionTemaBean {
 
     /**
      * setCategorias.
+     *
      * @param categorias
      */
     public void setCategorias(List<Categoria> categorias) {
@@ -232,46 +214,45 @@ public class CreacionTemaBean {
     private void llenaCategorias() {
         List<Categoria> l = controladorCategoria.findCategoriaEntities();
         for (Categoria c : l) {
-           categorias.add(c);
+            categorias.add(c);
         }
     }
 
     /**
      * allTemas.
      */
-    private void allTemas(){
+    private void allTemas() {
         List<Tema> t = controladorTema.findTemaEntities();
         for (Tema temaAux : t) {
-           temas.add(temaAux);
+            temas.add(temaAux);
         }
     }
-    public void buscaPorCategoria(Categoria categoria){
+
+    public void buscaPorCategoria(Categoria categoria) {
         System.out.print("holi eder");
         List<Tema> aux = temacontrolador.findTemaEntities();
         List<Tema> nueva = new LinkedList<Tema>();
-        for(Tema t : aux ){
-            if(t.getIdcategoria().equals(categoria)){
-               nueva.add(t);
+        for (Tema t : aux) {
+            if (t.getIdcategoria().equals(categoria)) {
+                nueva.add(t);
             }
         }
-        
+
         temas = nueva;
-        
+
     }
 
-    
-
-    public String busca(){
-      List<Tema> aux = temacontrolador.findTemaEntities();
+    public String busca() {
+        List<Tema> aux = temacontrolador.findTemaEntities();
         List<Tema> nueva = new LinkedList<Tema>();
-        for(Tema t : aux ){
-            if(t.getContenido().toLowerCase().contains(busqueda.toLowerCase())){
-               nueva.add(t);
+        for (Tema t : aux) {
+            if (t.getContenido().toLowerCase().contains(busqueda.toLowerCase())) {
+                nueva.add(t);
             }
         }
-        
-        temas = nueva; 
+
+        temas = nueva;
         return "http://localhost:8084/AbstractScienceSociety/index.xhtml";
     }
-    
+
 }

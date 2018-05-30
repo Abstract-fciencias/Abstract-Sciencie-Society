@@ -51,6 +51,7 @@ public class UsuarioBean {
 
     /**
      * isLogged.
+     *
      * @return boolean
      */
     public boolean isLogged() {
@@ -61,6 +62,7 @@ public class UsuarioBean {
 
     /**
      * isLoggedAdmin.
+     *
      * @return boolean
      */
     public boolean isLoggedAdmin() {
@@ -74,6 +76,7 @@ public class UsuarioBean {
 
     /**
      * getUsuario.
+     *
      * @return usuario
      */
     public com.mycompany.abstractsciencesociety.model.Usuario getUsuario() {
@@ -83,25 +86,41 @@ public class UsuarioBean {
 
     /**
      * loggeado.
+     *
      * @return redirect
      */
     public String loggeado() {
         FacesContext context = getCurrentInstance();
         com.mycompany.abstractsciencesociety.model.Usuario l = (com.mycompany.abstractsciencesociety.model.Usuario) context.getExternalContext().getSessionMap().get("usuario");
-        if (l == null){
+        if (l == null) {
             return LOGIN_PAGE_REDIRECT;
         }
         return null;
     }
 
     /**
+     * noLoggeado.
+     *
+     * @return redirect
+     */
+    public String noLoggeado() {
+        FacesContext context = getCurrentInstance();
+        com.mycompany.abstractsciencesociety.model.Usuario l = (com.mycompany.abstractsciencesociety.model.Usuario) context.getExternalContext().getSessionMap().get("usuario");
+        if (l != null) {
+            return HOME_PAGE_REDIRECT;
+        }
+        return null;
+    }
+
+    /**
      * loggeadoAdmin.
+     *
      * @return redirect.
      */
     public String loggeadoAdmin() {
         FacesContext context = getCurrentInstance();
         com.mycompany.abstractsciencesociety.model.Usuario l = (com.mycompany.abstractsciencesociety.model.Usuario) context.getExternalContext().getSessionMap().get("usuario");
-        if (l == null){
+        if (l == null) {
             return HOME_PAGE_REDIRECT;
         }
         if (!l.getTipo().equals("admin")) {
@@ -110,45 +129,4 @@ public class UsuarioBean {
         return null;
     }
 
-    /**
-     * noLoggeado.
-     * @return redirect
-     */
-    public String noLoggeado() {
-        FacesContext context = getCurrentInstance();
-        com.mycompany.abstractsciencesociety.model.Usuario l = (com.mycompany.abstractsciencesociety.model.Usuario) context.getExternalContext().getSessionMap().get("usuario");
-        if (l != null){
-            return HOME_PAGE_REDIRECT;
-        }
-        return null;
-    }
-    
-     /**
-     * loggeadoAdmin.
-     * @return redirect.
-     */
-    public String loggeadoAdmin() {
-        FacesContext context = getCurrentInstance();
-        com.mycompany.abstractsciencesociety.model.Usuario l = (com.mycompany.abstractsciencesociety.model.Usuario) context.getExternalContext().getSessionMap().get("usuario");
-        if (l == null){
-            return HOME_PAGE_REDIRECT;
-        }
-        if (!l.getTipo().equals("admin")) {
-            return HOME_PAGE_REDIRECT;
-        }
-        return null;
-    }
-    
-     /**
-     * isLoggedAdmin.
-     * @return boolean
-     */
-    public boolean isLoggedAdmin() {
-        FacesContext context = getCurrentInstance();
-        com.mycompany.abstractsciencesociety.model.Usuario l = (com.mycompany.abstractsciencesociety.model.Usuario) context.getExternalContext().getSessionMap().get("usuario");
-        if (l != null) {
-            return l.getTipo().equals("admin");
-        }
-        return false;
-}
 }
