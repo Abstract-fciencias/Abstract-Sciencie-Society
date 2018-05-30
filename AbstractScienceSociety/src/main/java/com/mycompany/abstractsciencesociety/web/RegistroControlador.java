@@ -259,7 +259,7 @@ public class RegistroControlador {
         } catch (Exception e) {
             System.out.println("Problemas al activar un usuario");
         }
-        return "index";
+        return "index.xhtml?faces-redirect=true";
     }
 
 }

@@ -24,7 +24,7 @@ and open the template in the editor.
         <ui:include src="./header.xhtml" />
         <ui:include src="./menu.xhtml"/>
         <h:form>
-            <p:commandButton   value="Unirme">
+            <p:commandButton  action="#{registroControlador.activeUser(param.correo)}" value="Unirme">
 
             </p:commandButton>
         </h:form>
